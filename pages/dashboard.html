@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>
+    Inicio | Mi Viaje Materno
+  </title>
+
+  <link rel="stylesheet"
+        href="../css/style.css">
+
+  <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+  <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body class="dashboard-body">
+
+  <!-- NAVBAR -->
+
+  <header class="topbar">
+
+    <!-- LOGO -->
+
+    <div class="logo">
+
+      Mi viaje materno
+
+    </div>
+
+    <!-- MENÚ -->
+
+    <nav class="topnav">
+
+      <a class="active" href="../pages/dashboard.html">
+        Inicio
+      </a>
+
+      <a href="../pages/acompañantes.html">
+        Acompañantes
+      </a>
+
+      <a href="../pages/signos-alarma.html" >
+        Signos de alarma
+      </a>
+
+      <a href="#">
+        Preguntas frecuentes
+      </a>
+
+    </nav>
+
+<!-- PERFIL -->
+<div class="profile-area">
+
+  <div class="nav-avatar" id="nav-avatar">V</div>
+
+  <span>
+    Hola, <a href="perfil.html" id="nombre-madre" style="color:inherit; text-decoration:none;">Vanessa</a>
+  </span>
+
+</div>
+
+  </header>
+
+  <!-- HERO -->
+
+
+  <section class="hero-section">
+
+
+    <!-- IZQUIERDA -->
+
+
+    <div class="hero-left">
+
+
+      <h1 id="user-name">
+  Hola
+</h1>
+
+
+      <h2 id="gestation-weeks"> Semana </h2>
+
+
+      <!-- BABY SIZE -->
+<div class="baby-size" id="baby-size-dashboard">
+  🌽 Tu bebé tiene el tamaño de un choclo
+</div>
+
+      <!-- FPP -->
+
+
+      <div class="fpp-box">
+
+
+        <h3>
+          Fecha probable de parto:
+        </h3>
+
+
+        <p id="fpp-date">
+  --
+</p>
+
+
+      </div>
+
+
+      <!-- PROGRESO -->
+
+
+      <div class="progress-card">
+
+
+        <p>
+          Has completado el
+          <strong id="progress-percent">0%</strong>
+          de tu viaje materno
+        </p>
+
+        <div class="progress-bar">
+          <div class="progress-fill"id="progress-fill"></div>
+        </div>
+
+      <span id="modules-count">
+      Módulos completados: 0 de 4 
+    </span>
+    </div>
+
+
+    </div>
+
+    <!-- DERECHA -->
+
+    <div class="hero-right">
+
+      <img src= "pregnant-lineart.png"
+           alt="embarazo" width="500" height="800">
+
+    </div>
+
+
+  </section>
+
+  <!-- MÓDULOS -->
+
+  <section class="modules-section">
+
+    <div class="section-title">
+
+      <h2>
+        Continúa tu camino
+      </h2>
+
+      <p>
+        Explora los módulos según tu etapa
+      </p>
+
+    </div>
+
+    <div class="modules-grid">
+
+     <!-- MÓDULO 1 -->
+      
+      <div class="module-card" id="module1-card">
+
+    <span class="module-label">
+        MÓDULO 1
+    </span>
+
+    <h3>
+        Cambios en el embarazo
+    </h3>
+
+    <p>
+        Conoce los cambios físicos y emocionales durante la gestación.
+    </p>
+
+    <a href="module1.html">
+
+        <button
+            class="completed-btn"
+            id="module1-btn">
+            Ingresar
+        </button>
+
+    </a>
+
+</div>
+
+      <!-- MÓDULO 2 -->
+
+    <div class="module-card" id="module2-card">
+
+        <span class="module-label">
+          MÓDULO 2
+        </span>
+
+        <h3>
+          Cuidados en la gestación
+        </h3>
+
+        <p>
+          Aprende hábitos saludables y cuidados importantes.
+        </p>
+
+<a href="module2.html">
+
+  <button
+    class="completed-btn"
+    id="module2-btn">
+    Ingresar
+  </button>
+
+</a>
+
+      </div>
+
+      <!-- MÓDULO 3 -->
+
+      <div class="module-card" id="module3-card">
+
+        <span class="module-label">
+          MÓDULO 3
+        </span>
+
+        <h3>
+          Preparación para el parto
+        </h3>
+
+        <p>
+          Prepárate física y emocionalmente para el nacimiento.
+        </p>
+
+        <a href="module3.html">
+        <button
+        class="completed-btn" id="module3-btn">
+    Ingresar
+  </button>
+  </a>
+
+      </div>
+
+      <!-- MÓDULO 4 -->
+
+    <div class="module-card" id="module4-card">
+
+        <span class="module-label">
+          MÓDULO 4
+        </span>
+
+        <h3>
+          Puerperio y Recién Nacido
+        </h3>
+
+        <p>
+          Aprende cuidados del puerperio y del recién nacido.
+        </p>
+
+        <a href="module4.html">
+        <button
+        class="completed-btn" id="module4-btn">
+    Ingresar
+  </button>
+  </a>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+<!-- SIGNOS DE ALARMA -->
+
+<section class="warning-section">
+
+  <!-- IZQUIERDA -->
+
+  <div class="warning-card">
+
+    <h2>
+      ⚠ Signos de alarma
+    </h2>
+
+    <p>
+      Conoce los síntomas que requieren atención inmediata
+    </p>
+
+    <div class="warning-grid">
+
+      <div class="warning-item">
+
+        <span>🩸</span>
+
+        <p>
+          Sangrado vaginal
+        </p>
+
+      </div>
+
+      <div class="warning-item">
+
+        <span>👶</span>
+
+        <p>
+          Disminución de movimientos fetales
+        </p>
+
+      </div>
+
+      <div class="warning-item">
+
+        <span>⚡</span>
+
+        <p>
+          Contracciones intensas
+        </p>
+
+      </div>
+
+      <div class="warning-item">
+
+        <span>🌡</span>
+
+        <p>
+          Fiebre mayor a 38°C
+        </p>
+
+      </div>
+
+    </div>
+
+    <button class="outline-btn">
+
+      <a href="../pages/signos-alarma.html" class="btn-outline" style="text-decoration:none;">
+  Ver información completa
+</a>
+
+    </button>
+
+  </div>
+
+  <!-- ACOMPAÑANTES -->
+<div class="companions-card">
+
+  <h2>♡ Tus acompañantes</h2>
+  <p>Las personas que te acompañan en este viaje</p>
+
+  <!-- LISTA DINÁMICA DESDE FIREBASE -->
+  <div id="companions-list">
+    <p class="no-companions" id="no-companions-msg"
+       style="font-size:0.85rem; color:#8E7D86; text-align:center; padding:1rem 0;">
+      Aún no tienes acompañantes agregados.
+    </p>
+  </div>
+
+  <!-- BOTONES -->
+  <div style="display:flex; flex-direction:column; gap:0.8rem; margin-top:1rem;">
+    <button class="add-btn" onclick="window.location.href='../pages/acompañantes.html'"> + Agregar acompañante </button>
+    <button class="add-btn" id="ver-todos-btn"
+            style="display:none;"
+            onclick="window.location.href='../pages/acompañantes.html'">
+      Ver todos los acompañantes →
+    </button>
+  </div>
+
+</div>
+</section> 
+
+<!-- FAQ -->
+
+<section class="faq-section">
+
+  <div class="faq-title">
+
+    <h2>
+      Preguntas frecuentes
+    </h2>
+
+    <p>
+      Resolvemos algunas dudas comunes durante el embarazo
+    </p>
+
+  </div>
+
+  <!-- FAQ ITEM -->
+
+  <div class="faq-item">
+
+    <button class="faq-question">
+
+      ¿Cuándo debo ir a urgencias?
+
+      <span>+</span>
+
+    </button>
+
+    <div class="faq-answer">
+
+      <p>
+        Debes acudir a urgencias si presentas sangrado, pérdida de líquido, fiebre mayor a 38°C, dolor intenso o disminución de movimientos fetales.
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- FAQ ITEM -->
+
+  <div class="faq-item">
+
+    <button class="faq-question">
+
+      ¿Cuántos controles prenatales debo tener?
+
+      <span>+</span>
+
+    </button>
+
+    <div class="faq-answer">
+
+      <p>
+        El número de controles dependerá de cada embarazo, pero generalmente se realizan controles periódicos durante toda la gestación, en Chile se recomienda hacer cada 4 semanas hasta la semana 28, luego cada 2 semanas hasta la semana 36 y después semanalmente hasta el parto.
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- FAQ ITEM -->
+
+  <div class="faq-item">
+
+    <button class="faq-question">
+
+      ¿Qué debo llevar al parto?
+
+      <span>+</span>
+
+    </button>
+
+    <div class="faq-answer">
+
+      <p>
+        Puedes preparar ropa cómoda, documentos, artículos de higiene personal y ropa para tu bebé.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <div class="footer-brand">
+      <span class="footer-logo">Mi viaje materno</span>
+      <p class="footer-desc">Una plataforma de educación prenatal.</p>
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <div class="footer-copy">
+      <p>© 2026 <strong>Mi Viaje Materno</strong> · Desarrollado por Vanessa Rivas Martínez Interna de Obstetricia y Puericultura de la Universidad Austral de Chile</p>
+      <p>CESFAM Angachilla· Todos los derechos reservados</p>
+    </div>
+
+  </div>
+</footer>
+
+<script type="module" src="../js/app.js"></script>
+
+</body>
+
+</html>

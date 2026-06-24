@@ -1,0 +1,243 @@
+/* ==================================
+   RESET
+================================== */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+
+ font-family:'Poppins',sans-serif;
+
+  background:#f8f3ef;
+
+  min-height:100vh; 
+}
+
+/* ==================================
+   CONTENEDOR
+================================== */
+
+.login-container{
+
+  width:100%;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding-top:70px;
+  padding-bottom:70px;
+}
+
+/* ==================================
+   TARJETA
+================================== */
+
+.login-card{
+
+  width:100%;
+  max-width:520px;
+
+  background:white;
+
+  border-radius:35px;
+
+  padding:45px;
+
+  box-shadow:
+  0 12px 40px rgba(0,0,0,0.08);
+
+  text-align:center;
+}
+
+/* ==================================
+   ICONO
+================================== */
+
+.login-logo{
+
+  width:90px;
+  height:90px;
+
+  border-radius:50%;
+
+  border:2px solid #ead6db;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  margin:0 auto 25px;
+
+  font-size:2rem;
+
+  color:#8a4f63;
+}
+
+/* ==================================
+   TITULOS
+================================== */
+
+.login-title{
+
+  font-size:2.4rem;
+
+  color:#5b3441;
+
+  margin-bottom:10px;
+
+  font-weight:600;
+}
+
+.login-subtitle{
+
+  color:#8a7b80;
+
+  margin-bottom:35px;
+
+  font-size:1rem;
+}
+
+/* ==================================
+   FORMULARIO
+================================== */
+
+.input-group{
+
+  margin-bottom:18px;
+
+  text-align:left;
+}
+
+.input-group label{
+
+  display:block;
+
+  margin-bottom:8px;
+
+  color:#5b3441;
+
+  font-size:0.95rem;
+
+  font-weight:500;
+}
+
+.input-group input{
+
+  width:100%;
+
+  height:54px;
+
+  padding:0 16px;
+
+  border-radius:15px;
+
+  border:1px solid #e4d6da;
+
+  background:#faf8f7;
+
+  font-size:0.95rem;
+
+  color:#5b3441;
+
+  transition:0.3s;
+}
+
+.input-group input:focus{
+
+  outline:none;
+
+  border-color:#b67c90;
+
+  background:white;
+}
+
+/* ==================================
+   BOTÓN
+================================== */
+
+.login-btn{
+
+  width:100%;
+
+  height:58px;
+
+  border:none;
+
+  border-radius:18px;
+
+  background:#8a4f63;
+
+  color:white;
+
+  font-size:1.05rem;
+
+  font-weight:600;
+
+  cursor:pointer;
+
+  margin-top:20px;
+
+  transition:0.3s;
+}
+
+.login-btn:hover{
+
+  background:#744254;
+
+  transform:translateY(-2px);
+}
+
+/* ==================================
+   LINK REGISTRO
+================================== */
+
+.register-text{
+
+  text-align:center;
+
+  margin-top:25px;
+
+  color:#7d6b72;
+
+  font-size:0.95rem;
+}
+
+.register-text a{
+
+  color:#8a4f63;
+
+  font-weight:600;
+
+  text-decoration:none;
+}
+
+.register-text a:hover{
+
+  color:#744254;
+}
+
+/* ==================================
+   RESPONSIVE
+================================== */
+
+@media(max-width:600px){
+
+  body{
+    padding:1rem;
+  }
+
+  .login-card{
+
+    padding:30px;
+  }
+
+  .login-title{
+
+    font-size:2rem;
+  }
+
+}

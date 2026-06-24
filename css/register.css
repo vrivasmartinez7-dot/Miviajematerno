@@ -1,0 +1,339 @@
+/* ==================================
+   RESET
+================================== */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+
+  font-family:'Brittany',sans-serif;
+
+  background:#f8f3ef;
+
+  min-height:100vh;
+}
+
+/* ==================================
+   CONTENEDOR PRINCIPAL
+================================== */
+
+.register-container{
+
+  display:flex;
+
+  min-height:100vh;
+}
+
+/* ==================================
+   PANEL IZQUIERDO
+================================== */
+
+.register-left{
+
+  width:50%;
+
+  background-image:url("../assets/fondoregister.png");
+  background-size:cover;
+  background-position:center;
+
+  display:flex;
+  flex-direction:column;
+
+  justify-content:center;
+  align-items:center;
+
+  text-align:center;
+
+  padding:4rem;
+}
+
+.brand-title{
+    font-family: 'Brittany';
+    font-size: 6.5rem;
+    line-height: 0.9;
+    color: #4e2d38;
+    font-weight: normal;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.brand-divider{
+
+  width:100px;
+  height:2px;
+
+  background:#D9A5B0;
+
+  margin-bottom:2rem;
+}
+
+.brand-subtitle{
+
+  font-family:'Brittany',serif;
+
+  font-size:2rem;
+
+  color:#4e2d38;
+
+  margin-bottom:1rem;
+}
+
+.brand-description{
+
+  max-width:420px;
+
+  color:#4e2d38;
+
+  line-height:1.8;
+
+  font-size:1rem;
+}
+
+/* ==================================
+   PANEL DERECHO
+================================== */
+
+.register-right{
+
+  width:50%;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  padding:2rem;
+}
+
+/* ==================================
+   TARJETA
+================================== */
+
+.form-card{
+
+  width:100%;
+  max-width:600px;
+
+  background:#FFFFFF;
+
+  padding:2.5rem;
+
+  border-radius:28px;
+
+  box-shadow:
+  0 15px 40px rgba(0,0,0,.08);
+}
+
+/* ==================================
+   CABECERA
+================================== */
+
+.form-header{
+
+  text-align:center;
+
+  margin-bottom:2rem;
+}
+
+.form-title{
+
+  font-family:'Brittany',serif;
+
+  color:#4B2233;
+
+  font-size:2.2rem;
+
+  margin-bottom:.4rem;
+}
+
+.form-subtitle{
+
+  color:#4e2d38;
+
+  font-size:.95rem;
+}
+
+/* ==================================
+   FILAS
+================================== */
+
+.form-row{
+
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:1rem;
+}
+
+/* ==================================
+   GRUPOS
+================================== */
+
+.form-group{
+
+  margin-bottom:1rem;
+}
+
+.form-group label{
+
+  display:block;
+
+  margin-bottom:.5rem;
+
+  color:#4B2233;
+
+  font-size:.9rem;
+
+  font-weight:500;
+}
+
+.form-group input,
+.form-group select{
+
+  width:100%;
+
+  height:52px;
+
+  border:1px solid #EAD6DB;
+
+  border-radius:14px;
+
+  padding:0 1rem;
+
+  background:#FFFFFF;
+
+  font-size:.95rem;
+
+  color:#4B2233;
+
+  transition:.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+
+  outline:none;
+
+  border-color:#D9A5B0;
+
+  box-shadow:
+  0 0 0 4px rgba(217,165,176,.15);
+}
+
+/* ==================================
+   BOTÓN
+================================== */
+
+.register-btn{
+
+  width:100%;
+
+  height:56px;
+
+  border:none;
+
+  border-radius:14px;
+
+  background:#8a4f63;
+
+  color:white;
+
+  font-size:1rem;
+
+  font-weight:600;
+
+  cursor:pointer;
+
+  margin-top:1rem;
+
+  transition:.3s;
+}
+
+.register-btn:hover{
+
+  background:#8a4f63;
+
+  transform:translateY(-2px);
+}
+
+/* ==================================
+   LOGIN LINK
+================================== */
+
+.login-link{
+
+  text-align:center;
+
+  margin-top:1.5rem;
+
+  color:#8E7D85;
+
+  font-size:.95rem;
+}
+
+.login-link a{
+
+  color:#6D4B57;
+
+  font-weight:600;
+
+  text-decoration:none;
+}
+
+.login-link a:hover{
+
+  color:#4B2233;
+}
+
+/* ==================================
+   RESPONSIVE
+================================== */
+
+@media(max-width:1100px){
+
+  .register-container{
+
+    flex-direction:column;
+  }
+
+  .register-left{
+
+    width:100%;
+
+    min-height:320px;
+  }
+
+  .register-right{
+
+    width:100%;
+  }
+
+}
+
+@media(max-width:768px){
+
+  .form-row{
+
+    grid-template-columns:1fr;
+  }
+
+  .brand-title{
+
+    font-size:3.2rem;
+  }
+
+  .brand-subtitle{
+
+    font-size:1.6rem;
+  }
+
+  .form-card{
+
+    padding:2rem;
+  }
+
+}

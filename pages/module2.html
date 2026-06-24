@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Módulo 2 — Mi viaje materno</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/module2.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="dashboard.html">Mi viaje materno</a>
+  <ul class="nav-links">
+    <li><a href="dashboard.html">Inicio</a></li>
+    <li><a href="../pages/acompañantes.html">Acompañantes</a></li>
+    <li><a href="../pages/signos-alarma.html">Signos de alarma</a></li>
+    <li><a href="dashboard.html">Preguntas frecuentes</a></li>
+  </ul>
+  <div class="nav-user">
+    <div class="nav-avatar" id="nav-avatar">V</div>
+    <span id="profile-name">Hola</span>
+  </div>
+</nav>
+
+<!-- BACK -->
+<div class="back-bar">
+  <button class="btn-back" onclick="window.location.href='dashboard.html'">← Volver al inicio</button>
+</div>
+
+<!-- HERO -->
+<div class="module-hero">
+  <span class="module-badge">Módulo 2 · 22 a 23 semanas</span>
+  <h1 class="module-title">Cuidando el viaje</h1>
+  <p class="module-subtitle">Hábitos saludables y cuidados durante la gestación</p>
+
+  <div class="progress-strip">
+    <p>Progreso: <span id="progress-pct">0%</span></p>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progress-bar" style="width:0%"></div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP TABS -->
+<div class="steps-nav" id="steps-nav">
+  <button class="step-tab active" data-step="0">
+    <span class="step-num">1</span> Bienvenida
+  </button>
+  <button class="step-tab" data-step="1">
+    <span class="step-num">2</span> Tu bebé
+  </button>
+  <button class="step-tab" data-step="2">
+    <span class="step-num">3</span> Video educativo
+  </button>
+  <button class="step-tab" data-step="3">
+    <span class="step-num">4</span> Hábitos saludables
+  </button>
+  <button class="step-tab" data-step="4">
+    <span class="step-num">5</span> Mitos y realidades
+  </button>
+  <button class="step-tab" data-step="5">
+    <span class="step-num">6</span> ¿Cómo me siento?
+  </button>
+  <button class="step-tab" data-step="6">
+    <span class="step-num">7</span> Quiz final
+  </button>
+</div>
+
+<!-- CONTENT -->
+<div class="content-area">
+
+  <!-- ── PASO 1: BIENVENIDA ── -->
+  <div class="section-panel active" id="panel-0">
+    <div class="card">
+      <div class="welcome-hero">
+
+        <div class="avatar-figure">
+          <div class="avatar-body">
+            <!-- Avatar SVG embarazada semanas 22-23 (barriga más grande) -->
+            <svg class="avatar-svg" viewBox="0 0 120 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- cabello -->
+              <ellipse cx="60" cy="28" rx="22" ry="8" fill="#7A3048"/>
+              <!-- cara -->
+              <ellipse cx="60" cy="36" rx="18" ry="20" fill="#F5D5C0"/>
+              <!-- pelo lateral -->
+              <ellipse cx="42" cy="40" rx="5" ry="14" fill="#7A3048"/>
+              <ellipse cx="78" cy="40" rx="5" ry="14" fill="#7A3048"/>
+              <!-- ojos -->
+              <circle cx="53" cy="33" r="2.5" fill="#4A1A2C"/>
+              <circle cx="67" cy="33" r="2.5" fill="#4A1A2C"/>
+              <!-- sonrisa -->
+              <path d="M54 43 Q60 48 66 43" stroke="#B07060" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <!-- cuello -->
+              <rect x="54" y="54" width="12" height="10" rx="4" fill="#F5D5C0"/>
+              <!-- cuerpo / blusa -->
+              <path d="M28 92 Q28 64 60 64 Q92 64 92 92 L90 140 Q90 148 80 148 L40 148 Q30 148 30 140 Z" fill="#E8B4BC"/>
+              <!-- barriga embarazada — más grande que módulo 1 -->
+              <ellipse cx="60" cy="116" rx="30" ry="26" fill="#F2D9DD"/>
+              <ellipse cx="60" cy="116" rx="26" ry="22" fill="#FAEAED"/>
+              <!-- ombligo -->
+              <circle cx="60" cy="123" r="2.5" fill="#E8B4BC"/>
+              <!-- brazos -->
+              <path d="M28 92 Q15 103 17 122" stroke="#E8B4BC" stroke-width="10" stroke-linecap="round" fill="none"/>
+              <path d="M92 92 Q105 103 103 122" stroke="#E8B4BC" stroke-width="10" stroke-linecap="round" fill="none"/>
+              <!-- manos -->
+              <ellipse cx="17" cy="125" rx="6" ry="5" fill="#F5D5C0"/>
+              <ellipse cx="103" cy="125" rx="6" ry="5" fill="#F5D5C0"/>
+              <!-- piernas -->
+              <rect x="38" y="148" width="18" height="28" rx="8" fill="#C07080"/>
+              <rect x="64" y="148" width="18" height="28" rx="8" fill="#C07080"/>
+              <!-- pies -->
+              <ellipse cx="47" cy="177" rx="10" ry="4" fill="#F5D5C0"/>
+              <ellipse cx="73" cy="177" rx="10" ry="4" fill="#F5D5C0"/>
+              <!-- corazón pequeño -->
+              <text x="49" y="113" font-size="11" fill="#C07080">♡</text>
+            </svg>
+          </div>
+          <p class="avatar-label">Tu avatar, semana <span id="avatar-week-label">22</span></p>
+        </div>
+
+        <div class="welcome-text">
+          <h2>¡Hola, Vanessa!</h2>
+          <p class="week-tag" id="welcome-subtitle">Semana 22 de embarazo</p>
+          <p class="card-body">Bienvenida al segundo módulo de tu viaje materno. En esta etapa tu bebé crece con fuerza y tú también mereces cuidados especiales. Aquí aprenderás hábitos que marcan la diferencia.</p>
+          <div class="pill-info" id="baby-size-pill">
+            🌽 Tu bebé tiene el tamaño de un choclo
+          </div>
+          <div class="week-input-row">
+            <label for="week-input">¿En qué semana estás?</label>
+            <input type="number" id="week-input" min="22" max="23" value="22" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-body" style="line-height:1.8;">
+      <p class="card-title" style="margin-bottom:0.8rem;">¿Qué aprenderás en este módulo?</p>
+      <ul style="padding-left:1.2rem; display:flex; flex-direction:column; gap:0.4rem;">
+        <li>El desarrollo de tu bebé en las semanas 22 y 23</li>
+        <li>Un video educativo grabado por el equipo de salud de tu CESFAM</li>
+        <li>Hábitos saludables: alimentación, actividad física, sueño y salud bucal</li>
+        <li>Mitos y realidades sobre el cuidado durante la gestación</li>
+        <li>Un espacio para identificar y validar tus emociones</li>
+        <li>Un quiz de cierre para reforzar lo aprendido</li>
+      </ul>
+      <p style="margin-top:0.8rem; font-size:0.85rem; color:var(--text-light);">⏱ Duración estimada: 20–25 minutos</p>
+    </div>
+  </div>
+
+  <!-- ── PASO 2: TU BEBÉ ── -->
+  <div class="section-panel" id="panel-1">
+    <div class="card">
+      <p class="card-title">El desarrollo de tu bebé</p>
+      <p class="card-body" style="margin-bottom:1rem;">Selecciona la semana para ver cómo crece tu bebé.</p>
+
+      <div class="baby-weeks">
+        <button class="baby-week-btn active" data-baby="22">Semana 22</button>
+        <button class="baby-week-btn" data-baby="23">Semana 23</button>
+      </div>
+
+      <div class="baby-display">
+        <div class="baby-fruit" id="baby-fruit">🌽</div>
+        <div class="baby-info">
+          <h3 id="baby-title">Semana 22</h3>
+          <p class="baby-size" id="baby-size-text">Tamaño: 27 cm · Peso: 430 g (como un choclo)</p>
+          <p id="baby-desc">Tu bebé puede realizar movimientos coordinados como acercarse la mano a la cara o chuparse el dedo. Además, ya se podría conocer el sexo en la ecografía del segundo trimestre.</p>
+          <span class="baby-fact" id="baby-fact">✨ ¡Tu bebé ya ha pasado la mitad de su gestación!</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-body">
+      <p class="card-title" style="margin-bottom:0.8rem;">El vínculo que ya existe</p>
+      Cada vez que le hablas, le cantas o le lees, tu bebé te escucha. Este vínculo prenatal es real y poderoso. No necesitas esperar al nacimiento para empezar a conocerle. Ese lazo ya está floreciendo dentro de ti.
+    </div>
+  </div>
+
+  <!-- ── PASO 3: VIDEO EDUCATIVO ── -->
+  <div class="section-panel" id="panel-2">
+    <div class="card">
+      <p class="card-title">Video educativo</p>
+      <p class="card-body" style="margin-bottom:2rem;">Este video fue preparado con cariño por Internos de Obstetricia y Puericultura de la Universidad Austral de Chile especialmente para ti y tu bebé. Tómate unos minutos para verlo con calma.</p>
+
+      <!-- Contenedor del video -->
+<div class="video-wrap">
+
+  <video controls>
+    <source src="../pages/video-modulo2.mp4" type="video/mp4">
+    Tu navegador no soporta el elemento de video.
+  </video>
+
+</div>
+
+      <div class="video-note">
+        <span class="video-note-icon">💜</span>
+        <p>Esperamos que este video haya sido de mucha ayuda para ti.</p>
+      </div>
+
+      <div style="margin-top:2rem; text-align:right;">
+        <button class="btn-primary" id="video-done-btn" onclick="markVideoDone()">Ya vi el video, continuar →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PASO 4: HÁBITOS SALUDABLES ── -->
+  <div class="section-panel" id="panel-3">
+    <div class="card">
+      <p class="card-title">Hábitos saludables</p>
+      <p class="card-body" style="margin-bottom:2rem;">Haz clic en cada tarjeta para descubrir los cuidados más importantes en esta etapa de tu embarazo.</p>
+
+      <div class="habits-grid">
+
+        <div class="habit-card" data-habit="alimentacion">
+          <div class="habit-header">
+            <span class="habit-icon">🥗</span>
+            <h3 class="habit-name">Alimentación</h3>
+            <span class="habit-toggle">+</span>
+          </div>
+          <div class="habit-body">
+            <p>Durante el segundo trimestre tu cuerpo necesita nutrientes clave para el crecimiento de tu bebé:</p>
+            <ul>
+              <li><strong>Hierro:</strong> legumbres, carnes rojas, espinacas. Ayudan a prevenir la anemia.</li>
+              <li><strong>Calcio:</strong> lácteos, brócoli, almendras. Esencial para los huesos del bebé.</li>
+              <li><strong>Omega-3:</strong> merluza, salmón cocido, nueces. Favorece el desarrollo cerebral.</li>
+              <li><strong>Ácido fólico:</strong> vegetales de hoja verde, lentejas, cereales fortificados.</li>
+            </ul>
+            <div class="habit-tip">
+              💡 <strong>Tip:</strong> Divide tus comidas en 5 a 6 porciones al día, 3 comidas principales y 2 snacks, para reducir las ansias de comer comida alta en grasas saturadas y en azúcares.
+            </div>
+          </div>
+        </div>
+
+        <div class="habit-card" data-habit="actividad">
+          <div class="habit-header">
+            <span class="habit-icon">🚶</span>
+            <h3 class="habit-name">Actividad física</h3>
+            <span class="habit-toggle">+</span>
+          </div>
+          <div class="habit-body">
+            <p>El movimiento es tu aliado durante el embarazo. Estas actividades son seguras y beneficiosas:</p>
+            <ul>
+              <li><strong>Caminata diaria</strong> de 30 minutos a paso suave.</li>
+              <li><strong>Natación</strong> prenatal: alivia el peso y mejora la circulación.</li>
+              <li><strong>Yoga prenatal</strong> y estiramientos suaves.</li>
+              <li><strong>Ejercicios de suelo pélvico (Kegel):</strong> contrae y relaja 10 veces, 3 veces al día.</li>
+            </ul>
+            <div class="habit-tip">
+              💡 <strong>Tip:</strong> Evita deportes de contacto, actividades con riesgo de caídas o esfuerzo abdominal intenso. Siempre consulta con tu matrona antes de iniciar una rutina nueva.
+            </div>
+          </div>
+        </div>
+
+        <div class="habit-card" data-habit="sueno">
+          <div class="habit-header">
+            <span class="habit-icon">😴</span>
+            <h3 class="habit-name">Sueño y descanso</h3>
+            <span class="habit-toggle">+</span>
+          </div>
+          <div class="habit-body">
+            <p>Un buen descanso es esencial para ti y para el desarrollo de tu bebé:</p>
+            <ul>
+              <li><strong>Duerme de lado izquierdo:</strong> mejora la circulación hacia el bebé.</li>
+              <li><strong>Almohada entre las rodillas:</strong> reduce el dolor lumbar y de cadera.</li>
+              <li><strong>Evita las pantallas</strong> al menos 30 minutos antes de dormir.</li>
+              <li>Si tienes insomnio, habla con tu matrona. Es más común de lo que crees.</li>
+            </ul>
+            <div class="habit-tip">
+              💡 <strong>Tip:</strong> Las siestas cortas de 20 minutos durante el día son completamente válidas. Tu cuerpo está construyendo vida.
+            </div>
+          </div>
+        </div>
+
+        <div class="habit-card" data-habit="bucal">
+          <div class="habit-header">
+            <span class="habit-icon">🦷</span>
+            <h3 class="habit-name">Salud bucal</h3>
+            <span class="habit-toggle">+</span>
+          </div>
+          <div class="habit-body">
+            <p>Los cambios hormonales del embarazo aumentan el riesgo de problemas dentales:</p>
+            <ul>
+              <li>La <strong>gingivitis del embarazo</strong> (encías inflamadas o que sangran) es muy frecuente.</li>
+              <li><strong>Cepilla tus dientes</strong> 3 veces al día y usa hilo dental a diario.</li>
+              <li><strong>Visita al dentista:</strong> las atenciones preventivas son muy seguras.</li>
+              <li>Si tienes náuseas al cepillarte, intenta hacerlo más despacio o usa un cepillo de cabeza pequeña.</li>
+            </ul>
+            <div class="habit-tip">
+              💡 <strong>Tip:</strong> Las atenciones dentales preventivas son gratuitas para embarazadas en el sistema público.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="card-title" style="margin-bottom:0.8rem;">Lo que debes evitar</p>
+      <div class="avoid-grid">
+        <div class="avoid-item">
+          <span class="avoid-icon">🚫</span>
+          <div>
+            <strong>Alcohol y tabaco</strong>
+            <p>No existe una cantidad segura de alcohol durante el embarazo. El tabaco aumenta el riesgo de parto prematuro y bajo peso al nacer. (Fuente: MINSAL, 2015)</p>
+          </div>
+        </div>
+        <div class="avoid-item">
+          <span class="avoid-icon">💊</span>
+          <div>
+            <strong>Automedicación</strong>
+            <p>Nunca tomes medicamentos sin consultar a tu equipo de salud, incluyendo analgésicos de venta libre.</p>
+          </div>
+        </div>
+        <div class="avoid-item">
+          <span class="avoid-icon">🌡️</span>
+          <div>
+            <strong>Agua muy caliente</strong>
+            <p>Evita baños de tina con agua sobre 39°C, ya que pueden elevar tu temperatura corporal central.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PASO 5: MITOS ── -->
+  <div class="section-panel" id="panel-4">
+    <div class="card">
+      <p class="card-title">¿Mito o realidad?</p>
+      <p class="card-body" style="margin-bottom:1.2rem;">Lee cada afirmación y elige si crees que es un mito o una realidad. ¡Luego descubre la respuesta basada en evidencia!</p>
+
+      <div class="myth-grid" id="myth-grid">
+
+        <div class="myth-card" data-answer="false">
+          <p class="myth-statement">"Tomar agua fría durante el embarazo puede hacerle daño al bebé."</p>
+          <div class="myth-buttons">
+            <button class="myth-btn" data-val="true">✅ Realidad</button>
+            <button class="myth-btn" data-val="false">❌ Mito</button>
+          </div>
+          <div class="myth-explanation">
+            <span class="myth-result-icon">❌</span><strong>Mito.</strong> Beber agua fría es completamente seguro. La temperatura del líquido ingerido se regula en el sistema digestivo antes de llegar al útero. Lo importante es mantenerse bien hidratada.
+            <br><small style="color:var(--text-light); opacity:0.8; margin-top:0.3rem; display:block;">Fuente: Chile Crece Contigo</small>
+          </div>
+        </div>
+
+        <div class="myth-card" data-answer="true">
+          <p class="myth-statement">"El consumo de pescados cocidos como la merluza o el salmón es beneficioso durante el embarazo."</p>
+          <div class="myth-buttons">
+            <button class="myth-btn" data-val="true">✅ Realidad</button>
+            <button class="myth-btn" data-val="false">❌ Mito</button>
+          </div>
+          <div class="myth-explanation">
+            <span class="myth-result-icon">✅</span><strong>Realidad.</strong> Los pescados ricos en omega-3 como la merluza y el salmón cocido son muy beneficiosos para el desarrollo cerebral y visual del bebé. Siempre deben estar bien cocidos para evitar riesgo de listeria.
+            <br><small style="color:#3A6040; opacity:0.8; margin-top:0.3rem; display:block;">Fuente: Chile Crece Contigo</small>
+          </div>
+        </div>
+
+        <div class="myth-card" data-answer="false">
+          <p class="myth-statement">"Las embarazadas no deben ir al dentista porque los tratamientos pueden dañar al bebé."</p>
+          <div class="myth-buttons">
+            <button class="myth-btn" data-val="true">✅ Realidad</button>
+            <button class="myth-btn" data-val="false">❌ Mito</button>
+          </div>
+          <div class="myth-explanation">
+            <span class="myth-result-icon">❌</span><strong>Mito.</strong> Las atenciones dentales de rutina y preventivas son completamente seguras durante el embarazo y además son gratuitas en el sistema público. La gingivitis del embarazo es frecuente y debe tratarse.
+            <br><small style="color:var(--text-light); opacity:0.8; margin-top:0.3rem; display:block;">Fuente: Chile Crece Contigo</small>
+          </div>
+        </div>
+
+        <div class="myth-card" data-answer="false">
+          <p class="myth-statement">"Hacer ejercicio moderado durante el embarazo puede provocar un aborto o parto prematuro."</p>
+          <div class="myth-buttons">
+            <button class="myth-btn" data-val="true">✅ Realidad</button>
+            <button class="myth-btn" data-val="false">❌ Mito</button>
+          </div>
+          <div class="myth-explanation">
+            <span class="myth-result-icon">❌</span><strong>Mito.</strong> En embarazos sin contraindicaciones, el ejercicio moderado es seguro, beneficioso y recomendado. Reduce el dolor de espalda, mejora el ánimo y facilita el trabajo de parto. Siempre consulta con tu matrona antes de comenzar.
+            <br><small style="color:var(--text-light); opacity:0.8; margin-top:0.3rem; display:block;"></small>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PASO 6: EMOCIÓN ── -->
+  <div class="section-panel" id="panel-5">
+    <div class="card">
+      <p class="card-title">¿Cómo te sientes hoy?</p>
+      <p class="card-body" style="margin-bottom:0.3rem;">Tus emociones son tan importantes como tu salud física. Elige la que mejor te representa en este momento:</p>
+      <div class="emotion-grid">
+        <button class="emotion-btn" data-emo="feliz">
+          <span class="emo-icon">😊</span>
+          <span class="emo-label">Feliz y con energía</span>
+        </button>
+        <button class="emotion-btn" data-emo="ansiosa">
+          <span class="emo-icon">😟</span>
+          <span class="emo-label">Ansiosa o preocupada</span>
+        </button>
+        <button class="emotion-btn" data-emo="cansada">
+          <span class="emo-icon">😴</span>
+          <span class="emo-label">Agotada o cansada</span>
+        </button>
+        <button class="emotion-btn" data-emo="ambivalente">
+          <span class="emo-icon">🌊</span>
+          <span class="emo-label">Con sentimientos mezclados</span>
+        </button>
+        <button class="emotion-btn" data-emo="sola">
+          <span class="emo-icon">🤍</span>
+          <span class="emo-label">Sola o sin apoyo</span>
+        </button>
+        <button class="emotion-btn" data-emo="conectada">
+          <span class="emo-icon">🌸</span>
+          <span class="emo-label">Conectada con mi bebé</span>
+        </button>
+      </div>
+      <div class="emotion-response" id="emotion-response">
+        <h4 id="emo-title"></h4>
+        <p id="emo-msg"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PASO 7: QUIZ ── -->
+  <div class="section-panel" id="panel-6">
+    <div class="card" id="quiz-container">
+      <p class="card-title">Quiz de cierre</p>
+      <p class="card-body" style="margin-bottom:1.5rem;">Pon a prueba lo que aprendiste en este módulo. ¡Puedes lograrlo!</p>
+
+      <div class="quiz-question">
+        <p class="quiz-q">1. ¿Cuál es la posición de descanso recomendada durante el segundo trimestre?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-q="0" data-val="a">Boca arriba con las piernas elevadas</button>
+          <button class="quiz-opt" data-q="0" data-val="b">Decúbito lateral izquierdo</button>
+          <button class="quiz-opt" data-q="0" data-val="c">Boca abajo con almohada bajo el abdomen</button>
+        </div>
+        <p class="quiz-feedback" id="fb-0">Dormir de lado izquierdo mejora la circulación hacia el bebé y los riñones, y reduce la presión sobre la vena cava.</p>
+      </div>
+
+      <div class="quiz-question">
+        <p class="quiz-q">2. ¿Cuántas calorías extra aproximadas se recomiendan en el segundo trimestre? </p>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-q="1" data-val="a">1.000</button>
+          <button class="quiz-opt" data-q="1" data-val="b">350</button>
+          <button class="quiz-opt" data-q="1" data-val="c">850</button>
+        </div>
+        <p class="quiz-feedback" id="fb-1">Alrededor de 350 calorías adicionales al día, priorizando alimentos nutritivos.</p>
+      </div>
+
+      <div class="quiz-question">
+        <p class="quiz-q">3. ¿Es seguro asistir al dentista durante el embarazo?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-q="2" data-val="a">Solo en casos de emergencia</button>
+          <button class="quiz-opt" data-q="2" data-val="b">No, no se recomienda</button>
+          <button class="quiz-opt" data-q="2" data-val="c">Sí, es seguro y recomendado</button>
+        </div>
+        <p class="quiz-feedback" id="fb-2"> Sí, es seguro y recomendado. La gingivitis del embarazo debe prevenirse y tratarse para evitar complicaciones como el parto prematuro.
+</p>
+      </div>
+
+      <div class="quiz-question">
+        <p class="quiz-q">4. ¿A partir de qué semana los bebés desarrollan ciclos de sueño y vigilia?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-q="3" data-val="a">Semana 8</button>
+          <button class="quiz-opt" data-q="3" data-val="b">Semana 30</button>
+          <button class="quiz-opt" data-q="3" data-val="c">Semana 23 aproximadamente</button>
+        </div>
+        <p class="quiz-feedback" id="fb-3">Alrededor de la semana 23, el sistema nervioso del bebé está lo suficientemente maduro para desarrollar ciclos de sueño y vigilia.</p>
+      </div>
+
+      <div class="quiz-question">
+        <p class="quiz-q">5. ¿Qué nutriente es clave para el desarrollo del sistema nervioso y cerebro del bebé?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-q="4" data-val="a">Omega-3</button>
+          <button class="quiz-opt" data-q="4" data-val="b">Azúcar refinada</button>
+          <button class="quiz-opt" data-q="4" data-val="c">Cafeína</button>
+        </div>
+        <p class="quiz-feedback" id="fb-4">El omega-3, presente en pescados como la merluza y el salmón cocido, es esencial para el desarrollo cerebral y visual del bebé.</p>
+      </div>
+
+      <div class="quiz-submit-row">
+        <button class="btn-primary" id="quiz-submit-btn">Ver mis resultados</button>
+      </div>
+    </div>
+
+    <!-- Resultado -->
+    <div class="card quiz-result" id="quiz-result">
+      <div class="badge-icon">🏅</div>
+      <h3>¡Módulo 2 completado!</h3>
+      <div class="score-pill" id="quiz-score-text">Obtuviste 5 de 5</div>
+      <p id="quiz-msg">Excelente trabajo. Ya tienes las herramientas para cuidarte y cuidar a tu bebé en esta etapa. ¡Siguen avanzando juntas!</p>
+      <button class="btn-primary" style="margin-top:0.5rem;" onclick="alert('Redirigiendo al Módulo 3…')">Continuar al Módulo 3 →</button>
+    </div>
+  </div>
+
+  <!-- NAV INFERIOR -->
+  <div class="nav-buttons">
+    <button class="btn-outline" id="btn-prev" disabled onclick="navigate(-1)">← Anterior</button>
+    <span class="step-indicator" id="step-indicator">Sección 1 de 7</span>
+    <button class="btn-primary" id="btn-next" onclick="navigate(1)">Siguiente →</button>
+  </div>
+
+</div><!-- /content-area -->
+
+<script type="module" src="../js/module2.js"></script>
+</body>
+</html>

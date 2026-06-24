@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Módulo 4 — Mi viaje materno</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/module4.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+ <a class="nav-logo" href="dashboard.html">Mi viaje materno</a>
+  <ul class="nav-links">
+    <li><a href="dashboard.html">Inicio</a></li>
+    <li><a href="../pages/acompañantes.html">Acompañantes</a></li>
+    <li><a href="../pages/signos-alarma.html">Signos de alarma</a></li>
+    <li><a href="dashboard.html">Preguntas frecuentes</a></li>
+  </ul>
+  <div class="nav-user">
+    <div class="nav-avatar" id="nav-avatar">V</div>
+    <span id="profile-name">Hola</span>
+  </div>
+</nav>
+
+<!-- BACK -->
+<div class="back-bar">
+   <button class="btn-back" onclick="window.location.href='dashboard.html'">← Volver al inicio</button>
+</div>
+
+<!-- HERO -->
+<div class="module-hero">
+  <span class="module-badge">Módulo 4 · 32 a 34 semanas</span>
+  <h1 class="module-title">El gran encuentro</h1>
+  <p class="module-subtitle">Puerperio, lactancia y cuidados del recién nacido</p>
+  <div class="progress-strip">
+    <p>Progreso: <span id="progress-pct">0%</span></p>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progress-bar" style="width:0%"></div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP TABS — 8 secciones -->
+<div class="steps-nav" id="steps-nav">
+  <button class="step-tab active" data-step="0"><span class="step-num">1</span> Bienvenida</button>
+  <button class="step-tab" data-step="1"><span class="step-num">2</span> Tu bebé</button>
+  <button class="step-tab" data-step="2"><span class="step-num">3</span> El puerperio</button>
+  <button class="step-tab" data-step="3"><span class="step-num">4</span> Cuidados del RN</button>
+  <button class="step-tab" data-step="4"><span class="step-num">5</span> Signos de alarma</button>
+  <button class="step-tab" data-step="5"><span class="step-num">6</span> Mitos y realidades</button>
+  <button class="step-tab" data-step="6"><span class="step-num">7</span> ¿Cómo me siento?</button>
+  <button class="step-tab" data-step="7"><span class="step-num">8</span> Quiz final</button>
+</div>
+
+<!-- CONTENT -->
+<div class="content-area">
+
+  <!-- ══ PANEL 0: BIENVENIDA ══ -->
+  <div class="section-panel active" id="panel-0">
+    <div class="card">
+      <div class="welcome-hero">
+        <div class="avatar-figure">
+          <div class="avatar-body">
+            <!-- Avatar semanas 32-34: barriga muy grande, último trimestre -->
+            <svg class="avatar-svg" viewBox="0 0 120 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="60" cy="28" rx="22" ry="8" fill="#7A3048"/>
+              <ellipse cx="60" cy="36" rx="18" ry="20" fill="#F5D5C0"/>
+              <ellipse cx="42" cy="40" rx="5" ry="14" fill="#7A3048"/>
+              <ellipse cx="78" cy="40" rx="5" ry="14" fill="#7A3048"/>
+              <circle cx="53" cy="33" r="2.5" fill="#4A1A2C"/>
+              <circle cx="67" cy="33" r="2.5" fill="#4A1A2C"/>
+              <path d="M54 43 Q60 48 66 43" stroke="#B07060" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <rect x="54" y="54" width="12" height="10" rx="4" fill="#F5D5C0"/>
+              <!-- cuerpo -->
+              <path d="M22 96 Q22 64 60 64 Q98 64 98 96 L95 140 Q95 149 80 149 L40 149 Q25 149 25 140 Z" fill="#E8B4BC"/>
+              <!-- barriga muy grande semana 32-34 -->
+              <ellipse cx="60" cy="113" rx="37" ry="33" fill="#F2D9DD"/>
+              <ellipse cx="60" cy="113" rx="32" ry="28" fill="#FAEAED"/>
+              <!-- ombligo prominente -->
+              <ellipse cx="60" cy="121" rx="4" ry="3" fill="#E8B4BC"/>
+              <!-- brazos -->
+              <path d="M22 96 Q8 108 10 130" stroke="#E8B4BC" stroke-width="10" stroke-linecap="round" fill="none"/>
+              <path d="M98 96 Q112 108 110 130" stroke="#E8B4BC" stroke-width="10" stroke-linecap="round" fill="none"/>
+              <ellipse cx="10" cy="133" rx="6" ry="5" fill="#F5D5C0"/>
+              <ellipse cx="110" cy="133" rx="6" ry="5" fill="#F5D5C0"/>
+              <!-- piernas -->
+              <rect x="38" y="149" width="18" height="27" rx="8" fill="#C07080"/>
+              <rect x="64" y="149" width="18" height="27" rx="8" fill="#C07080"/>
+              <ellipse cx="47" cy="177" rx="10" ry="4" fill="#F5D5C0"/>
+              <ellipse cx="73" cy="177" rx="10" ry="4" fill="#F5D5C0"/>
+              <text x="47" y="109" font-size="13" fill="#C07080">♡</text>
+            </svg>
+          </div>
+          <p class="avatar-label">Tu avatar, semana <span id="avatar-week-label">32</span></p>
+        </div>
+
+        <div class="welcome-text">
+          <h2>¡Hola, Vanessa!</h2>
+          <p class="week-tag" id="welcome-subtitle">Semana 32 de embarazo</p>
+          <p class="card-body">Estás llegando al final de este viaje. En este último módulo aprenderás sobre el puerperio, los cuidados de tu recién nacido y todo lo que necesitas saber para recibir a tu bebé con confianza y amor.</p>
+          <div class="pill-info" id="baby-size-pill">🥦 Tu bebé tiene el tamaño de un brócoli</div>
+          <div class="week-input-row">
+            <label for="week-input">¿En qué semana estás?</label>
+            <input type="number" id="week-input" min="32" max="34" value="32" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-body" style="line-height:1.8;">
+      <p class="card-title" style="margin-bottom:0.8rem;">¿Qué aprenderás en este módulo?</p>
+      <ul style="padding-left:1.2rem; display:flex; flex-direction:column; gap:0.4rem;">
+        <li>El desarrollo de tu bebé en las semanas 32 a 34</li>
+        <li>Qué es el puerperio y los cambios físicos y emocionales que trae</li>
+        <li>Signos de alarma maternos y cómo actuar ante ellos</li>
+        <li>Los cuidados básicos de tu recién nacido</li>
+        <li>Señales de alarma en el recién nacido que requieren consulta inmediata</li>
+        <li>Mitos y realidades sobre el puerperio y los cuidados neonatales</li>
+      </ul>
+      <p style="margin-top:0.8rem; font-size:0.85rem; color:var(--text-light);">⏱ Duración estimada: 20–25 minutos</p>
+    </div>
+  </div>
+
+  <!-- ══ PANEL 1: TU BEBÉ ══ -->
+  <div class="section-panel" id="panel-1">
+    <div class="card">
+      <p class="card-title">El desarrollo de tu bebé</p>
+      <p class="card-body" style="margin-bottom:1rem;">Selecciona la semana para ver cómo crece tu bebé.</p>
+      <div class="baby-weeks">
+        <button class="baby-week-btn active" data-baby="32">Semana 32</button>
+        <button class="baby-week-btn" data-baby="33">Semana 33</button>
+        <button class="baby-week-btn" data-baby="34">Semana 34</button>
+      </div>
+      <div class="baby-display">
+        <div class="baby-fruit" id="baby-fruit">🥦</div>
+        <div class="baby-info">
+          <h3 id="baby-title">Semana 32</h3>
+          <p class="baby-size" id="baby-size-text">Tamaño: 42 cm · Peso: 1.700 g (como un brócoli grande)</p>
+          <p id="baby-desc">Tu bebé practica la respiración moviendo su diafragma. Sus huesos se están endureciendo, aunque el cráneo sigue siendo flexible para facilitar el parto. Además, sus movimientos son cada vez más coordinados.</p>
+          <span class="baby-fact" id="baby-fact">✨ El iris de tu bebé tiene un color azulado, pero el color definitivo de sus ojos se sabrá unos meses después del nacimiento.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-body">
+      <p class="card-title" style="margin-bottom:0.8rem;">La recta final</p>
+      En estas últimas semanas, tu bebé está ganando peso rápidamente y madurando sus órganos para la vida fuera del útero. Cada día que pasa es un paso más hacia el gran encuentro. Tu cuerpo también se está preparando y lo está haciendo de maravilla.
+    </div>
+  </div>
+
+  <!-- ══ PANEL 2: EL PUERPERIO ══ -->
+  <div class="section-panel" id="panel-2">
+
+    <!-- 3.1 ¿Qué es el puerperio? -->
+    <div class="card">
+      <p class="card-title">¿Qué es el puerperio?</p>
+      <p class="card-body" style="margin-bottom:1.5rem;">El puerperio es una etapa tan importante como el embarazo. Toca cada tarjeta para conocerla.</p>
+      <div class="habits-grid">
+
+        <div class="habit-card">
+          <div class="habit-header">
+            <span class="habit-icon">🌸</span>
+            <h3 class="habit-name">Bienvenida al puerperio</h3>
+            <span class="habit-toggle">+</span>
+          </div>
+          <div class="habit-body">
+            <p>El puerperio es el período que comienza justo después del parto y dura aproximadamente seis semanas, mientras tu cuerpo se recupera del embarazo y el parto.</p>
+            <ul>
+              <li>Es una etapa de grandes cambios físicos, hormonales y emocionales.</li>
+              <li>Tu cuerpo está trabajando para volver a su estado previo al embarazo.</li>
+              <li>Es normal que te sientas cansada, sensible y que necesites ayuda.</li>
+            </ul>
+            <div class="habit-tip">💡 El puerperio también se conoce como "cuarentena" porque dura aproximadamente 40 días. ¡Merece tanta atención como el embarazo!</div>
+          </div>
+        </div>
+
+        <div class="habit-card">
+          <div class="habit-header">
+            <span class="habit-icon">🤰</span>
+            <h3 class="habit-name">Cambios físicos esperados</h3>
+            <span class="habit-toggle">+</span>
+          </div>
+          <div class="habit-body">
+            <p>Durante el puerperio tu cuerpo experimenta varios cambios normales que es importante conocer:</p>
+            <ul>
+              <li><strong>Entuertos:</strong> Luego de parto el útero tiene que volver a su estado normal y lo hará por medio de contracciones un poco menos dolorosas. Con tu mano empuñada puedes masajear el vientre para calmar la sensación.</li>
+              <li><strong>Loquios:</strong> es un flujo vaginal similar a la menstruación, que con el paso de los días se irá transformando a color café hasta que se vuelvan en tipo mucosidad. Este flujo será hasta los 40 días aprox.</li>
+              <li><strong>Cansancio:</strong> es completamente normal sentir fatiga intensa durante esta etapa.</li>
+              <li><strong>Cambios mamarios:</strong> los pechos aumentan de tamaño y pueden sentirse tensos o dolorosos con la subida de la leche.</li>
+            </ul>
+            <div class="habit-tip">💡 Si los loquios tienen mal olor o son muy abundantes, consulta de inmediato con tu matrona.</div>
+          </div>
+        </div>
+
+        <div class="habit-card">
+          <div class="habit-header">
+            <span class="habit-icon">💜</span>
+            <h3 class="habit-name">Cambios emocionales</h3>
+            <span class="habit-toggle">+</span>
+          </div>
+          <div class="habit-body">
+            <p>El puerperio también trae una montaña rusa emocional completamente normal:</p>
+            <ul>
+              <li><strong>Alegría</strong> intensa por el nacimiento de tu bebé.</li>
+              <li><strong>Llanto con facilidad</strong> sin una razón clara (baby blues), especialmente en los primeros días.</li>
+              <li><strong>Irritabilidad</strong> y sensibilidad aumentada.</li>
+              <li><strong>Inseguridad y miedos</strong> frente al nuevo rol materno.</li>
+              <li><strong>Adaptación al nuevo rol materno:</strong> aprender a ser madre es un proceso, no un instinto automático.</li>
+            </ul>
+            <div class="habit-tip">💡 Si la tristeza persiste más de dos semanas o interfiere con tu cuidado personal o el del bebé, habla con tu matrona o matrón. Puede ser una depresión postparto y tiene tratamiento.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 3.2 Signos de alarma -->
+    <div class="card">
+      <p class="card-title">Signos de alarma durante el puerperio</p>
+      <p class="card-body" style="margin-bottom:1.5rem;">Selecciona cada situación ¿es normal o requiere consulta inmediata?</p>
+
+      <div class="signals-grid">
+
+        <div class="signal-card" data-answer="alarma">
+          <p class="signal-desc">Sangrado vaginal abundante con mal olor.</p>
+          <div class="signal-buttons">
+            <button class="signal-btn" data-val="normal">Es normal</button>
+            <button class="signal-btn" data-val="alarma">Consultar urgente</button>
+          </div>
+          <div class="signal-explanation">
+            <span class="signal-badge alarma-badge">⚠️ Consultar urgente</span>
+            El sangrado abundante con mal olor puede indicar una infección o hemorragia postparto. Acude a urgencias sin esperar.
+          </div>
+        </div>
+
+        <div class="signal-card" data-answer="alarma">
+          <p class="signal-desc">Fiebre mayor o igual a 38°C durante el puerperio.</p>
+          <div class="signal-buttons">
+            <button class="signal-btn" data-val="normal">Es normal</button>
+            <button class="signal-btn" data-val="alarma">Consultar urgente</button>
+          </div>
+          <div class="signal-explanation">
+            <span class="signal-badge alarma-badge">⚠️ Consultar urgente</span>
+            La fiebre sobre o igual a 38°C puede indicar una infección puerperal. Requiere evaluación médica urgente.
+          </div>
+        </div>
+
+        <div class="signal-card" data-answer="alarma">
+          <p class="signal-desc">Dolor intenso en la herida operatoria o episiotomía que no cede con analgésicos.</p>
+          <div class="signal-buttons">
+            <button class="signal-btn" data-val="normal">Es normal</button>
+            <button class="signal-btn" data-val="alarma">Consultar urgente</button>
+          </div>
+          <div class="signal-explanation">
+            <span class="signal-badge alarma-badge">⚠️ Consultar urgente</span>
+            Un dolor intenso y persistente en la herida puede indicar una infección o dehiscencia de la sutura. Consulta con tu equipo de salud.
+          </div>
+        </div>
+
+        <div class="signal-card" data-answer="alarma">
+          <p class="signal-desc">Tristeza persistente que dificulta el cuidado personal o del bebé durante más de dos semanas.</p>
+          <div class="signal-buttons">
+            <button class="signal-btn" data-val="normal">Es normal</button>
+            <button class="signal-btn" data-val="alarma">Consultar urgente</button>
+          </div>
+          <div class="signal-explanation">
+            <span class="signal-badge alarma-badge">⚠️ Consultar urgente</span>
+            La tristeza que persiste más de dos semanas puede ser una depresión postparto. Tiene tratamiento y pedir ayuda es un acto de amor hacia ti y tu bebé.
+          </div>
+        </div>
+
+        <div class="signal-card" data-answer="normal">
+          <p class="signal-desc">Cansancio leve durante los primeros días del puerperio.</p>
+          <div class="signal-buttons">
+            <button class="signal-btn" data-val="normal">Es normal</button>
+            <button class="signal-btn" data-val="alarma">Consultar urgente</button>
+          </div>
+          <div class="signal-explanation">
+            <span class="signal-badge normal-badge">✓ Normal</span>
+            El cansancio es completamente normal después del parto. Tu cuerpo acaba de hacer un trabajo enorme. Descansa cuando puedas y acepta ayuda.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 3.3 Autocuidado -->
+    <div class="card">
+      <p class="card-title">Mi autocuidado en el puerperio</p>
+      <p class="card-body" style="margin-bottom:1.5rem;">Tu bienestar es tan importante como el de tu bebé. Toca cada tarjeta para conocer los pilares del autocuidado postparto.</p>
+      <div class="habits-grid">
+
+        <div class="habit-card">
+          <div class="habit-header">
+            <span class="habit-icon">🥗</span>
+            <h3 class="habit-name">Alimentación e hidratación</h3>
+            <span class="habit-toggle">+</span>
+          </div>
+          <div class="habit-body">
+            <p>Tu cuerpo necesita energía para recuperarse del parto y, si amamantas, para producir leche.</p>
+            <ul>
+              <li>Mantén una alimentación equilibrada y variada.</li>
+              <li>Consume suficiente agua. Al menos 8 vasos al día, más si estás en lactancia materna exclusiva.</li>
+              <li>No hagas dietas restrictivas durante el puerperio ni la lactancia.</li>
+            </ul>
+            <div class="habit-tip">💡 Prepara o pide que te preparen comidas nutritivas y saludables para mantenerte fuerte y con energía.</div>
+          </div>
+        </div>
+
+        <div class="habit-card">
+          <div class="habit-header">
+            <span class="habit-icon">😴</span>
+            <h3 class="habit-name">Descanso</h3>
+            <span class="habit-toggle">+</span>
+          </div>
+          <div class="habit-body">
+            <p>El sueño fragmentado es uno de los mayores desafíos del puerperio. Algunas estrategias:</p>
+            <ul>
+              <li>Duerme y descansa cuando el bebé duerma, aunque sea en pequeños ratos.</li>
+              <li>Pide ayuda a tu pareja, familia o red de apoyo para los cuidados nocturnos.</li>
+              <li>No te exijas las tareas del hogar, priorizate a ti y a tu bebé.</li>
+            </ul>
+            <div class="habit-tip">💡 Descansar no es un lujo, es una necesidad médica durante el puerperio.</div>
+          </div>
+        </div>
+
+        <div class="habit-card">
+          <div class="habit-header">
+            <span class="habit-icon">🧠</span>
+            <h3 class="habit-name">Salud mental</h3>
+            <span class="habit-toggle">+</span>
+          </div>
+          <div class="habit-body">
+            <p>Cuidar tu salud emocional es tan importante como recuperarte físicamente.</p>
+            <ul>
+              <li>Acepta la ayuda que te ofrezcan sin sentir culpa.</li>
+              <li>Comparte tus emociones con personas de confianza.</li>
+              <li>No te exijas ser una mamá perfecta, nadie lo es, y no es necesario.</li>
+              <li>Si sientes que la tristeza o la ansiedad te sobrepasan, habla con tu matrona o matrón.</li>
+            </ul>
+            <div class="habit-tip">💡 Pedir ayuda es una fortaleza, no una debilidad. Tu bienestar emocional beneficia directamente a tu bebé.</div>
+          </div>
+        </div>
+
+        <div class="habit-card">
+          <div class="habit-header">
+            <span class="habit-icon">🏥</span>
+            <h3 class="habit-name">Controles de salud</h3>
+            <span class="habit-toggle">+</span>
+          </div>
+          <div class="habit-body">
+            <p>El control postparto es fundamental para tu recuperación y la salud de tu bebé.</p>
+            <ul>
+              <li><strong>Control diada:</strong> se realiza entre los 7 y 10 días postparto en tu CESFAM. Es muy importante ¡no te lo saltes!</li>
+              <li>En este control se evalúa tu recuperación, la lactancia y el estado de salud del bebé.</li>
+              <li>Es el momento ideal para hacer todas las preguntas que tengas.</li>
+            </ul>
+            <div class="habit-tip">💡 Agenda tu control diada en tu CESFAM, es tu derecho y el de tu bebé.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PANEL 3: CUIDADOS DEL RN ══ -->
+  <div class="section-panel" id="panel-3">
+    <div class="card">
+      <p class="card-title">Cuidados básicos del recién nacido</p>
+      <p class="card-body" style="margin-bottom:1.5rem;">Tu bebé necesita cuidados simples pero muy importantes. Toca cada tarjeta para conocerlos.</p>
+      <div class="habits-grid">
+
+        <div class="habit-card">
+          <div class="habit-header">
+            <span class="habit-icon">🛁</span>
+            <h3 class="habit-name">Higiene del recién nacido</h3>
+            <span class="habit-toggle">+</span>
+          </div>
+          <div class="habit-body">
+            <p>La higiene adecuada protege a tu bebé de infecciones durante sus primeras semanas de vida.</p>
+            <ul>
+              <li><strong>Baño seguro:</strong> el primer baño puede esperar a que el cordón umbilical se haya caído. Mientras tanto, puedes hacer aseo con una esponja mojada con agua tibia.</li>
+              <li><strong>Higiene del cordón umbilical:</strong> mantenerlo limpio y seco. Doblar el pañal por debajo del cordón para que quede expuesto al aire.</li>
+              <li><strong>Lavado de manos:</strong> siempre lavarse las manos antes de manipular al bebé y pedir lo mismo a visitas.</li>
+            </ul>
+            <div class="habit-tip">💡 El cordón umbilical se caerá dentro de los primeros días después del nacimiento. Si presenta mal olor, enrojecimiento o pus, consulta de inmediato.</div>
+          </div>
+        </div>
+
+        <div class="habit-card">
+          <div class="habit-header">
+            <span class="habit-icon">😴</span>
+            <h3 class="habit-name">Sueño seguro</h3>
+            <span class="habit-toggle">+</span>
+          </div>
+          <div class="habit-body">
+            <p>La posición y el ambiente de sueño son fundamentales para la seguridad del recién nacido.</p>
+            <ul>
+              <li><strong>Posición:</strong> siempre boca arriba. Es la posición más segura y reduce el riesgo de muerte súbita del lactante.</li>
+              <li><strong>Superficie:</strong> firme y libre de objetos, sin almohadas, cojines, peluches ni ropa de cama suelta dentro de la cuna.</li>
+              <li><strong>Temperatura:</strong> ambiente fresco y bien ventilado. El bebé no debe sudar ni tener frío.</li>
+              <li><strong>Colecho:</strong> si decides practicarlo, infórmate sobre las condiciones de colecho seguro con tu matrona.</li>
+            </ul>
+            <div class="habit-tip">💡 "Boca arriba para dormir, boca abajo para jugar". Cuando el bebé esté despierto y vigilado, el tiempo boca abajo fortalece su musculatura.</div>
+          </div>
+        </div>
+
+        <div class="habit-card">
+          <div class="habit-header">
+            <span class="habit-icon">🍼</span>
+            <h3 class="habit-name">Alimentación a libre demanda</h3>
+            <span class="habit-toggle">+</span>
+          </div>
+          <div class="habit-body">
+            <p>En las primeras semanas, la alimentación del recién nacido se rige por sus señales de hambre, no por el reloj.</p>
+            <ul>
+              <li><strong>Señales tempranas de hambre:</strong> chupeteo, movimientos de búsqueda con la boca, llevarse las manos a la boca. El llanto es una señal tardía de hambre.</li>
+              <li><strong>Beneficios:</strong> los recién nacidos alimentados con leche materna tienen mejor desarrollo psicomotor y mejor capacidad para aprender.</li>
+              <li><strong>Duración:</strong> es variable, deja que el bebé suelte el pecho cuando quede satisfecho.</li>
+            </ul>
+            <div class="habit-tip">💡 Si tienes dudas sobre si tu bebé se está alimentando bien, observa los pañales: 6 o más pañales mojados al día son una buena señal.</div>
+          </div>
+        </div>
+
+        <div class="habit-card">
+          <div class="habit-header">
+            <span class="habit-icon">🏥</span>
+            <h3 class="habit-name">Controles de salud del recién nacido</h3>
+            <span class="habit-toggle">+</span>
+          </div>
+          <div class="habit-body">
+            <p>Los controles de salud del recién nacido son esenciales para detectar cualquier problema a tiempo.</p>
+            <ul>
+              <li><strong>Primer control:</strong> entre los 7 y 10 días de vida en el CESFAM (control diada junto a ti como madre).</li>
+              <li><strong>Vacunas:</strong> tu bebé recibirá sus primeras vacunas en el hospital al nacer. Sigue el calendario nacional de vacunación.</li>
+              <li><strong>Tamizaje neonatal:</strong> exámenes de detección realizados en el hospital (fenilcetonuria, hipotiroidismo congénito, entre otros).</li>
+              <li>Lleva siempre el carnet de salud del niño a cada control.</li>
+            </ul>
+            <div class="habit-tip">💡 No faltes a ningún control, los primeros meses son fundamentales para el desarrollo de tu bebé.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PANEL 4: SIGNOS DE ALARMA RN ══ -->
+  <div class="section-panel" id="panel-4">
+    <div class="card">
+      <p class="card-title">Signos de alarma del recién nacido</p>
+      <p class="card-body" style="margin-bottom:1.5rem;">¿Esta situación en tu recién nacido requiere consulta inmediata? Elige para cada caso y descubre la respuesta correcta.</p>
+
+      <div class="signals-grid">
+
+        <div class="signal-card" data-answer="alarma">
+          <p class="signal-desc">El bebé presenta dificultad para respirar: respira muy rápido, con quejido o retrae el pecho al respirar.</p>
+          <div class="signal-buttons">
+            <button class="signal-btn" data-val="normal">Es normal</button>
+            <button class="signal-btn" data-val="alarma">Consultar urgente</button>
+          </div>
+          <div class="signal-explanation">
+            <span class="signal-badge alarma-badge">⚠️ Urgencia, ir al hospital</span>
+            La dificultad respiratoria en un recién nacido es siempre una urgencia. Lleva a tu bebé a urgencias pediátricas de inmediato.
+          </div>
+        </div>
+
+        <div class="signal-card" data-answer="alarma">
+          <p class="signal-desc">El bebé tiene fiebre mayor a 38°C medida de forma axilar.</p>
+          <div class="signal-buttons">
+            <button class="signal-btn" data-val="normal">Es normal</button>
+            <button class="signal-btn" data-val="alarma">Consultar urgente</button>
+          </div>
+          <div class="signal-explanation">
+            <span class="signal-badge alarma-badge">⚠️ Urgencia, ir al hospital</span>
+            La fiebre en un recién nacido siempre requiere evaluación médica urgente, independiente de la causa.
+          </div>
+        </div>
+
+        <div class="signal-card" data-answer="alarma">
+          <p class="signal-desc">Coloración amarilla intensa que se extiende a todo el cuerpo, incluyendo los ojos.</p>
+          <div class="signal-buttons">
+            <button class="signal-btn" data-val="normal">Es normal</button>
+            <button class="signal-btn" data-val="alarma">Consultar urgente</button>
+          </div>
+          <div class="signal-explanation">
+            <span class="signal-badge alarma-badge">⚠️ Consultar de inmediato</span>
+            La ictericia (coloración amarilla) leve en los primeros días es frecuente, pero si es intensa o se extiende a todo el cuerpo, requiere evaluación médica urgente para descartar hiperbilirrubinemia severa.
+          </div>
+        </div>
+
+        <div class="signal-card" data-answer="normal">
+          <p class="signal-desc">El bebé llora durante la tarde y parte de la noche sin una causa aparente.</p>
+          <div class="signal-buttons">
+            <button class="signal-btn" data-val="normal">Es normal</button>
+            <button class="signal-btn" data-val="alarma">Consultar urgente</button>
+          </div>
+          <div class="signal-explanation">
+            <span class="signal-badge normal-badge">✓ Generalmente normal</span>
+            El llanto vespertino es muy frecuente en recién nacidos. Sin embargo, si el llanto es muy intenso, inconsolable o va acompañado de otros síntomas, consulta con tu matrona o matrón.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PANEL 5: MITOS ══ -->
+  <div class="section-panel" id="panel-5">
+    <div class="card">
+      <p class="card-title">¿Mito o realidad?</p>
+      <p class="card-body" style="margin-bottom:1.2rem;">Lee cada afirmación y elige si crees que es un mito o una realidad. ¡Luego descubre la respuesta basada en evidencia!</p>
+      <div class="myth-grid">
+
+        <div class="myth-card" data-answer="false">
+          <p class="myth-statement">"Hay que despertar al recién nacido cada vez que duerme mucho."</p>
+          <div class="myth-buttons">
+            <button class="myth-btn" data-val="true">✅ Realidad</button>
+            <button class="myth-btn" data-val="false">❌ Mito</button>
+          </div>
+          <div class="myth-explanation">
+            <span class="myth-result-icon">❌</span><strong>Mito.</strong> Cada bebé tiene patrones de sueño distintos. Si se alimenta adecuadamente y está sano, no siempre es necesario despertarlo. Consulta con tu matrona o matrón si tienes dudas sobre las horas de sueño de tu bebé.
+          </div>
+        </div>
+
+        <div class="myth-card" data-answer="true">
+          <p class="myth-statement">"El ombligo del bebé debe mantenerse limpio y seco."</p>
+          <div class="myth-buttons">
+            <button class="myth-btn" data-val="true">✅ Realidad</button>
+            <button class="myth-btn" data-val="false">❌ Mito</button>
+          </div>
+          <div class="myth-explanation">
+            <span class="myth-result-icon">✅</span><strong>Realidad.</strong> Mantener el cordón limpio y seco favorece su cicatrización y previene infecciones.
+          </div>
+        </div>
+
+        <div class="myth-card" data-answer="false">
+          <p class="myth-statement">"Si el bebé llora, siempre significa que tiene hambre."</p>
+          <div class="myth-buttons">
+            <button class="myth-btn" data-val="true">✅ Realidad</button>
+            <button class="myth-btn" data-val="false">❌ Mito</button>
+          </div>
+          <div class="myth-explanation">
+            <span class="myth-result-icon">❌</span><strong>Mito.</strong> El llanto es la única forma de comunicación del bebé. También puede indicar sueño, frío, calor, necesidad de contacto o malestar. Aprenderás a distinguir los diferentes tipos de llanto con el tiempo.
+          </div>
+        </div>
+
+        <div class="myth-card" data-answer="true">
+          <p class="myth-statement">"La madre también necesita cuidados después del parto."</p>
+          <div class="myth-buttons">
+            <button class="myth-btn" data-val="true">✅ Realidad</button>
+            <button class="myth-btn" data-val="false">❌ Mito</button>
+          </div>
+          <div class="myth-explanation">
+            <span class="myth-result-icon">✅</span><strong>Realidad.</strong> El bienestar materno es fundamental y nunca hay que restarle importancia. Una madre bien cuidada cuida mejor a su bebé. No olvides asistir a tus controles y pedir ayuda cuando la necesites.
+            <br><small style="color:#3A6040; opacity:0.8; margin-top:0.4rem; display:block;">Fuente: Chile Crece Contigo</small>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PANEL 6: EMOCIÓN ══ -->
+  <div class="section-panel" id="panel-6">
+    <div class="card">
+      <p class="card-title">¿Cómo te sientes hoy?</p>
+      <p class="card-body" style="margin-bottom:0.3rem;">Tus emociones importan tanto como tu salud física. Elige la que mejor te representa en este momento:</p>
+      <div class="emotion-grid">
+        <button class="emotion-btn" data-emo="feliz"><span class="emo-icon">😊</span><span class="emo-label">Feliz y con energía</span></button>
+        <button class="emotion-btn" data-emo="ansiosa"><span class="emo-icon">😟</span><span class="emo-label">Ansiosa o preocupada</span></button>
+        <button class="emotion-btn" data-emo="cansada"><span class="emo-icon">😴</span><span class="emo-label">Agotada o cansada</span></button>
+        <button class="emotion-btn" data-emo="ambivalente"><span class="emo-icon">🌊</span><span class="emo-label">Con sentimientos mezclados</span></button>
+        <button class="emotion-btn" data-emo="sola"><span class="emo-icon">🤍</span><span class="emo-label">Sola o sin apoyo</span></button>
+        <button class="emotion-btn" data-emo="curiosa"><span class="emo-icon">🌸</span><span class="emo-label">Curiosa y conectada</span></button>
+      </div>
+      <div class="emotion-response" id="emotion-response">
+        <h4 id="emo-title"></h4>
+        <p id="emo-msg"></p>
+        <p class="emo-tip" id="emo-tip"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PANEL 7: QUIZ ══ -->
+  <div class="section-panel" id="panel-7">
+    <div class="card" id="quiz-container">
+      <p class="card-title">Quiz de cierre</p>
+      <p class="card-body" style="margin-bottom:0.5rem;">6 preguntas divididas en dos bloques. ¡Es el último quiz de tu viaje materno!</p>
+
+      <div class="quiz-block-label">Bloque 1 — El puerperio</div>
+
+      <div class="quiz-question">
+        <p class="quiz-q">1. ¿Cuánto dura aproximadamente el puerperio?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-q="0" data-val="a">1 semana después del parto</button>
+          <button class="quiz-opt" data-q="0" data-val="b">Aproximadamente 6 semanas (42 días)</button>
+          <button class="quiz-opt" data-q="0" data-val="c">Solo los primeros 3 días tras el parto</button>
+        </div>
+        <p class="quiz-feedback" id="fb-0">El puerperio dura aproximadamente 6 semanas o 42 días, período en que el cuerpo se recupera del embarazo y el parto.</p>
+      </div>
+
+      <div class="quiz-question">
+        <p class="quiz-q">2. ¿Cuál de los siguientes es un signo de alarma materno durante el puerperio?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-q="1" data-val="a">Cansancio leve en los primeros días</button>
+          <button class="quiz-opt" data-q="1" data-val="b">Sangrado vaginal abundante con mal olor</button>
+          <button class="quiz-opt" data-q="1" data-val="c">Loquios de color café después de una semana</button>
+        </div>
+        <p class="quiz-feedback" id="fb-1">El sangrado abundante con mal olor es un signo de alarma que requiere consulta urgente, ya que puede indicar infección o hemorragia postparto.</p>
+      </div>
+
+      <div class="quiz-question">
+        <p class="quiz-q">3. ¿Por qué es importante asistir al control de diada entre los 7 y 10 días postparto?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-q="2" data-val="a">Solo para vacunar al bebé</button>
+          <button class="quiz-opt" data-q="2" data-val="b">Para evaluar la recuperación materna, la lactancia y el estado de salud del bebé</button>
+          <button class="quiz-opt" data-q="2" data-val="c">Es un trámite administrativo del CESFAM</button>
+        </div>
+        <p class="quiz-feedback" id="fb-2">El control de diada evalúa la recuperación de la madre, el estado de la lactancia y el desarrollo del recién nacido. ¡Es fundamental no saltárselo!</p>
+      </div>
+
+      <div class="quiz-block-label" style="margin-top:2rem;">Bloque 2 — El recién nacido</div>
+
+      <div class="quiz-question">
+        <p class="quiz-q">4. ¿Cuál es la posición más segura para dormir del recién nacido?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-q="3" data-val="a">Boca abajo sobre una almohada suave</button>
+          <button class="quiz-opt" data-q="3" data-val="b">De lado con cojines de apoyo</button>
+          <button class="quiz-opt" data-q="3" data-val="c">Boca arriba en una superficie firme y libre de objetos</button>
+        </div>
+        <p class="quiz-feedback" id="fb-3">Boca arriba en superficie firme y sin objetos es la posición más segura. Reduce el riesgo de muerte súbita del lactante.</p>
+      </div>
+
+      <div class="quiz-question">
+        <p class="quiz-q">5. ¿Cuál de estos signos en el recién nacido requiere consulta inmediata?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-q="4" data-val="a">Llanto vespertino frecuente</button>
+          <button class="quiz-opt" data-q="4" data-val="b">Fiebre mayor a 38°C</button>
+          <button class="quiz-opt" data-q="4" data-val="c">Dormir más de 2 horas seguidas</button>
+        </div>
+        <p class="quiz-feedback" id="fb-4">La fiebre mayor a 38°C en un recién nacido siempre requiere evaluación médica urgente, independiente de la causa aparente.</p>
+      </div>
+
+      <div class="quiz-question">
+        <p class="quiz-q">6. ¿Cuál es una medida importante para prevenir infecciones en el recién nacido?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-q="5" data-val="a">Evitar que el bebé tenga contacto con personas fuera del hogar</button>
+          <button class="quiz-opt" data-q="5" data-val="b">Lavarse las manos antes de manipular al bebé y pedir lo mismo a las visitas</button>
+          <button class="quiz-opt" data-q="5" data-val="c">Aplicar alcohol en el cordón umbilical todos los días</button>
+        </div>
+        <p class="quiz-feedback" id="fb-5">El lavado de manos frecuente es la medida más efectiva para prevenir infecciones en el recién nacido. Es simple pero poderosa.</p>
+      </div>
+
+      <div class="quiz-submit-row">
+        <button class="btn-primary" id="quiz-submit-btn">Ver mis resultados</button>
+      </div>
+    </div>
+
+    <!-- Resultado final -->
+    <div class="card quiz-result" id="quiz-result">
+      <div class="badge-icon">🌸</div>
+      <h3>¡Completaste los 4 módulos!</h3>
+      <div class="score-pill" id="quiz-score-text">Obtuviste 6 de 6</div>
+      <p id="quiz-msg">Has completado tu viaje materno digital. Estás preparada para recibir a tu bebé con amor, información y confianza. ¡Felicitaciones!</p>
+      <div style="margin-top:1.5rem;">
+        <button class="btn-primary" onclick="alert('¡Felicitaciones! Has completado Tu viaje materno.')">Finalizar mi viaje materno 🌸</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV INFERIOR -->
+  <div class="nav-buttons">
+<button class="btn-outline" id="btn-prev" disabled>← Anterior</button>
+<span class="step-indicator" id="step-indicator">Sección 1 de 8</span>
+<button class="btn-primary" id="btn-next">Siguiente →</button>
+  </div>
+
+</div><!-- /content-area -->
+
+<script type="module" src="../js/module4.js"></script>
+</body>
+</html>

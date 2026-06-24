@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acompañantes — Mi viaje materno</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/acompañantes.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="../pages/dashboard.html">Mi viaje materno</a>
+  <ul class="nav-links">
+    <li><a href="../pages/dashboard.html">Inicio</a></li>
+    <li><a href="#" class="active">Acompañantes</a></li>
+    <li><a href="signos-alarma.html">Signos de alarma</a></li>
+    <li><a href="../pages/dashboard.html">Preguntas frecuentes</a></li>
+  </ul>
+  <div class="nav-user">
+    <div class="nav-avatar" id="nav-avatar-letter">V</div>
+    <span id="nav-nombre">Hola</span>
+  </div>
+</nav>
+
+<!-- BACK (cambia según la vista) -->
+<div class="back-bar">
+  <button class="btn-back" id="btn-back-global" onclick="volverALista()">← Volver</button>
+</div>
+
+<!-- ══════════════════════════════════════
+     VISTA 1: LISTA DE ACOMPAÑANTES
+══════════════════════════════════════ -->
+<div id="view-lista">
+  <div class="page-hero">
+    <div>
+      <h1>♡ Tus acompañantes</h1>
+      <p>Las personas que te acompañan en este viaje</p>
+    </div>
+    <button class="btn-primary" onclick="abrirModal()">+ Agregar acompañante</button>
+  </div>
+
+  <div class="main-wrap" id="main-wrap">
+    <div class="loading-state">Cargando acompañantes...</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     VISTA 2: RECURSOS DEL ACOMPAÑANTE
+══════════════════════════════════════ -->
+<div id="view-recursos">
+
+  <div class="recursos-hero">
+    <div>
+      <div style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.45rem 1rem;border-radius:999px;background:var(--rose-pale);border:1px solid var(--border);color:var(--wine-soft);font-size:0.82rem;margin-bottom:1rem;">💜 Recursos para acompañante</div>
+      <h1>Guía para acompañar este viaje</h1>
+      <p>Todo lo que necesitas saber para apoyar a <span id="nombre-madre">Vanessa</span> durante el embarazo, el parto y el puerperio.</p>
+    </div>
+    <div class="companion-chip">
+      <div class="chip-avatar" id="chip-avatar">D</div>
+      <div class="chip-info">
+        <strong id="chip-name">Daniel</strong>
+        <span id="chip-role">Acompañante principal</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="recursos-wrap">
+
+    <!-- BANNER -->
+    <div class="intro-banner">
+      <div>
+        <h2>Gracias por estar aquí</h2>
+        <p>Tu rol como acompañante es uno de los más importantes en este proceso. La evidencia científica muestra que las mujeres que tienen apoyo continuo tienen mejores experiencias, menos complicaciones y mayor bienestar emocional. Esta guía es para ti.</p>
+      </div>
+      <div class="intro-emoji">💜</div>
+    </div>
+
+    <!-- DURANTE EL EMBARAZO -->
+    <div>
+      <div class="section-header">
+        <span class="section-tag">🤰 Durante el embarazo</span>
+        <h2 class="section-title">Cómo acompañar semana a semana</h2>
+      </div>
+      <div class="cards-grid">
+        <div class="guide-card">
+          <div class="guide-card-header"><span class="guide-icon">👂</span><h3>Escucha activa y sin juicio</h3></div>
+          <div class="guide-card-body">
+            <p>El embarazo trae una montaña rusa de emociones. Tu rol principal es escuchar sin minimizar ni dar consejos no pedidos.</p>
+            <ul>
+              <li>Pregunta cómo se siente, no solo cómo está el bebé.</li>
+              <li>Valida sus emociones aunque no las entiendas del todo.</li>
+              <li>Evita "no te preocupes" — prefiere "estoy aquí".</li>
+            </ul>
+            <div class="guide-tip">💡 A veces la mejor forma de apoyar es simplemente acompañar en silencio.</div>
+          </div>
+        </div>
+        <div class="guide-card">
+          <div class="guide-card-header"><span class="guide-icon">🏥</span><h3>Participa en los controles</h3></div>
+          <div class="guide-card-body">
+            <p>Tu presencia en los controles prenatales te permite conocer el proceso y hacer preguntas.</p>
+            <ul>
+              <li>Pregunta si puedes acompañar en ecografías y controles.</li>
+              <li>Anota las dudas para consultarlas al equipo de salud.</li>
+              <li>Conoce el nombre de la matrona y el teléfono del CESFAM.</li>
+            </ul>
+            <div class="guide-tip">💡 Si no puedes ir, pregunta cómo estuvo y muestra interés genuino.</div>
+          </div>
+        </div>
+        <div class="guide-card">
+          <div class="guide-card-header"><span class="guide-icon">🏠</span><h3>Apoyo en el hogar</h3></div>
+          <div class="guide-card-body">
+            <p>El apoyo práctico es tan importante como el emocional, especialmente en el tercer trimestre.</p>
+            <ul>
+              <li>Comparte activamente las tareas del hogar.</li>
+              <li>Asegúrate de que tenga agua y alimentación nutritiva.</li>
+              <li>Respeta sus tiempos de descanso sin hacerla sentir culpable.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CITA -->
+    <div class="quote-box">
+      <blockquote>"La presencia de un acompañante de apoyo continuo durante el trabajo de parto reduce la necesidad de analgesia, el riesgo de cesárea y mejora la satisfacción con la experiencia del nacimiento."</blockquote>
+      <cite>— Organización Mundial de la Salud (OMS), 2018</cite>
+    </div>
+
+    <!-- DURANTE EL PARTO -->
+    <div>
+      <div class="section-header">
+        <span class="section-tag">🏥 Durante el parto</span>
+        <h2 class="section-title">Tu rol en el trabajo de parto</h2>
+      </div>
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAcordeon(this)">
+            <span class="accordion-icon">🌬️</span>
+            <h3 class="accordion-title">Ayuda con la respiración y la relajación</h3>
+            <span class="accordion-toggle">+</span>
+          </div>
+          <div class="accordion-body">
+            <p>Durante las contracciones, tu voz y presencia son una herramienta poderosa.</p>
+            <ul>
+              <li>Recuérdale respirar: <strong>inhala 4 tiempos, exhala 6 tiempos.</strong></li>
+              <li>Respira junto a ella para guiarla sin que tenga que pensar.</li>
+              <li>Habla en voz baja y calmada — tu tono le transmite seguridad.</li>
+            </ul>
+            <div class="tip">💡 Practica estas técnicas con ella antes del parto para que sea algo familiar.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAcordeon(this)">
+            <span class="accordion-icon">🤲</span>
+            <h3 class="accordion-title">Masaje lumbar y apoyo físico</h3>
+            <span class="accordion-toggle">+</span>
+          </div>
+          <div class="accordion-body">
+            <p>El contacto físico tiene un efecto analgésico real durante el parto.</p>
+            <ul>
+              <li><strong>Masaje lumbar:</strong> presión firme y circular en la zona baja de la espalda durante la contracción.</li>
+              <li><strong>Presión en el sacro:</strong> útil especialmente en el "parto de espalda".</li>
+              <li>Ayúdala a moverse y adoptar posiciones verticales.</li>
+            </ul>
+            <div class="tip">💡 Pregunta siempre qué tipo de contacto quiere en cada momento.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAcordeon(this)">
+            <span class="accordion-icon">💬</span>
+            <h3 class="accordion-title">Comunicación con el equipo de salud</h3>
+            <span class="accordion-toggle">+</span>
+          </div>
+          <div class="accordion-body">
+            <p>Puedes ser su voz cuando ella no pueda o no quiera hablar.</p>
+            <ul>
+              <li>Conoce su plan de parto y recuérdalo al equipo si es necesario.</li>
+              <li>No tomes decisiones médicas por ella — siempre consulta primero.</li>
+              <li>Si algo te preocupa, díselo a la matrona con calma y respeto.</li>
+            </ul>
+            <div class="tip">💡 Tu trabajo no es controlar la situación — es ser el ancla emocional.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAcordeon(this)">
+            <span class="accordion-icon">🕯️</span>
+            <h3 class="accordion-title">Presencia y contención emocional</h3>
+            <span class="accordion-toggle">+</span>
+          </div>
+          <div class="accordion-body">
+            <p>A veces lo más valioso que puedes hacer es simplemente estar presente.</p>
+            <ul>
+              <li>Mantén contacto visual y físico constante.</li>
+              <li>Dile que lo está haciendo increíblemente bien.</li>
+              <li>Evita mostrar nerviosismo — tu calma es contagiosa.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PUERPERIO -->
+    <div>
+      <div class="section-header">
+        <span class="section-tag">🌸 Después del parto</span>
+        <h2 class="section-title">Acompañar en el puerperio</h2>
+      </div>
+      <div class="cards-grid">
+        <div class="guide-card">
+          <div class="guide-card-header"><span class="guide-icon">😴</span><h3>Facilita el descanso</h3></div>
+          <div class="guide-card-body">
+            <p>El sueño fragmentado es uno de los mayores desafíos del puerperio.</p>
+            <ul>
+              <li>Toma turnos nocturnos siempre que sea posible.</li>
+              <li>Maneja las visitas y limita su duración en los primeros días.</li>
+            </ul>
+            <div class="guide-tip">💡 Dejarla dormir es uno de los regalos más valiosos que puedes darle.</div>
+          </div>
+        </div>
+        <div class="guide-card">
+          <div class="guide-card-header"><span class="guide-icon">🍲</span><h3>Apoyo práctico en el hogar</h3></div>
+          <div class="guide-card-body">
+            <p>Las primeras semanas no son el momento de repartir tareas — es el momento de que tú las asumas.</p>
+            <ul>
+              <li>Prepara comidas nutritivas y fáciles de comer.</li>
+              <li>Asegúrate de que tenga agua cerca mientras amamanta.</li>
+              <li>Hazte cargo del hogar, la ropa y las compras.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="guide-card">
+          <div class="guide-card-header"><span class="guide-icon">💜</span><h3>Atención a su salud emocional</h3></div>
+          <div class="guide-card-body">
+            <p>Conocer las señales de depresión postparto puede marcar la diferencia.</p>
+            <ul>
+              <li>El llanto en los primeros días es normal (baby blues).</li>
+              <li><strong>Señal de alarma:</strong> tristeza que persiste más de 2 semanas.</li>
+              <li>Si ves estas señales, apóyala a consultar con su matrona.</li>
+            </ul>
+            <div class="guide-tip">💡 Pregúntale cómo está ella, no solo cómo está el bebé.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHECKLIST -->
+    <div class="checklist-card">
+      <h3>Mi checklist como acompañante</h3>
+      <p class="sub">Marca las cosas que ya tienes listas. Puedes volver a esta lista cuando quieras.</p>
+      <div class="checklist">
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">Conozco la ubicación del hospital y el CESFAM</span></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">Sé cuándo llamar al SAMU (131) y cuándo ir a urgencias</span></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">Conozco la regla 5-1-1 para saber cuándo ir al hospital de parto</span></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">Practiqué la técnica de masaje lumbar</span></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">Conozco las técnicas de respiración para las contracciones</span></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">Tenemos la maleta de parto lista</span></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">Sé cuáles son las señales de alarma en el puerperio</span></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">Sé reconocer las señales de depresión postparto</span></div>
+      </div>
+    </div>
+
+    <div style="text-align:center;">
+      <button class="btn-outline" onclick="volverALista()">← Volver a mis acompañantes</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ MODAL AGREGAR ══ -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <button class="modal-close" onclick="cerrarModal()">✕</button>
+    <h2>Agregar acompañante</h2>
+    <p class="modal-sub">Completa los datos de la persona que te acompañará en este viaje.</p>
+    <div class="modal-form-error" id="modal-error"></div>
+    <div class="photo-section">
+      <div class="photo-preview" id="photo-preview" onclick="document.getElementById('photo-input').click()">
+        <img id="photo-img" src="" alt="foto" />
+        <div class="photo-placeholder" id="photo-placeholder"><span>📷</span>Subir foto</div>
+      </div>
+      <input type="file" id="photo-input" accept="image/*" />
+      <label class="photo-label" for="photo-input">Seleccionar foto (opcional)</label>
+    </div>
+    <div class="input-group">
+      <label for="c-name">Nombre completo</label>
+      <input type="text" id="c-name" placeholder="Ej: Daniel García" />
+    </div>
+    <div class="input-group">
+      <label for="c-role">Relación / Rol</label>
+      <div class="select-wrap">
+        <select id="c-role" onchange="mostrarRolInfo(this.value)">
+          <option value="">Selecciona el rol</option>
+          <option value="pareja">Pareja</option>
+          <option value="madre">Madre / Abuela del bebé</option>
+          <option value="padre">Padre / Abuelo del bebé</option>
+          <option value="hermana">Hermana / Hermano</option>
+          <option value="amiga">Amiga / Amigo de confianza</option>
+          <option value="doula">Doula</option>
+          <option value="otro">Otro</option>
+        </select>
+      </div>
+      <div class="rol-info" id="rol-info"></div>
+    </div>
+    <div class="btn-modal-row">
+      <button class="btn-outline" onclick="cerrarModal()">Cancelar</button>
+      <button class="btn-primary" onclick="guardarAcompanante()">Agregar 💜</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CONFIRM DELETE ══ -->
+<div class="confirm-overlay" id="confirm-overlay">
+  <div class="confirm-box">
+    <h3>¿Eliminar acompañante?</h3>
+    <p id="confirm-msg">Esta acción no se puede deshacer.</p>
+    <div class="confirm-row">
+      <button class="btn-confirm-cancel" onclick="cerrarConfirm()">Cancelar</button>
+      <button class="btn-confirm-delete" onclick="confirmarEliminar()">Sí, eliminar</button>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  import {
+  auth,
+  db,
+  doc,
+  getDoc,
+  onAuthStateChanged,
+  collection,
+  addDoc,
+  getDocs,
+  deleteDoc,
+  serverTimestamp
+} from "../js/firebase.js";
+
+  let currentUser = null;
+  let photoBase64 = null;
+  let deleteTargetId = null;
+  let nombreMadre = 'Vanessa';
+
+  const rolLabels = {
+    pareja:'Pareja', madre:'Madre / Abuela del bebé', padre:'Padre / Abuelo del bebé',
+    hermana:'Hermana / Hermano', amiga:'Amiga / Amigo de confianza', doula:'Doula', otro:'Acompañante'
+  };
+  const rolTexts = {
+    pareja:'💜 La pareja es el acompañante principal. Tendrá acceso a la guía completa de apoyo.',
+    madre:'🌸 La madre o abuela del bebé aporta experiencia y contención emocional única.',
+    padre:'🌿 El padre o abuelo del bebé también puede ser un gran apoyo durante el parto.',
+    hermana:'💙 Hermanas y hermanos pueden ser un apoyo emocional muy significativo.',
+    amiga:'🤍 Una amiga o amigo de confianza puede hacer una gran diferencia en esta etapa.',
+    doula:'🌺 La doula es una acompañante profesional capacitada en apoyo durante el parto.',
+    otro:'💛 Cualquier persona de tu confianza puede ser tu acompañante.'
+  };
+
+  /* ── AUTH ── */
+  onAuthStateChanged(auth, async (user) => {
+    if (!user) { window.location.href = '../index.html'; return; }
+    currentUser = user;
+    const snap = await getDoc(doc(db, 'users', user.uid));
+    if (snap.exists()) {
+      nombreMadre = snap.data().name || 'Vanessa';
+      const navNombre = document.getElementById('nav-nombre');
+      const navLetter = document.getElementById('nav-avatar-letter');
+      if (navNombre) navNombre.textContent = `Hola, ${nombreMadre}`;
+      if (navLetter) navLetter.textContent = nombreMadre.charAt(0).toUpperCase();
+    }
+    cargarAcompanantes();
+  });
+
+  /* ── CARGAR LISTA ── */
+  async function cargarAcompanantes() {
+    const wrap = document.getElementById('main-wrap');
+    wrap.innerHTML = '';
+    const snapshot = await getDocs(collection(db, 'users', currentUser.uid, 'companions'));
+    if (snapshot.empty) {
+      wrap.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-icon">💜</div>
+          <h3>Aún no tienes acompañantes</h3>
+          <p>Agrega a las personas que te acompañarán en tu embarazo, parto y puerperio.</p>
+          <button class="btn-primary" style="margin:0 auto;" onclick="abrirModal()">+ Agregar acompañante</button>
+        </div>`;
+      return;
+    }
+    snapshot.forEach((d) => renderCard(d.id, d.data()));
+    const addCard = document.createElement('div');
+    addCard.className = 'add-card';
+    addCard.onclick = () => window.abrirModal();
+    addCard.innerHTML = '<span style="font-size:1.1rem;">+</span> Agregar acompañante';
+    wrap.appendChild(addCard);
+  }
+
+  function renderCard(id, data) {
+    const wrap = document.getElementById('main-wrap');
+    const card = document.createElement('div');
+    card.className = 'companion-card';
+    card.id = `card-${id}`;
+    const photoHTML = data.photoURL
+      ? `<img src="${data.photoURL}" alt="${data.name}" class="companion-photo">`
+      : `<div class="companion-photo-placeholder">${data.name.charAt(0).toUpperCase()}</div>`;
+    card.innerHTML = `
+      ${photoHTML}
+      <div class="companion-info">
+        <h3>${data.name}</h3>
+        <span>${data.roleLabel || 'Acompañante'}</span>
+      </div>
+      <div class="companion-actions">
+        <button class="btn-sm-outline"
+          onclick="window.verRecursos('${data.name}', '${data.roleLabel || 'Acompañante'}', '${data.photoURL || ''}')">
+          Ver recursos
+        </button>
+        <button class="btn-sm-delete"
+          onclick="window.pedirEliminar('${id}', '${data.name}')">
+          Eliminar
+        </button>
+      </div>`;
+    wrap.appendChild(card);
+  }
+
+  /* ── VER RECURSOS (misma página) ── */
+  window.verRecursos = function(nombre, rol, foto) {
+    // Actualiza datos del acompañante en la vista de recursos
+    document.getElementById('chip-name').textContent = nombre;
+    document.getElementById('chip-role').textContent = rol;
+    document.getElementById('nombre-madre').textContent = nombreMadre;
+    const chipAvatar = document.getElementById('chip-avatar');
+    if (foto) {
+      chipAvatar.innerHTML = `<img src="${foto}" alt="${nombre}">`;
+    } else {
+      chipAvatar.textContent = nombre.charAt(0).toUpperCase();
+      chipAvatar.style.backgroundImage = '';
+    }
+    // Cambia la vista
+    document.getElementById('view-lista').style.display = 'none';
+    document.getElementById('view-recursos').style.display = 'block';
+    document.getElementById('btn-back-global').textContent = '← Volver a mis acompañantes';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  /* ── VOLVER A LISTA ── */
+  window.volverALista = function() {
+    const viewLista = document.getElementById('view-lista');
+    const viewRecursos = document.getElementById('view-recursos');
+    if (viewRecursos.style.display === 'block') {
+      viewRecursos.style.display = 'none';
+      viewLista.style.display = 'block';
+      document.getElementById('btn-back-global').textContent = '← Volver al inicio';
+    } else {
+      window.location.href ="../pages/dashboard.html";
+    }
+  };
+
+  /* ── FOTO ── */
+  document.getElementById('photo-input').addEventListener('change', function () {
+    const file = this.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      photoBase64 = e.target.result;
+      const img = document.getElementById('photo-img');
+      img.src = photoBase64;
+      img.classList.add('show');
+      document.getElementById('photo-placeholder').style.display = 'none';
+    };
+    reader.readAsDataURL(file);
+  });
+
+  /* ── ROL INFO ── */
+  window.mostrarRolInfo = function(val) {
+    const box = document.getElementById('rol-info');
+    if (val && rolTexts[val]) { box.textContent = rolTexts[val]; box.classList.add('show'); }
+    else box.classList.remove('show');
+  };
+
+  /* ── MODAL ── */
+  window.abrirModal = function() {
+    document.getElementById('modal-overlay').classList.add('show');
+    document.getElementById('c-name').focus();
+  };
+  window.cerrarModal = function() {
+    document.getElementById('modal-overlay').classList.remove('show');
+    document.getElementById('c-name').value = '';
+    document.getElementById('c-role').value = '';
+    document.getElementById('rol-info').classList.remove('show');
+    document.getElementById('photo-img').src = '';
+    document.getElementById('photo-img').classList.remove('show');
+    document.getElementById('photo-placeholder').style.display = '';
+    document.getElementById('modal-error').classList.remove('show');
+    photoBase64 = null;
+  };
+
+  /* ── GUARDAR ── */
+  window.guardarAcompanante = async function() {
+    const name = document.getElementById('c-name').value.trim();
+    const role = document.getElementById('c-role').value;
+    const errBox = document.getElementById('modal-error');
+    if (!name || !role) {
+      errBox.textContent = 'Por favor completa el nombre y el rol antes de continuar.';
+      errBox.classList.add('show'); return;
+    }
+    errBox.classList.remove('show');
+    try {
+      await addDoc(collection(db, 'users', currentUser.uid, 'companions'), {
+        name, role, roleLabel: rolLabels[role] || 'Acompañante',
+        photoURL: photoBase64 || null, createdAt: new Date()
+      });
+      cerrarModal();
+      cargarAcompanantes();
+    } 
+    catch (e) {
+    console.error(e);
+    errBox.textContent = e.message;
+    errBox.classList.add("show");}
+    }
+
+  /* ── ELIMINAR ── */
+  window.pedirEliminar = function(id, name) {
+    deleteTargetId = id;
+    document.getElementById('confirm-msg').textContent =
+      `¿Quieres eliminar a ${name} de tu lista de acompañantes? Esta acción no se puede deshacer.`;
+    document.getElementById('confirm-overlay').classList.add('show');
+  };
+  window.cerrarConfirm = function() {
+    document.getElementById('confirm-overlay').classList.remove('show');
+    deleteTargetId = null;
+  };
+  window.confirmarEliminar = async function() {
+    if (!deleteTargetId) return;
+    await deleteDoc(doc(db, 'users', currentUser.uid, 'companions', deleteTargetId));
+    cerrarConfirm();
+    cargarAcompanantes();
+  };
+
+  /* ── ACORDEÓN ── */
+  window.toggleAcordeon = function(header) {
+    const item = header.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  };
+
+  /* ── CHECKLIST ── */
+  window.toggleCheck = function(item) {
+    item.classList.toggle('checked');
+    item.querySelector('.check-box').textContent = item.classList.contains('checked') ? '✓' : '';
+  };
+
+  /* Cerrar modales al click fuera */
+  document.getElementById('modal-overlay').addEventListener('click', function(e) { if(e.target===this) cerrarModal(); });
+  document.getElementById('confirm-overlay').addEventListener('click', function(e) { if(e.target===this) cerrarConfirm(); });
+</script>
+
+</body>
+</html>

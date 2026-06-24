@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi perfil | Mi Viaje Materno</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/perfil.css" />
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="perfil-nav">
+  <a class="nav-logo" href="dashboard.html">Mi viaje materno</a>
+  <div class="nav-user">
+    <div class="nav-avatar" id="nav-avatar">V</div>
+    <span id="profile-name">Hola</span>
+  </div>
+</nav>
+
+<!-- BACK -->
+<div class="back-bar">
+  <button class="btn-back" onclick="window.location.href='dashboard.html'">← Volver al inicio</button>
+</div>
+
+<!-- CONTENIDO -->
+<main class="perfil-main">
+
+  <!-- ENCABEZADO -->
+  <div class="perfil-header">
+    <div class="perfil-avatar-wrap">
+      <div class="perfil-avatar" id="perfil-avatar">
+        <span id="perfil-inicial">V</span>
+        <img id="perfil-foto" src="" alt="Foto de perfil" style="display:none;" />
+      </div>
+      <label class="cambiar-foto-btn" for="foto-input">
+        📷 Cambiar foto
+        <input type="file" id="foto-input" accept="image/*" style="display:none;" />
+      </label>
+    </div>
+    <div class="perfil-header-text">
+      <p class="perfil-eyebrow">Tu perfil</p>
+      <h1 id="perfil-nombre-header">Cargando...</h1>
+      <p class="perfil-cesfam-label" id="perfil-cesfam-header"></p>
+    </div>
+  </div>
+
+  <!-- TARJETAS DE DATOS -->
+  <div class="perfil-grid">
+
+    <!-- DATOS PERSONALES -->
+    <div class="perfil-card">
+      <div class="card-header">
+        <h2>Datos personales</h2>
+        <button class="btn-edit" id="btn-edit-personal">✏️ Editar</button>
+      </div>
+
+      <!-- VISTA -->
+      <div id="view-personal">
+        <div class="dato-row">
+          <span class="dato-label">Nombre completo</span>
+          <span class="dato-value" id="view-nombre">—</span>
+        </div>
+        <div class="dato-row">
+          <span class="dato-label">RUT</span>
+          <span class="dato-value" id="view-rut">—</span>
+        </div>
+        <div class="dato-row">
+          <span class="dato-label">Sector del CESFAM</span>
+          <span class="dato-value" id="view-cesfam">—</span>
+        </div>
+      </div>
+
+      <!-- EDICIÓN -->
+      <div id="edit-personal" style="display:none;">
+        <div class="input-group">
+          <label>Nombre completo</label>
+          <input type="text" id="edit-nombre" placeholder="Tu nombre completo" />
+        </div>
+        <div class="input-group">
+          <label>RUT</label>
+          <input type="text" id="edit-rut" placeholder="12.345.678-9" />
+        </div>
+        <div class="input-group">
+          <label>Sector del CESFAM</label>
+          <input type="text" id="edit-cesfam" placeholder="Ej: Sector Norte" />
+        </div>
+        <div class="edit-actions">
+          <button class="btn-cancel" id="btn-cancel-personal">Cancelar</button>
+          <button class="btn-save" id="btn-save-personal">Guardar cambios</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- DATOS DEL EMBARAZO -->
+    <div class="perfil-card">
+      <div class="card-header">
+        <h2>Tu embarazo</h2>
+        <button class="btn-edit" id="btn-edit-embarazo">✏️ Editar</button>
+      </div>
+
+      <!-- VISTA -->
+      <div id="view-embarazo">
+        <div class="dato-row">
+          <span class="dato-label">Fecha de última regla (FUR)</span>
+          <span class="dato-value" id="view-fur">—</span>
+        </div>
+        <div class="dato-row">
+          <span class="dato-label">Edad gestacional</span>
+          <span class="dato-value" id="view-semanas">—</span>
+        </div>
+        <div class="dato-row">
+          <span class="dato-label">Fecha probable de parto</span>
+          <span class="dato-value" id="view-fpp">—</span>
+        </div>
+      </div>
+
+      <!-- EDICIÓN -->
+      <div id="edit-embarazo" style="display:none;">
+        <div class="input-group">
+          <label>Fecha de última regla (FUR)</label>
+          <input type="date" id="edit-fur" />
+        </div>
+        <p class="edit-note">La edad gestacional y la FPP se calcularán automáticamente.</p>
+        <div class="edit-actions">
+          <button class="btn-cancel" id="btn-cancel-embarazo">Cancelar</button>
+          <button class="btn-save" id="btn-save-embarazo">Guardar cambios</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROGRESO -->
+    <div class="perfil-card perfil-card-full">
+      <h2>Tu progreso</h2>
+      <p class="dato-label" style="margin-bottom: 1.2rem;">Módulos completados en Mi Viaje Materno</p>
+      <div class="modulos-lista" id="modulos-lista">
+        <div class="modulo-row" id="row-module1">
+          <span class="modulo-num">1</span>
+          <span class="modulo-nombre">El comienzo del viaje · Semanas 16–18</span>
+          <span class="modulo-estado" id="estado-module1">Pendiente</span>
+        </div>
+        <div class="modulo-row" id="row-module2">
+          <span class="modulo-num">2</span>
+          <span class="modulo-nombre">Tu cuerpo cambia · Semanas 22–23</span>
+          <span class="modulo-estado" id="estado-module2">Pendiente</span>
+        </div>
+        <div class="modulo-row" id="row-module3">
+          <span class="modulo-num">3</span>
+          <span class="modulo-nombre">El encuentro se acerca · Semanas 27–28</span>
+          <span class="modulo-estado" id="estado-module3">Pendiente</span>
+        </div>
+        <div class="modulo-row" id="row-module4">
+          <span class="modulo-num">4</span>
+          <span class="modulo-nombre">El gran encuentro · Semanas 32–34</span>
+          <span class="modulo-estado" id="estado-module4">Pendiente</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script type="module" src="../js/perfil.js"></script>
+</body>
+</html>

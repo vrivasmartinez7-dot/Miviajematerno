@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Módulo 1 — Mi viaje materno</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/module1.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="dashboard.html">Mi viaje materno</a>
+  <ul class="nav-links">
+    <li><a href="dashboard.html">Inicio</a></li>
+    <li><a href="../pages/acompañantes.html">Acompañantes</a></li>
+    <li><a href="../pages/signos-alarma.html">Signos de alarma</a></li>
+    <li><a href="dashboard.html">Preguntas frecuentes</a></li>
+  </ul>
+  <div class="nav-user">
+    <div class="nav-avatar" id="nav-avatar">V</div>
+    <span id="profile-name">Hola</span>
+  </div>
+</nav>
+
+<!-- BACK -->
+<div class="back-bar">
+  <button class="btn-back" onclick="window.location.href='dashboard.html'">← Volver al inicio</button>
+</div>
+
+<!-- HERO -->
+<div class="module-hero">
+  <span class="module-badge">Módulo 1 · 16 a 18 semanas</span>
+  <h1 class="module-title">El comienzo del viaje</h1>
+  <p class="module-subtitle">Gestación y parto como un evento normal y fisiológico</p>
+
+  <div class="progress-strip">
+    <p>Progreso: <span id="progress-pct">0%</span></p>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progress-bar" style="width:0%"></div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP TABS -->
+<div class="steps-nav" id="steps-nav">
+  <button class="step-tab active" data-step="0">
+    <span class="step-num">1</span> Bienvenida
+  </button>
+  <button class="step-tab" data-step="1">
+    <span class="step-num">2</span> Mi cuerpo
+  </button>
+  <button class="step-tab" data-step="2">
+    <span class="step-num">3</span> Tu bebé
+  </button>
+  <button class="step-tab" data-step="3">
+    <span class="step-num">4</span> Mitos y realidades
+  </button>
+  <button class="step-tab" data-step="4">
+    <span class="step-num">5</span> ¿Cómo me siento?
+  </button>
+  <button class="step-tab" data-step="5">
+    <span class="step-num">6</span> Quiz final
+  </button>
+</div>
+
+<!-- CONTENT -->
+<div class="content-area">
+
+  <!-- ── PASO 1: BIENVENIDA ── -->
+  <div class="section-panel active" id="panel-0">
+    <div class="card">
+      <div class="welcome-hero">
+        <div class="avatar-figure">
+          <div class="avatar-body">
+            <svg class="avatar-svg" viewBox="0 0 120 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="60" cy="28" rx="22" ry="8" fill="#7A3048"/>
+              <ellipse cx="60" cy="36" rx="18" ry="20" fill="#F5D5C0"/>
+              <ellipse cx="42" cy="40" rx="5" ry="14" fill="#7A3048"/>
+              <ellipse cx="78" cy="40" rx="5" ry="14" fill="#7A3048"/>
+              <circle cx="53" cy="33" r="2.5" fill="#4A1A2C"/>
+              <circle cx="67" cy="33" r="2.5" fill="#4A1A2C"/>
+              <path d="M54 43 Q60 48 66 43" stroke="#B07060" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <rect x="54" y="54" width="12" height="10" rx="4" fill="#F5D5C0"/>
+              <path d="M30 90 Q30 64 60 64 Q90 64 90 90 L88 140 Q88 148 80 148 L40 148 Q32 148 32 140 Z" fill="#E8B4BC"/>
+              <ellipse cx="60" cy="118" rx="26" ry="22" fill="#F2D9DD"/>
+              <ellipse cx="60" cy="118" rx="22" ry="18" fill="#FAEAED"/>
+              <circle cx="60" cy="124" r="2" fill="#E8B4BC"/>
+              <path d="M30 90 Q18 100 20 118" stroke="#E8B4BC" stroke-width="10" stroke-linecap="round" fill="none"/>
+              <path d="M90 90 Q102 100 100 118" stroke="#E8B4BC" stroke-width="10" stroke-linecap="round" fill="none"/>
+              <ellipse cx="20" cy="121" rx="6" ry="5" fill="#F5D5C0"/>
+              <ellipse cx="100" cy="121" rx="6" ry="5" fill="#F5D5C0"/>
+              <rect x="38" y="148" width="18" height="28" rx="8" fill="#C07080"/>
+              <rect x="64" y="148" width="18" height="28" rx="8" fill="#C07080"/>
+              <ellipse cx="47" cy="177" rx="10" ry="4" fill="#F5D5C0"/>
+              <ellipse cx="73" cy="177" rx="10" ry="4" fill="#F5D5C0"/>
+              <text x="50" y="116" font-size="10" fill="#C07080">♡</text>
+            </svg>
+          </div>
+          <p class="avatar-label">Tu avatar, semana <span id="avatar-week-label">16</span></p>
+        </div>
+
+        <div class="welcome-text">
+          <h2>¡Hola, <span id="profile-name"></span>Vanessa</span>!</h2>
+          <p class="week-tag" id="welcome-subtitle">Semana 16 de embarazo</p>
+          <p class="card-body">Bienvenida a tu primer módulo de talleres prenatales. Aquí aprenderás sobre los cambios maravillosos que vive tu cuerpo y el desarrollo de tu bebé durante estas semanas.</p>
+          <div class="pill-info" id="baby-size-pill">
+            🥑 Tu bebé tiene el tamaño de una palta
+          </div>
+          <div class="week-input-row">
+            <label for="week-input">¿En qué semana estás?</label>
+            <input type="number" id="week-input" min="16" max="18" value="16" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-body" style="line-height:1.8;">
+      <p class="card-title" style="margin-bottom:0.8rem;">¿Qué aprenderás en este módulo?</p>
+      <ul style="padding-left:1.2rem; display:flex; flex-direction:column; gap:0.4rem;">
+        <li>Cómo está cambiando tu cuerpo entre las semanas 16 y 18</li>
+        <li>El desarrollo de tu bebé semana a semana</li>
+        <li>Mitos y realidades sobre el embarazo</li>
+        <li>Cómo identificar y validar tus emociones</li>
+        <li>Un quiz de cierre para reforzar lo aprendido</li>
+      </ul>
+      <p style="margin-top:0.8rem; font-size:0.85rem; color:var(--text-muted);">⏱ Duración estimada: 20–25 minutos</p>
+    </div>
+  </div>
+
+  <!-- ── PASO 2: MI CUERPO ── -->
+  <div class="section-panel" id="panel-1">
+    <div class="card">
+      <p class="card-title">Tu cuerpo semana a semana</p>
+      <p class="card-body" style="margin-bottom:1.2rem;">Selecciona una semana para ver los cambios físicos en cada semana de este módulo.</p>
+
+      <div class="baby-weeks">
+        <button class="baby-week-btn active" data-week="16">Semana 16</button>
+        <button class="baby-week-btn" data-week="17">Semana 17</button>
+        <button class="baby-week-btn" data-week="18">Semana 18</button>
+      </div>
+
+      <div class="body-info-grid">
+        <div class="body-info-card">
+          <div class="icon">🤰</div>
+          <div class="label">Tamaño del útero</div>
+          <div class="value" id="uterus-size">Como una papaya</div>
+        </div>
+        <div class="body-info-card">
+          <div class="icon">⚖️</div>
+          <div class="label">Aumento de peso típico</div>
+          <div class="value" id="weight-gain">2 – 4 kg acumulados</div>
+        </div>
+        <div class="body-info-card">
+          <div class="icon">🙍🏻‍♀️</div>
+          <div class="label">Síntoma frecuente</div>
+          <div class="value" id="symptom">Aumento del flujo vaginal</div>
+        </div>
+      </div>
+
+      <div class="body-desc" id="body-desc">
+        A las <strong>16 semanas</strong>, tu útero ha crecido considerablemente y ya se puede palpar sobre el pubis. Es común sentir el ligamento redondo del útero (como un dolor leve en la ingle) al moverte rápido. Muchas embarazadas notan que las náuseas del primer trimestre comienzan a disminuir.
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="card">
+        <p class="card-title" style="font-size:1.1rem;">Cambios emocionales</p>
+        <p class="card-body" id="emotional-changes">Es normal sentir una mezcla de alegría, ansiedad y cierta nostalgia. El cerebro se está adaptando junto con el cuerpo. No hay emociones "incorrectas" durante el embarazo.</p>
+      </div>
+      <div class="card">
+        <p class="card-title" style="font-size:1.1rem;">Autocuidado en esta etapa</p>
+        <p class="card-body" id="selfcare-tips">Hidratación constante, caminatas suaves y no levantes objetos pesados para evitar molestias en la espalda.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PASO 3: TU BEBÉ ── -->
+  <div class="section-panel" id="panel-2">
+    <div class="card">
+      <p class="card-title">El desarrollo de tu bebé</p>
+      <p class="card-body" style="margin-bottom:1rem;">Selecciona la semana para ver cómo crece tu bebé.</p>
+
+      <div class="baby-weeks">
+        <button class="baby-week-btn active" data-baby="16">Semana 16</button>
+        <button class="baby-week-btn" data-baby="17">Semana 17</button>
+        <button class="baby-week-btn" data-baby="18">Semana 18</button>
+      </div>
+
+      <div class="baby-display">
+        <div class="baby-fruit" id="baby-fruit">🥑</div>
+        <div class="baby-info">
+          <h3 id="baby-title">Semana 16</h3>
+          <p class="baby-size" id="baby-size-text">Tamaño: 16 cm · Peso: 100 g (como una palta)</p>
+          <p id="baby-desc">Tu bebé ya puede fruncir el ceño y hacer muecas. Su cabeza aún es desproporcionadamente grande comparado con el resto de su cuerpo, pero su tórax, brazos y piernas están empezando a crecer.</p>
+          <span class="baby-fact" id="baby-fact">✨ ¡Tu bebé ya puede percibir la luz a través de tu piel!</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-body">
+      <p class="card-title" style="margin-bottom:0.8rem;">¿Cuándo sentiré los movimientos?</p>
+      Entre las semanas 16 y 20, la mayoría de las madres sienten por primera vez los movimientos fetales. Es una sensación suave, como burbujas o aleteos. Si es tu primer embarazo, puede tardar un poco más. Es completamente normal.
+    </div>
+  </div>
+
+  <!-- ── PASO 4: MITOS ── -->
+  <div class="section-panel" id="panel-3">
+    <div class="card">
+      <p class="card-title">¿Mito o realidad?</p>
+      <p class="card-body" style="margin-bottom:1.2rem;">Lee cada afirmación y elige si crees que es un mito o una realidad. ¡Luego descubre la respuesta basada en evidencia!</p>
+
+      <div class="myth-grid" id="myth-grid">
+
+        <div class="myth-card" data-answer="false">
+          <p class="myth-statement">"Comer por dos durante el embarazo es necesario para que el bebé crezca bien."</p>
+          <div class="myth-buttons">
+            <button class="myth-btn" data-val="true">✅ Realidad</button>
+            <button class="myth-btn" data-val="false">❌ Mito</button>
+          </div>
+          <div class="myth-explanation">
+            <span class="myth-result-icon">❌</span><strong>Mito.</strong> No es necesario duplicar la ingesta calórica. Se debe aumentar la ingesta calórica en 350 y 450 Kcal/día durante el segundo y tercer trimestre respectivamente. Lo importante es la calidad nutricional, no la cantidad.
+            <br><small style="color:var(--wine-mid); opacity:0.7; margin-top:0.3rem; display:block;">Fuente: MINSAL, 2015</small>
+          </div>
+        </div>
+
+        <div class="myth-card" data-answer="true">
+          <p class="myth-statement">"Hacer ejercicio suave como caminar o nadar es seguro durante el embarazo normal."</p>
+          <div class="myth-buttons">
+            <button class="myth-btn" data-val="true">✅ Realidad</button>
+            <button class="myth-btn" data-val="false">❌ Mito</button>
+          </div>
+          <div class="myth-explanation">
+            <span class="myth-result-icon">✅</span><strong>Realidad.</strong> El ejercicio moderado tiene múltiples beneficios: reduce el dolor de espalda, mejora el ánimo y puede facilitar el parto. Se recomienda consultar con tu matrona antes de iniciar cualquier actividad nueva.
+            <br><small style="color:#3A6040; opacity:0.7; margin-top:0.3rem; display:block;">Fuente: Chile Crece Contigo.</small>
+          </div>
+        </div>
+
+        <div class="myth-card" data-answer="false">
+          <p class="myth-statement">"Si tienes náuseas fuertes, significa que tu bebé está enfermo."</p>
+          <div class="myth-buttons">
+            <button class="myth-btn" data-val="true">✅ Realidad</button>
+            <button class="myth-btn" data-val="false">❌ Mito</button>
+          </div>
+          <div class="myth-explanation">
+            <span class="myth-result-icon">❌</span><strong>Mito.</strong> Las náuseas son causadas principalmente por la hormona hCG y los cambios hormonales del primer trimestre. No guardan relación con el estado de salud del bebé. Si son muy intensas, consulta con tu matrona.
+          <br><small style="color:var(--wine-mid); opacity:0.7; margin-top:0.3rem; display:block;">Fuente: Chile Crece Contigo</small>
+          </div>
+        </div>
+
+        <div class="myth-card" data-answer="false">
+          <p class="myth-statement">"Tomar baños calientes en tina está totalmente permitido durante el embarazo."</p>
+          <div class="myth-buttons">
+            <button class="myth-btn" data-val="true">✅ Realidad</button>
+            <button class="myth-btn" data-val="false">❌ Mito</button>
+          </div>
+          <div class="myth-explanation">
+            <span class="myth-result-icon">❌</span><strong>Mito.</strong> El agua muy caliente (sobre 39°C) puede elevar la temperatura corporal central y no se recomienda, especialmente en el primer trimestre. Una ducha tibia es perfectamente segura.
+            <br><small style="color:var(--wine-mid); opacity:0.7; margin-top:0.3rem; display:block;">Fuente: Chile Crece Contigo</small>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PASO 5: EMOCIÓN ── -->
+  <div class="section-panel" id="panel-4">
+    <div class="card">
+      <p class="card-title">¿Cómo te sientes hoy?</p>
+      <p class="card-body" style="margin-bottom:0.3rem;">Tus emociones son tan importantes como tu salud física. Elige la que mejor te representa en este momento:</p>
+      <div class="emotion-grid">
+        <button class="emotion-btn" data-emo="feliz">
+          <span class="emo-icon">😊</span>
+          <span class="emo-label">Feliz y esperanzada</span>
+        </button>
+        <button class="emotion-btn" data-emo="ansiosa">
+          <span class="emo-icon">😟</span>
+          <span class="emo-label">Ansiosa o nerviosa</span>
+        </button>
+        <button class="emotion-btn" data-emo="cansada">
+          <span class="emo-icon">😴</span>
+          <span class="emo-label">Agotada o cansada</span>
+        </button>
+        <button class="emotion-btn" data-emo="ambivalente">
+          <span class="emo-icon">🌊</span>
+          <span class="emo-label">Con sentimientos mezclados</span>
+        </button>
+        <button class="emotion-btn" data-emo="sola">
+          <span class="emo-icon">🤍</span>
+          <span class="emo-label">Sola o sin apoyo</span>
+        </button>
+        <button class="emotion-btn" data-emo="curiosa">
+          <span class="emo-icon">🌸</span>
+          <span class="emo-label">Curiosa y conectada</span>
+        </button>
+      </div>
+      <div class="emotion-response" id="emotion-response">
+        <h4 id="emo-title"></h4>
+        <p id="emo-msg"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PASO 6: QUIZ ── -->
+  <div class="section-panel" id="panel-5">
+    <div class="card" id="quiz-container">
+      <p class="card-title">Quiz de cierre</p>
+      <p class="card-body" style="margin-bottom:1.5rem;">Pon a prueba lo que aprendiste en este módulo. ¡Puedes lograrlo!</p>
+
+      <div class="quiz-question">
+        <p class="quiz-q">1. ¿Entre qué semanas se suele sentir por primera vez los movimientos fetales?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-q="0" data-val="a">Entre las semanas 8 y 10</button>
+          <button class="quiz-opt" data-q="0" data-val="b">Entre las semanas 16 y 20</button>
+          <button class="quiz-opt" data-q="0" data-val="c">Después de la semana 30</button>
+        </div>
+        <p class="quiz-feedback" id="fb-0">Los primeros movimientos fetales se perciben habitualmente entre las semanas 16 y 20.</p>
+      </div>
+
+      <div class="quiz-question">
+        <p class="quiz-q">2. ¿Cuántas calorías extra se recomiendan aproximadamente en el segundo trimestre?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-q="1" data-val="a">Duplicar toda la ingesta calórica</button>
+          <button class="quiz-opt" data-q="1" data-val="b">Ninguna, hay que hacer dieta</button>
+          <button class="quiz-opt" data-q="1" data-val="c">Unas 350 calorías adicionales al día</button>
+        </div>
+        <p class="quiz-feedback" id="fb-1">En el segundo trimestre se recomiendan aproximadamente 350 calorías adicionales, priorizando la calidad nutricional.</p>
+      </div>
+
+      <div class="quiz-question">
+        <p class="quiz-q">3. ¿Cuál de las siguientes actividades está recomendada durante un embarazo normal de bajo riesgo?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-q="2" data-val="a">Reposo absoluto en cama</button>
+          <button class="quiz-opt" data-q="2" data-val="b">Caminatas suaves y natación</button>
+          <button class="quiz-opt" data-q="2" data-val="c">Ejercicio de alta intensidad sin restricciones</button>
+        </div>
+        <p class="quiz-feedback" id="fb-2">El ejercicio moderado como caminar o nadar es seguro y beneficioso en embarazos de bajo riesgo, con supervisión de la matrona.</p>
+      </div>
+
+      <div class="quiz-question">
+        <p class="quiz-q">4. ¿Qué causa principalmente las náuseas durante el embarazo?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-q="3" data-val="a">Una mala alimentación antes del embarazo</button>
+          <button class="quiz-opt" data-q="3" data-val="b">La hormona hCG y los cambios hormonales</button>
+          <button class="quiz-opt" data-q="3" data-val="c">Que el bebé no está bien</button>
+        </div>
+        <p class="quiz-feedback" id="fb-3">Las náuseas son causadas principalmente por la hormona hCG y los cambios hormonales, y no indican ningún problema con el bebé.</p>
+      </div>
+
+      <div class="quiz-question">
+        <p class="quiz-q">5. ¿A qué temperatura se desaconseja el baño de tina durante el embarazo?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-q="4" data-val="a">Sobre los 39°C</button>
+          <button class="quiz-opt" data-q="4" data-val="b">Sobre los 25°C</button>
+          <button class="quiz-opt" data-q="4" data-val="c">Los baños de tina siempre están permitidos</button>
+        </div>
+        <p class="quiz-feedback" id="fb-4">El agua sobre los 39°C puede elevar la temperatura corporal central y no se recomienda durante el embarazo.</p>
+      </div>
+
+      <div class="quiz-submit-row">
+        <button class="btn-primary" id="quiz-submit-btn">Ver mis resultados</button>
+      </div>
+    </div>
+
+    <!-- Resultado -->
+    <div class="card quiz-result" id="quiz-result">
+      <div class="badge-icon">🏅</div>
+      <h3>¡Módulo 1 completado!</h3>
+      <div class="score-pill" id="quiz-score-text">Obtuviste 5 de 5</div>
+      <p id="quiz-msg">Excelente trabajo. Ya tienes las bases del taller prenatal número 1. ¡Tu bebé y tú están avanzando juntas!</p>
+      <button class="btn-primary" style="margin-top:0.5rem;" onclick="window.location.href='../pages/module2.html'">Continuar al Módulo 2 →</button>
+    </div>
+  </div>
+
+  <!-- NAV INFERIOR -->
+  <div class="nav-buttons">
+    <button class="btn-outline" id="btn-prev" disabled onclick="navigate(-1)">← Anterior</button>
+    <span class="step-indicator" id="step-indicator">Sección 1 de 6</span>
+    <button class="btn-primary" id="btn-next" onclick="navigate(1)">Siguiente →</button>
+  </div>
+
+</div><!-- /content-area -->
+
+<script type="module" src="../js/module1.js"></script>
+</body>
+</html>

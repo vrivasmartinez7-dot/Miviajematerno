@@ -1,0 +1,425 @@
+/* =========================
+   PERFIL — Mi Viaje Materno
+========================= */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #F4F0EF;
+  color: #5b3441;
+  min-height: 100vh;
+}
+
+/* ── NAV ── */
+
+.perfil-nav {
+  height: 80px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+  border-bottom: 1px solid #edd8dc;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  color: #5b3441;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.nav-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #D9A5B0;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1rem;
+  overflow: hidden;
+}
+
+.nav-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── BACK ── */
+
+.back-bar {
+  padding: 20px 50px 0;
+}
+
+.btn-back {
+  background: none;
+  border: none;
+  color: #9d7d86;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.btn-back:hover {
+  color: #5b3441;
+}
+
+/* ── MAIN ── */
+
+.perfil-main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 30px 80px;
+}
+
+/* ── ENCABEZADO ── */
+
+.perfil-header {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  background: white;
+  border-radius: 30px;
+  padding: 40px;
+  border: 1px solid #edd8dc;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+  margin-bottom: 28px;
+}
+
+.perfil-avatar-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.perfil-avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #D9A5B0, #c97d8f);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  color: white;
+  font-weight: 500;
+  border: 3px solid #edd8dc;
+  overflow: hidden;
+  position: relative;
+}
+
+.perfil-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.cambiar-foto-btn {
+  font-size: 0.78rem;
+  color: #c97d8f;
+  cursor: pointer;
+  border: 1px solid #edd8dc;
+  background: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  transition: 0.2s;
+  white-space: nowrap;
+}
+
+.cambiar-foto-btn:hover {
+  background: #fff3f5;
+}
+
+.perfil-eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #c97d8f;
+  margin-bottom: 6px;
+}
+
+.perfil-header-text h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem;
+  color: #4c2632;
+  font-weight: 500;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.perfil-cesfam-label {
+  color: #9d7d86;
+  font-size: 0.9rem;
+}
+
+/* ── GRID ── */
+
+.perfil-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.perfil-card {
+  background: white;
+  border-radius: 28px;
+  padding: 32px;
+  border: 1px solid #edd8dc;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+}
+
+.perfil-card-full {
+  grid-column: 1 / -1;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.perfil-card h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  color: #4c2632;
+  font-weight: 500;
+}
+
+/* ── DATOS ── */
+
+.dato-row {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 14px 0;
+  border-bottom: 1px solid #f5ecee;
+}
+
+.dato-row:last-child {
+  border-bottom: none;
+}
+
+.dato-label {
+  font-size: 0.75rem;
+  color: #b08090;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.dato-value {
+  font-size: 1rem;
+  color: #4c2632;
+  font-weight: 500;
+}
+
+/* ── BOTONES EDITAR ── */
+
+.btn-edit {
+  background: none;
+  border: 1px solid #edd8dc;
+  padding: 7px 16px;
+  border-radius: 20px;
+  color: #c97d8f;
+  font-size: 0.82rem;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: 0.2s;
+}
+
+.btn-edit:hover {
+  background: #fff3f5;
+}
+
+/* ── FORMULARIO EDICIÓN ── */
+
+.input-group {
+  margin-bottom: 18px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.78rem;
+  color: #b08090;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e4d6da;
+  border-radius: 14px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: #4c2632;
+  background: #faf8f7;
+  outline: none;
+  transition: 0.2s;
+}
+
+.input-group input:focus {
+  border-color: #c97d8f;
+}
+
+.edit-note {
+  font-size: 0.8rem;
+  color: #b08090;
+  margin-bottom: 18px;
+  font-style: italic;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.btn-cancel {
+  background: none;
+  border: 1px solid #e4d6da;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: #9d7d86;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-cancel:hover {
+  background: #f5ecee;
+}
+
+.btn-save {
+  background: #8a4f63;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 20px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-save:hover {
+  opacity: 0.88;
+}
+
+/* ── MÓDULOS ── */
+
+.modulos-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modulo-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border-radius: 18px;
+  background: #faf8f7;
+  border: 1px solid #f0e4e7;
+  transition: 0.2s;
+}
+
+.modulo-row.completado {
+  background: #f5faf3;
+  border-color: #c5ddc0;
+}
+
+.modulo-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #edd8dc;
+  color: #8a4f63;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.modulo-row.completado .modulo-num {
+  background: #c5ddc0;
+  color: #3a6040;
+}
+
+.modulo-nombre {
+  flex: 1;
+  font-size: 0.9rem;
+  color: #5b3441;
+}
+
+.modulo-estado {
+  font-size: 0.78rem;
+  color: #b08090;
+  white-space: nowrap;
+}
+
+.modulo-row.completado .modulo-estado {
+  color: #3a6040;
+  font-weight: 500;
+}
+
+/* ── RESPONSIVE ── */
+
+@media (max-width: 700px) {
+  .perfil-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .perfil-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .perfil-card-full {
+    grid-column: 1;
+  }
+
+  .perfil-nav {
+    padding: 0 24px;
+  }
+
+  .back-bar {
+    padding: 16px 24px 0;
+  }
+
+  .perfil-main {
+    padding: 24px 16px 60px;
+  }
+}

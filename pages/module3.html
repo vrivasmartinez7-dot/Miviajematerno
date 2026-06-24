@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Módulo 3 — Mi viaje materno</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/module3.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+ <a class="nav-logo" href="dashboard.html">Mi viaje materno</a>
+  <ul class="nav-links">
+    <li><a href="dashboard.html">Inicio</a></li>
+    <li><a href="../pages/acompañantes.html">Acompañantes</a></li>
+    <li><a href="../pages/signos-alarma.html">Signos de alarma</a></li>
+    <li><a href="dashboard.html">Preguntas frecuentes</a></li>
+  </ul>
+  <div class="nav-user">
+    <div class="nav-avatar" id="nav-avatar">V</div>
+    <span id="profile-name">Hola</span>
+  </div>
+</nav>
+
+<!-- BACK -->
+<div class="back-bar">
+  <button class="btn-back" onclick="window.location.href='../dashboard.html'">← Volver al inicio</button>
+</div>
+
+<!-- HERO -->
+<div class="module-hero">
+  <span class="module-badge">Módulo 3 · 27 a 28 semanas</span>
+  <h1 class="module-title">El encuentro se acerca</h1>
+  <p class="module-subtitle">Preparto, parto y primeros cuidados con tu bebé</p>
+  <div class="progress-strip">
+    <p>Progreso: <span id="progress-pct">0%</span></p>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progress-bar" style="width:0%"></div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP TABS — 8 secciones -->
+<div class="steps-nav" id="steps-nav">
+  <button class="step-tab active" data-step="0"><span class="step-num">1</span> Bienvenida</button>
+  <button class="step-tab" data-step="1"><span class="step-num">2</span> Tu bebé</button>
+  <button class="step-tab" data-step="2"><span class="step-num">3</span> Preparto y parto</button>
+  <button class="step-tab" data-step="3"><span class="step-num">4</span> PARN</button>
+  <button class="step-tab" data-step="4"><span class="step-num">5</span> Apego y cuidados</button>
+  <button class="step-tab" data-step="5"><span class="step-num">6</span> Mitos y realidades</button>
+  <button class="step-tab" data-step="6"><span class="step-num">7</span> ¿Cómo me siento?</button>
+  <button class="step-tab" data-step="7"><span class="step-num">8</span> Quiz final</button>
+</div>
+
+<!-- CONTENT -->
+<div class="content-area">
+
+  <!-- ══ PANEL 0: BIENVENIDA ══ -->
+  <div class="section-panel active" id="panel-0">
+    <div class="card">
+      <div class="welcome-hero">
+        <div class="avatar-figure">
+          <div class="avatar-body">
+            <svg class="avatar-svg" viewBox="0 0 120 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="60" cy="28" rx="22" ry="8" fill="#7A3048"/>
+              <ellipse cx="60" cy="36" rx="18" ry="20" fill="#F5D5C0"/>
+              <ellipse cx="42" cy="40" rx="5" ry="14" fill="#7A3048"/>
+              <ellipse cx="78" cy="40" rx="5" ry="14" fill="#7A3048"/>
+              <circle cx="53" cy="33" r="2.5" fill="#4A1A2C"/>
+              <circle cx="67" cy="33" r="2.5" fill="#4A1A2C"/>
+              <path d="M54 43 Q60 48 66 43" stroke="#B07060" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <rect x="54" y="54" width="12" height="10" rx="4" fill="#F5D5C0"/>
+              <path d="M24 94 Q24 64 60 64 Q96 64 96 94 L93 140 Q93 148 80 148 L40 148 Q27 148 27 140 Z" fill="#E8B4BC"/>
+              <ellipse cx="60" cy="114" rx="34" ry="30" fill="#F2D9DD"/>
+              <ellipse cx="60" cy="114" rx="29" ry="25" fill="#FAEAED"/>
+              <circle cx="60" cy="122" r="3" fill="#E8B4BC"/>
+              <path d="M24 94 Q11 106 13 126" stroke="#E8B4BC" stroke-width="10" stroke-linecap="round" fill="none"/>
+              <path d="M96 94 Q109 106 107 126" stroke="#E8B4BC" stroke-width="10" stroke-linecap="round" fill="none"/>
+              <ellipse cx="13" cy="129" rx="6" ry="5" fill="#F5D5C0"/>
+              <ellipse cx="107" cy="129" rx="6" ry="5" fill="#F5D5C0"/>
+              <rect x="38" y="148" width="18" height="28" rx="8" fill="#C07080"/>
+              <rect x="64" y="148" width="18" height="28" rx="8" fill="#C07080"/>
+              <ellipse cx="47" cy="177" rx="10" ry="4" fill="#F5D5C0"/>
+              <ellipse cx="73" cy="177" rx="10" ry="4" fill="#F5D5C0"/>
+              <text x="48" y="111" font-size="12" fill="#C07080">♡</text>
+            </svg>
+          </div>
+          <p class="avatar-label">Tu avatar, semana <span id="avatar-week-label">27</span></p>
+        </div>
+        <div class="welcome-text">
+          <h2>¡Hola, <span id="user-name">Usuaria</span>!</h2>
+          <p class="week-tag" id="welcome-subtitle">Semana 27 de embarazo</p>
+          <p class="card-body">Estás en el tercer trimestre. Tu bebé ya está casi listo para conocerte. En este módulo aprenderás a reconocer las señales del parto, el programa PARN y cómo preparar el encuentro con tu bebé.</p>
+          <div class="pill-info" id="baby-size-pill">🥬 Tu bebé tiene el tamaño de una lechuga romana</div>
+          <div class="week-input-row">
+            <label for="week-input">¿En qué semana estás?</label>
+            <input type="number" id="week-input" min="27" max="28" value="27" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card card-body" style="line-height:1.8;">
+      <p class="card-title" style="margin-bottom:0.8rem;">¿Qué aprenderás en este módulo?</p>
+      <ul style="padding-left:1.2rem; display:flex; flex-direction:column; gap:0.4rem;">
+        <li>El desarrollo de tu bebé en las semanas 27 y 28</li>
+        <li>Cómo reconocer las señales del trabajo de preparto y parto</li>
+        <li>Las fases del trabajo de parto y técnicas de alivio del dolor</li>
+        <li>Qué es el PARN y cómo acceder a sus beneficios</li>
+        <li>Apego temprano, lactancia, masaje infantil y portabebé</li>
+        <li>Mitos y realidades sobre el parto y el nacimiento</li>
+      </ul>
+      <p style="margin-top:0.8rem; font-size:0.85rem; color:var(--text-light);">⏱ Duración estimada: 25–30 minutos</p>
+    </div>
+  </div>
+
+  <!-- ══ PANEL 1: TU BEBÉ ══ -->
+  <div class="section-panel" id="panel-1">
+    <div class="card">
+      <p class="card-title">El desarrollo de tu bebé</p>
+      <p class="card-body" style="margin-bottom:1rem;">Selecciona la semana para ver cómo crece tu bebé.</p>
+      <div class="baby-weeks">
+        <button class="baby-week-btn active" data-baby="27">Semana 27</button>
+        <button class="baby-week-btn" data-baby="28">Semana 28</button>
+      </div>
+      <div class="baby-display">
+        <div class="baby-fruit" id="baby-fruit">🥬</div>
+        <div class="baby-info">
+          <h3 id="baby-title">Semana 27</h3>
+          <p class="baby-size" id="baby-size-text">Tamaño: 36 cm · Peso: 875 g (como una lechuga romana)</p>
+          <p id="baby-desc">Tiene menos espacio para moverse y sentirás como se acomoda. Puede abrir y cerrar los ojos. Su sistema inmune comienza a madurar. Patalea con mucha fuerza y ya puedes sentir sus movimientos claramente.</p>
+          <span class="baby-fact" id="baby-fact">✨ Tu bebé está recubierto por una sustancia grasosa llamada "Vernix"</span>
+        </div>
+      </div>
+    </div>
+    <div class="card card-body">
+      <p class="card-title" style="margin-bottom:0.8rem;">El tercer trimestre comienza</p>
+      Tu bebé está entrando en la recta final. Cada semana que pasa, sus pulmones maduran más y su cerebro crece a pasos agigantados. El encuentro ya está cerca, y tú y él se están preparando juntos para ese momento.
+    </div>
+  </div>
+
+  <!-- ══ PANEL 2: PREPARTO Y PARTO ══ -->
+  <div class="section-panel" id="panel-2">
+
+    <div class="card">
+      <p class="card-title">¿Cómo sé que estoy de parto?</p>
+      <p class="card-body" style="margin-bottom:1.5rem;">Lee cada situación y elige la categoría que corresponde. Luego descubre la respuesta correcta basada en evidencia.</p>
+      <div class="signals-grid">
+
+        <div class="signal-card" data-answer="preparto">
+          <p class="signal-desc">Contracciones irregulares que se alivian al caminar o cambiar de posición.</p>
+          <div class="signal-buttons">
+            <button class="signal-btn" data-val="preparto">Pródromo</button>
+            <button class="signal-btn" data-val="parto">Parto activo</button>
+            <button class="signal-btn" data-val="alarma">Signo de alarma</button>
+          </div>
+          <div class="signal-explanation">
+            <span class="signal-badge preparto-badge">Pródromo</span>
+            Son contracciones de Braxton Hicks, irregulares y que no progresan. No indican inicio de parto activo.
+          </div>
+        </div>
+
+        <div class="signal-card" data-answer="parto">
+          <p class="signal-desc">Contracciones regulares cada 5 minutos, que duran 1 minuto, por más de 1 hora y media.</p>
+          <div class="signal-buttons">
+            <button class="signal-btn" data-val="preparto">Pródromo</button>
+            <button class="signal-btn" data-val="parto">Trabajo de Parto</button>
+            <button class="signal-btn" data-val="alarma">Signo de alarma</button>
+          </div>
+          <div class="signal-explanation">
+            <span class="signal-badge parto-badge">Trabajo de Parto, ir al hospital</span>
+            Regla 5-1-1: contracciones cada 5 min, duración 1 min, durante 1 hora y media. Es momento de trasladarse al hospital.
+          </div>
+        </div>
+
+        <div class="signal-card" data-answer="preparto">
+          <p class="signal-desc">Salida de un tapón mucoso rosado o con pequeñas trazas de sangre.</p>
+          <div class="signal-buttons">
+            <button class="signal-btn" data-val="preparto">Pródromo</button>
+            <button class="signal-btn" data-val="parto">Trabajo de Parto</button>
+            <button class="signal-btn" data-val="alarma">Signo de alarma</button>
+          </div>
+          <div class="signal-explanation">
+            <span class="signal-badge preparto-badge">Pródromo</span>
+            El tapón mucoso puede salir días o semanas antes del parto. Indica que el cuello uterino comienza a madurar.
+          </div>
+        </div>
+
+        <div class="signal-card" data-answer="parto">
+          <p class="signal-desc">Rotura de membranas: salida de líquido amniótico en chorro o de forma continua.</p>
+          <div class="signal-buttons">
+            <button class="signal-btn" data-val="preparto">Pródromo</button>
+            <button class="signal-btn" data-val="parto">Trabajo de Parto</button>
+            <button class="signal-btn" data-val="alarma">Signo de alarma</button>
+          </div>
+          <div class="signal-explanation">
+            <span class="signal-badge parto-badge">Consultar de inmediato</span>
+            La rotura de fuente requiere evaluación en el hospital aunque no haya contracciones. Anota la hora y el color del líquido.
+          </div>
+        </div>
+
+        <div class="signal-card" data-answer="alarma">
+          <p class="signal-desc">Fuerte dolor de cabeza con visión borrosa o manchas, y zumbido en los oídos.</p>
+          <div class="signal-buttons">
+            <button class="signal-btn" data-val="preparto">Pródromo</button>
+            <button class="signal-btn" data-val="parto">Trabajo de Parto</button>
+            <button class="signal-btn" data-val="alarma">Signo de alarma</button>
+          </div>
+          <div class="signal-explanation">
+            <span class="signal-badge alarma-badge">⚠️ Signo de alarma (urgencias) </span>
+            Puede indicar preeclampsia. Acude de inmediato a urgencias obstétricas. No esperes a que pase.
+          </div>
+        </div>
+
+        <div class="signal-card" data-answer="alarma">
+          <p class="signal-desc">Líquido amniótico de color verdoso o café al romper la bolsa de aguas.</p>
+          <div class="signal-buttons">
+            <button class="signal-btn" data-val="preparto">Pródromo</button>
+            <button class="signal-btn" data-val="parto">Trabajo de Parto</button>
+            <button class="signal-btn" data-val="alarma">Signo de alarma</button>
+          </div>
+          <div class="signal-explanation">
+            <span class="signal-badge alarma-badge">⚠️ Urgencia (ir al hospital)</span>
+            El líquido teñido de meconio indica que el bebé pudo haber defecado. Requiere evaluación inmediata.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Las fases del trabajo de parto</p>
+      <p class="card-body" style="margin-bottom:1.5rem;">Toca cada fase para conocer qué ocurre y qué puedes hacer en cada etapa.</p>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-header">
+            <span class="timeline-phase-name">Pródromo</span>
+            <span class="timeline-duration">Horas a días</span>
+            <span class="timeline-toggle">+</span>
+          </div>
+          <div class="timeline-body">
+            <div class="timeline-cols">
+              <div>
+                <p class="timeline-col-title">¿Qué ocurre?</p>
+                <p>Contracciones irregulares, salida del tapón mucoso y encajamiento del bebé. El cuello uterino comienza a borrarse y a madurar.</p>
+              </div>
+              <div>
+                <p class="timeline-col-title">¿Qué puedes hacer?</p>
+                <p>Descansa, come algo liviano e hidratante y prepara tu maleta con calma. No es necesario ir al hospital todavía.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-header">
+            <span class="timeline-phase-name">Trabajo de parto (fase latente)</span>
+            <span class="timeline-duration">Hasta 14-20 horas</span>
+            <span class="timeline-toggle">+</span>
+          </div>
+          <div class="timeline-body">
+            <div class="timeline-cols">
+              <div>
+                <p class="timeline-col-title">¿Qué ocurre?</p>
+                <p>Contracciones regulares que van aumentando. El cuello uterino dilata entre 0 y 3 cm. Es el momento de ir al hospital.</p>
+              </div>
+              <div>
+                <p class="timeline-col-title">¿Qué puedes hacer?</p>
+                <p>Camina, usa técnicas de respiración y cuenta con el acompañamiento de tu persona de apoyo elegida.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-header">
+            <span class="timeline-phase-name">Trabajo de parto (fase activa)</span>
+            <span class="timeline-duration">3 a 6 horas</span>
+            <span class="timeline-toggle">+</span>
+          </div>
+          <div class="timeline-body">
+            <div class="timeline-cols">
+              <div>
+                <p class="timeline-col-title">¿Qué ocurre?</p>
+                <p>Contracciones más intensas y frecuentes. La dilatación avanza entre 3 y 10 cm y la cabeza irá bajando por el canal de partoEs la etapa más exigente.</p>
+              </div>
+              <div>
+                <p class="timeline-col-title">¿Qué puedes hacer?</p>
+                <p>Usa posiciones verticales, técnicas de respiración y el apoyo de tu matrona. Si lo decides, puedes solicitar analgesia.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-header">
+            <span class="timeline-phase-name">Expulsivo y alumbramiento</span>
+            <span class="timeline-duration">Entre 30 a 45 minutos</span>
+            <span class="timeline-toggle">+</span>
+          </div>
+          <div class="timeline-body">
+            <div class="timeline-cols">
+              <div>
+                <p class="timeline-col-title">¿Qué ocurre?</p>
+                <p>Llegan los pujos, nace tu bebé y luego se expulsa la placenta. Es el momento del primer contacto piel con piel.</p>
+              </div>
+              <div>
+                <p class="timeline-col-title">¿Qué puedes hacer?</p>
+                <p>Confía en tu cuerpo y en tu matrona. El encuentro con tu bebé está a punto de ocurrir. ¡Ya casi!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Técnicas de alivio del dolor</p>
+      <p class="card-body" style="margin-bottom:1.5rem;">Existen muchas formas de manejar el dolor durante el parto. Toca cada tarjeta para conocerlas.</p>
+      <div class="habits-grid">
+
+        <div class="habit-card">
+          <div class="habit-header">
+            <span class="habit-icon">🌬️</span>
+            <h3 class="habit-name">Respiración y relajación</h3>
+            <span class="habit-toggle">+</span>
+          </div>
+          <div class="habit-body">
+            <p>La respiración consciente es una de las herramientas más poderosas durante el parto.</p>
+            <ul>
+              <li><strong>Durante la contracción:</strong> inhala lento por la nariz (4 tiempos), exhala por la boca (6 tiempos).</li>
+              <li><strong>Entre contracciones:</strong> respira normal y aprovecha para descansar.</li>
+              <li>La relajación muscular consciente reduce la percepción del dolor.</li>
+            </ul>
+            <div class="habit-tip">💡 <strong>Tip:</strong> Practica esta respiración desde ahora para que cuando llegue el gran día sepas como hacerlo.</div>
+          </div>
+        </div>
+
+        <div class="habit-card">
+          <div class="habit-header">
+            <span class="habit-icon">🚿</span>
+            <h3 class="habit-name">Hidroterapia</h3>
+            <span class="habit-toggle">+</span>
+          </div>
+          <div class="habit-body">
+            <p>El agua caliente es un analgésico natural muy efectivo durante la fase latente del parto.</p>
+            <ul>
+              <li>Una ducha o baño tibio alivia la tensión muscular y reduce la percepción del dolor.</li>
+              <li>El calor relaja la musculatura de la espalda y la pelvis.</li>
+              <li>Consulta con tu matrona si está disponible en tu hospital.</li>
+            </ul>
+            <div class="habit-tip">💡 <strong>Tip:</strong> Dirige el chorro de agua tibia sobre la zona lumbar durante las contracciones.</div>
+          </div>
+        </div>
+
+        <div class="habit-card">
+          <div class="habit-header">
+            <span class="habit-icon">🤲</span>
+            <h3 class="habit-name">Masaje y apoyo del acompañante</h3>
+            <span class="habit-toggle">+</span>
+          </div>
+          <div class="habit-body">
+            <p>El acompañante de parto tiene un rol fundamental en el manejo del dolor.</p>
+            <ul>
+              <li><strong>Masaje lumbar:</strong> presión firme y circular en la zona baja de la espalda.</li>
+              <li><strong>Presión en el sacro:</strong> alivia especialmente el dolor de "parto de espalda".</li>
+              <li><strong>Posiciones de apoyo:</strong> ayudar a la madre a adoptar posiciones verticales.</li>
+              <li>La presencia constante y las palabras de aliento también reducen el dolor.</li>
+            </ul>
+            <div class="habit-tip">💡 <strong>Tip:</strong> Practica el masaje lumbar con tu acompañante antes del parto para estar preparados.</div>
+          </div>
+        </div>
+
+        <div class="habit-card">
+          <div class="habit-header">
+            <span class="habit-icon">💉</span>
+            <h3 class="habit-name">Analgesia y anestesia epidural</h3>
+            <span class="habit-toggle">+</span>
+          </div>
+          <div class="habit-body">
+            <p>La anestesia epidural es el método farmacológico más utilizado para el alivio del dolor durante el parto.</p>
+            <ul>
+              <li>Se administra en el espacio epidural y bloquea la sensación desde la cintura hacia abajo.</li>
+              <li>Permite que la madre esté despierta y consciente durante todo el proceso.</li>
+              <li>Se indica cuando la madre lo solicita</li>
+              <li>No alarga el parto ni perjudica al bebé cuando se administra correctamente.</li>
+            </ul>
+            <div class="habit-tip">💡 Solicitar o no la epidural es una decisión completamente tuya y válida. Lo importante es que te sientas apoyada.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PANEL 3: PARN ══ -->
+  <div class="section-panel" id="panel-3">
+    <div class="card">
+      <p class="card-title">Programa de Apoyo al Recién Nacido (PARN)</p>
+      <p class="card-body" style="margin-bottom:1.5rem;">El PARN es una prestación de Chile Crece Contigo que acompaña a las familias desde el nacimiento. Toca cada tarjeta para conocer más.</p>
+      <div class="habits-grid">
+
+        <div class="habit-card">
+          <div class="habit-header">
+            <span class="habit-icon">🏥</span>
+            <h3 class="habit-name">¿Qué es el PARN?</h3>
+            <span class="habit-toggle">+</span>
+          </div>
+          <div class="habit-body">
+            <p>El PARN es una prestación del sistema Chile Crece Contigo que entrega apoyo a las familias para favorecer el desarrollo integral de los recién nacidos y acompañar los primeros cuidados.</p>
+            <ul>
+              <li>Es un programa de apoyo concreto para las familias desde antes del nacimiento.</li>
+              <li>Busca favorecer el desarrollo integral del recién nacido durante sus primeros meses de vida.</li>
+            </ul>
+            <div class="habit-tip">💡 <strong>Dato importante:</strong> El PARN se entrega en establecimientos públicos de salud de todo Chile.</div>
+          </div>
+        </div>
+
+        <div class="habit-card">
+          <div class="habit-header">
+            <span class="habit-icon">👨‍👩‍👧</span>
+            <h3 class="habit-name">¿Quiénes pueden acceder?</h3>
+            <span class="habit-toggle">+</span>
+          </div>
+          <div class="habit-body">
+            <p>Pueden acceder los recién nacidos atendidos en hospitales o maternidades de la red pública de salud.</p>
+            <ul>
+              <li>El programa está dirigido a las familias que se atienden en el sistema público.</li>
+              <li>Busca apoyar a las familias durante los primeros meses de vida del bebé.</li>
+            </ul>
+            <div class="habit-tip">💡 Si tienes dudas sobre cómo acceder, consulta a tu matrona o al equipo de salud de tu CESFAM.</div>
+          </div>
+        </div>
+
+        <div class="habit-card">
+  <div class="habit-header">
+    <span class="habit-icon">🎁</span>
+    <h3 class="habit-name">¿Qué incluye el ajuar?</h3>
+    <span class="habit-toggle">+</span>
+  </div>
+  <div class="habit-body">
+    <p>
+      Al nacer en un hospital de la red pública de salud, tu bebé recibirá el
+      <strong>set de implementos del Programa de Apoyo al Recién Nacido (PARN)</strong>,
+      independiente de tu previsión o tipo de hospitalización. Está compuesto por dos paquetes:
+    </p>
+
+    <p><strong>🛏️ Paquete de Buen Dormir</strong></p>
+    <ul>
+      <li>Cuna corral armable (funciona como cuna y como corral)</li>
+      <li>Colchón con funda</li>
+      <li>Dos juegos de sábanas</li>
+      <li>Frazada tipo polar</li>
+      <li>Colcha tipo plumón</li>
+      <li>Móvil de estimulación visual y auditiva</li>
+      <li>Alfombra de goma eva (4 piezas) para exploración en el suelo</li>
+      <li>📦 Todo viene en un embalaje que se convierte en baúl</li>
+    </ul>
+
+    <p><strong>🤱 Paquete de Bienestar, Apego y Estimulación</strong></p>
+    <ul>
+      <li>Cojín de lactancia</li>
+      <li>Porta bebé tipo Mei-Tai (seguro, cómodo y anatómico)</li>
+      <li>Vestuario talla 3–6 meses</li>
+      <li>Toalla de baño con gorro</li>
+      <li>2 pañales de algodón reutilizables</li>
+      <li>Mudador de plástico plegable</li>
+      <li>Mochila de transporte para artículos de bebé</li>
+      <li>Libro "Mi primer libro"</li>
+      <li>Cartilla educativa "Ya estoy aquí" sobre crianza temprana</li>
+    </ul>
+
+    <div class="habit-tip">
+      💡 El ajuar se entrega al momento del alta en la maternidad. Si naciste en clínica privada (aunque tengas Fonasa o bono PAD), no aplica. En partos múltiples, corresponde un set completo por cada bebé. Puedes retirarlo hasta los 6 meses de edad.
+    </div>
+  </div>
+</div>
+
+        <div class="habit-card">
+          <div class="habit-header">
+            <span class="habit-icon">🌱</span>
+            <h3 class="habit-name">Chile Crece Contigo te acompaña</h3>
+            <span class="habit-toggle">+</span>
+          </div>
+          <div class="habit-body">
+            <p>Chile Crece Contigo ofrece acompañamiento continuo durante el crecimiento de tu hijo o hija:</p>
+            <ul>
+              <li>Controles de salud del niño o niña sano.</li>
+              <li>Materiales educativos para el cuidado y la crianza.</li>
+              <li>Acompañamiento familiar integral.</li>
+            </ul>
+            <div class="habit-tip">💡 <strong>Recuerda:</strong> Asistir a los controles de salud de tu bebé es fundamental para su desarrollo y para acceder a todos los beneficios del sistema.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PANEL 4: APEGO Y PRIMEROS CUIDADOS ══ -->
+  <div class="section-panel" id="panel-4">
+    <div class="card">
+      <p class="card-title">Apego y primeros cuidados</p>
+      <p class="card-body" style="margin-bottom:1.5rem;">El encuentro con tu bebé es un momento único. Conoce las claves del apego temprano, la lactancia y los primeros cuidados. Toca cada tarjeta para descubrir más.</p>
+      <div class="habits-grid">
+
+        <div class="habit-card">
+          <div class="habit-header">
+            <span class="habit-icon">🤱</span>
+            <h3 class="habit-name">Contacto piel con piel</h3>
+            <span class="habit-toggle">+</span>
+          </div>
+          <div class="habit-body">
+            <p><strong>El primer abrazo:</strong> Después del nacimiento, colocar al bebé sobre el pecho de su madre favorece:</p>
+            <ul>
+              <li>La regulación de la temperatura corporal del recién nacido.</li>
+              <li>La adaptación al nacimiento y la estabilización de sus signos vitales.</li>
+              <li>El vínculo afectivo entre madre e hijo o hija.</li>
+              <li>El inicio de la lactancia materna.</li>
+            </ul>
+            <div class="habit-tip">💡 El contacto piel con piel es uno de los momentos más poderosos del nacimiento. Pídele a tu equipo de salud que te lo faciliten desde el primer instante.</div>
+          </div>
+        </div>
+
+        <div class="habit-card">
+          <div class="habit-header">
+            <span class="habit-icon">💜</span>
+            <h3 class="habit-name">Apego temprano</h3>
+            <span class="habit-toggle">+</span>
+          </div>
+          <div class="habit-body">
+            <p><strong>Construyendo el vínculo:</strong> El apego se fortalece cuando respondes a las necesidades de tu bebé con cariño y cercanía.</p>
+            <ul>
+              <li>Pequeñas acciones como hablarle, mirarlo y abrazarlo ayudan a crear un vínculo seguro.</li>
+              <li>El apego no siempre ocurre de forma instantánea, es un proceso que se construye día a día.</li>
+              <li>Cada momento de cuidado y atención es una oportunidad para fortalecer ese lazo.</li>
+            </ul>
+            <div class="habit-tip">💡 No hay una sola forma correcta de vincularse. Lo que importa es la presencia, la calidez y la respuesta amorosa a las señales de tu bebé.</div>
+          </div>
+        </div>
+
+        <div class="habit-card">
+          <div class="habit-header">
+            <span class="habit-icon">🍼</span>
+            <h3 class="habit-name">Lactancia materna</h3>
+            <span class="habit-toggle">+</span>
+          </div>
+          <div class="habit-body">
+            <p><strong>La primera alimentación:</strong> La lactancia materna es el mejor alimento para tu bebé durante los primeros meses de vida.</p>
+            <ul>
+              <li><strong>Aporta nutrientes y defensas</strong> que protegen al bebé de infecciones y enfermedades.</li>
+              <li><strong>Favorece el crecimiento saludable</strong> y el desarrollo neurológico.</li>
+              <li><strong>Fortalece el vínculo</strong> madre-hijo o hija a través del contacto y la cercanía.</li>
+            </ul>
+            <div class="habit-tip">💡 Si tienes dudas o dificultades con la lactancia, pide apoyo a tu matrona o a una consultora de lactancia. No estás sola en este proceso.</div>
+          </div>
+        </div>
+
+        <div class="habit-card">
+          <div class="habit-header">
+            <span class="habit-icon">🫙</span>
+            <h3 class="habit-name">Masaje infantil</h3>
+            <span class="habit-toggle">+</span>
+          </div>
+          <div class="habit-body">
+            <p><strong>Caricias que conectan:</strong> Los masajes suaves pueden ayudar a:</p>
+            <ul>
+              <li>Relajar al bebé y favorecer el sueño.</li>
+              <li>Disminuir el estrés y el llanto.</li>
+              <li>Fortalecer el apego y la comunicación no verbal.</li>
+            </ul>
+            <p style="margin-top:0.8rem;">Utilízalos cuando tu bebé esté tranquilo y despierto, con movimientos suaves y circulares, en un ambiente cálido.</p>
+            <div class="habit-tip">💡 Usa aceite vegetal neutro (oliva, girasol o almendras dulces). Nunca masajees si el bebé llora o muestra señales de malestar.</div>
+          </div>
+        </div>
+
+        <div class="habit-card">
+          <div class="habit-header">
+            <span class="habit-icon">👶</span>
+            <h3 class="habit-name">Uso seguro del portabebé</h3>
+            <span class="habit-toggle">+</span>
+          </div>
+          <div class="habit-body">
+            <p><strong>Porteo seguro:</strong> Al utilizar un portabebé, recuerda siempre:</p>
+            <ul>
+              <li>Mantener la <strong>cara visible</strong> del bebé en todo momento.</li>
+              <li>Mantener <strong>despejada la vía aérea</strong>, la barbilla no debe tocar el pecho.</li>
+              <li>Llevar al bebé <strong>cerca de tu cuerpo</strong>, a la altura del beso.</li>
+              <li>Asegurar una <strong>posición cómoda y segura</strong> para ambos.</li>
+            </ul>
+            <div class="habit-tip">💡 El porteo favorece el contacto, regula la temperatura del bebé y facilita el cuidado diario. Consulta con tu matrona para un uso correcto.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PANEL 5: MITOS ══ -->
+  <div class="section-panel" id="panel-5">
+    <div class="card">
+      <p class="card-title">¿Mito o realidad?</p>
+      <p class="card-body" style="margin-bottom:1.2rem;">Lee cada afirmación y elige si crees que es un mito o una realidad. ¡Luego descubre la respuesta basada en evidencia!</p>
+      <div class="myth-grid">
+
+        <div class="myth-card" data-answer="false">
+          <p class="myth-statement">"Romper la fuente (bolsa de aguas) significa que el bebé nacerá de inmediato."</p>
+          <div class="myth-buttons">
+            <button class="myth-btn" data-val="true">✅ Realidad</button>
+            <button class="myth-btn" data-val="false">❌ Mito</button>
+          </div>
+          <div class="myth-explanation">
+            <span class="myth-result-icon">❌</span><strong>Mito.</strong> La rotura de membranas no significa que el parto sea inmediato. En muchos casos, las contracciones todavía no han comenzado. Sin embargo, sí requiere evaluación en el hospital dentro de las siguientes horas.
+            <br><small style="color:var(--text-light); opacity:0.8; margin-top:0.4rem; display:block;">Fuente: MINSAL Chile</small>
+          </div>
+        </div>
+
+        <div class="myth-card" data-answer="false">
+          <p class="myth-statement">"Siempre se genera un vínculo instantáneo con el bebé en el momento del nacimiento."</p>
+          <div class="myth-buttons">
+            <button class="myth-btn" data-val="true">✅ Realidad</button>
+            <button class="myth-btn" data-val="false">❌ Mito</button>
+          </div>
+          <div class="myth-explanation">
+            <span class="myth-result-icon">❌</span><strong>Mito.</strong> El vínculo afectivo es un proceso que se construye con el tiempo, el contacto y los cuidados cotidianos. No siempre ocurre de forma instantánea y eso es completamente normal.
+            <br><small style="color:var(--text-light); opacity:0.8; margin-top:0.4rem; display:block;">Fuente: Chile Crece Contigo</small>
+          </div>
+        </div>
+
+        <div class="myth-card" data-answer="true">
+          <p class="myth-statement">"Nacer por parto vaginal es mejor para el bebé que nacer por cesárea."</p>
+          <div class="myth-buttons">
+            <button class="myth-btn" data-val="true">✅ Realidad</button>
+            <button class="myth-btn" data-val="false">❌ Mito</button>
+          </div>
+          <div class="myth-explanation">
+            <span class="myth-result-icon">✅</span><strong>Realidad (con matices).</strong> El parto vaginal, cuando es posible, tiene beneficios: colonización de la microbiota materna, estimulación respiratoria y menor riesgo de ciertas infecciones. Sin embargo, la cesárea es necesaria y segura cuando está médicamente indicada.
+            <br><small style="color:#3A6040; opacity:0.8; margin-top:0.4rem; display:block;">Fuente: OMS / MINSAL Chile</small>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PANEL 6: EMOCIÓN ══ -->
+  <div class="section-panel" id="panel-6">
+    <div class="card">
+      <p class="card-title">¿Cómo te sientes hoy?</p>
+      <p class="card-body" style="margin-bottom:0.3rem;">El parto se acerca y contigo vienen muchas emociones. Elige la que mejor te representa en este momento:</p>
+      <div class="emotion-grid">
+        <button class="emotion-btn" data-emo="emocionada"><span class="emo-icon">😊</span><span class="emo-label">Emocionada y lista</span></button>
+        <button class="emotion-btn" data-emo="asustada"><span class="emo-icon">😟</span><span class="emo-label">Asustada o con miedo</span></button>
+        <button class="emotion-btn" data-emo="cansada"><span class="emo-icon">😴</span><span class="emo-label">Agotada</span></button>
+        <button class="emotion-btn" data-emo="ambivalente"><span class="emo-icon">🌊</span><span class="emo-label">Con sentimientos mezclados</span></button>
+        <button class="emotion-btn" data-emo="sola"><span class="emo-icon">🤍</span><span class="emo-label">Sola o sin apoyo</span></button>
+        <button class="emotion-btn" data-emo="paz"><span class="emo-icon">🌸</span><span class="emo-label">En paz y conectada</span></button>
+      </div>
+      <div class="emotion-response" id="emotion-response">
+        <h4 id="emo-title"></h4>
+        <p id="emo-msg"></p>
+        <p class="emo-tip" id="emo-tip"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PANEL 7: QUIZ ══ -->
+  <div class="section-panel" id="panel-7">
+    <div class="card" id="quiz-container">
+      <p class="card-title">Quiz de cierre</p>
+      <p class="card-body" style="margin-bottom:0.5rem;">Son 6 preguntas divididas en dos bloques. ¡Puedes lograrlo!</p>
+
+      <div class="quiz-block-label">Bloque 1 — Trabajo de preparto y parto</div>
+
+      <div class="quiz-question">
+        <p class="quiz-q">1. ¿Cuál es la regla que indica que debes ir al hospital cuando comienzan las contracciones?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-q="0" data-val="a">Contracciones cada 10 min durante 30 minutos</button>
+          <button class="quiz-opt" data-q="0" data-val="b">Contracciones cada 5 min, duración 1 min, durante 1 hora (regla 5-1-1)</button>
+          <button class="quiz-opt" data-q="0" data-val="c">Cuando rompes la bolsa de aguas, independiente de las contracciones</button>
+        </div>
+        <p class="quiz-feedback" id="fb-0">La regla 5-1-1 indica: contracciones cada 5 minutos, duración de 1 minuto, durante al menos 1 hora. Es el momento de trasladarse al hospital.</p>
+      </div>
+
+      <div class="quiz-question">
+        <p class="quiz-q">2. ¿Qué indica la presencia de líquido amniótico de color verdoso o café al romper la bolsa?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-q="1" data-val="a">Que el parto está muy cerca y es normal</button>
+          <button class="quiz-opt" data-q="1" data-val="b">Que el bebé pudo haber defecado (meconio) y requiere atención inmediata</button>
+          <button class="quiz-opt" data-q="1" data-val="c">Que el líquido amniótico está infectado por bacterias</button>
+        </div>
+        <p class="quiz-feedback" id="fb-1">El líquido teñido de meconio indica que el bebé pudo haber defecado dentro del útero. Requiere evaluación inmediata en urgencias obstétricas.</p>
+      </div>
+
+      <div class="quiz-question">
+        <p class="quiz-q">3. ¿En qué fase del parto suele iniciarse el contacto piel con piel con el bebé?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-q="2" data-val="a">En la fase latente, cuando llega al hospital</button>
+          <button class="quiz-opt" data-q="2" data-val="b">En el expulsivo, inmediatamente después del nacimiento</button>
+          <button class="quiz-opt" data-q="2" data-val="c">Después del control pediátrico, al cabo de 1 hora</button>
+        </div>
+        <p class="quiz-feedback" id="fb-2">El contacto piel con piel se inicia en el expulsivo, inmediatamente después del nacimiento, como parte de la atención humanizada del parto.</p>
+      </div>
+
+      <div class="quiz-block-label" style="margin-top:2rem;">Bloque 2 — PARN, apego y cuidados del recién nacido</div>
+
+      <div class="quiz-question">
+        <p class="quiz-q">4. ¿Quiénes pueden acceder al PARN (Programa de Apoyo al Recién Nacido)?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-q="3" data-val="a">Recién nacidos atendidos en hospitales o maternidades de la red pública de salud</button>
+          <button class="quiz-opt" data-q="3" data-val="b">Solo familias de escasos recursos previamente inscritas</button>
+          <button class="quiz-opt" data-q="3" data-val="c">Cualquier recién nacido, independiente del sistema de salud donde nazca</button>
+        </div>
+        <p class="quiz-feedback" id="fb-3">El PARN está disponible para recién nacidos atendidos en hospitales o maternidades de la red pública de salud, como parte del sistema Chile Crece Contigo.</p>
+      </div>
+
+      <div class="quiz-question">
+        <p class="quiz-q">5. ¿Cuál de estos beneficios tiene el contacto piel con piel inmediato para el recién nacido?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-q="4" data-val="a">Acelera el alta médica del hospital</button>
+          <button class="quiz-opt" data-q="4" data-val="b">Evita que el bebé llore durante las primeras horas</button>
+          <button class="quiz-opt" data-q="4" data-val="c">Regula su temperatura corporal y favorece el inicio de la lactancia</button>
+        </div>
+        <p class="quiz-feedback" id="fb-4">El contacto piel con piel regula la temperatura corporal del bebé, estabiliza sus signos vitales y favorece el inicio de la lactancia materna.</p>
+      </div>
+
+      <div class="quiz-question">
+        <p class="quiz-q">6. ¿Cuál es la posición segura del bebé en el portabebé?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-q="5" data-val="a">Las piernas del bebé cuelgan rectas hacia abajo</button>
+          <button class="quiz-opt" data-q="5" data-val="b">El bebé va horizontalmente, mirando hacia afuera</button>
+          <button class="quiz-opt" data-q="5" data-val="c">Cara visible, vía aérea despejada y bebé cerca del cuerpo en posición cómoda</button>
+        </div>
+        <p class="quiz-feedback" id="fb-5">La posición segura implica mantener la cara visible, la vía aérea despejada, al bebé cerca del cuerpo y en una posición cómoda y ergonómica para ambos.</p>
+      </div>
+
+      <div class="quiz-submit-row">
+        <button class="btn-primary" id="quiz-submit-btn">Ver mis resultados</button>
+      </div>
+    </div>
+
+    <div class="card quiz-result" id="quiz-result">
+      <div class="badge-icon">🏅</div>
+      <h3>¡Módulo 3 completado!</h3>
+      <div class="score-pill" id="quiz-score-text">Obtuviste 6 de 6</div>
+      <p id="quiz-msg">Excelente trabajo. Ya estás preparada para reconocer el parto y recibir a tu bebé con amor. ¡El encuentro está muy cerca!</p>
+      <button class="btn-primary" id="btn-finish">Ir al módulo 4 →</button>
+    </div>
+  </div>
+
+  <!-- NAV INFERIOR -->
+  <div class="nav-buttons">
+<button class="btn-outline" id="btn-prev" disabled>← Anterior</button>
+<span class="step-indicator" id="step-indicator">Sección 1 de 8</span>
+<button class="btn-primary" id="btn-next">Siguiente →</button>
+  </div>
+
+</div><!-- /content-area -->
+
+<script type="module" src="../js/module3.js"></script>
+</body>
+</html>
