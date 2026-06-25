@@ -35,32 +35,20 @@ const furInput = document.getElementById("fur");
 
 if (furInput) {
   furInput.addEventListener("change", () => {
-
     const furDate = new Date(furInput.value);
     const today = new Date();
-
-    // Diferencia en milisegundos → días
     const difference = today - furDate;
     const daysPregnant = Math.floor(difference / (1000 * 60 * 60 * 24));
-
-    // Semanas y días
     const weeks = Math.floor(daysPregnant / 7);
     const days = daysPregnant % 7;
-
-    // Calcular FPP
     const dueDate = new Date(furDate);
     dueDate.setDate(dueDate.getDate() + 280);
-
-    // Formatear fecha
     const dueDateFormatted = dueDate.toLocaleDateString("es-CL");
 
-    // Mostrar resultados
     document.getElementById("gestational-age").textContent =
       `Edad gestacional: ${weeks} semanas + ${days} días`;
-
     document.getElementById("due-date").textContent =
       `Fecha probable de parto: ${dueDateFormatted}`;
-
   });
 }
 
@@ -70,7 +58,6 @@ if (furInput) {
 // ─────────────────────────────────────────
 
 const registerForm = document.getElementById("register-form");
-console.log("Formulario encontrado");
 
 if (registerForm) {
   registerForm.addEventListener("submit", async (e) => {
@@ -83,14 +70,11 @@ if (registerForm) {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      // Datos del formulario
       const name = document.getElementById("name").value;
       const rut = document.getElementById("rut").value;
       const fur = document.getElementById("fur").value;
       const cesfam = document.getElementById("cesfam").value;
 
-      // Guardar en Firestore
-      console.log("Guardando datos...");
       await setDoc(doc(db, "users", user.uid), {
         uid: user.uid,
         name: name,
@@ -102,15 +86,13 @@ if (registerForm) {
         createdAt: new Date()
       });
 
-      console.log("Datos guardados en Firestore");
       alert("Cuenta creada correctamente 💛");
-      console.log(user);
+      window.location.href = "dashboard.html";
 
     } catch (error) {
       alert(error.message);
       console.log(error);
     }
-
   });
 }
 
@@ -145,120 +127,110 @@ if (loginForm) {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       window.location.href = "dashboard.html";
-
     } catch (error) {
       alert(error.message);
       console.log(error);
     }
-
   });
 }
 
 
 // ─────────────────────────────────────────
-// REDIRECCIÓN AUTOMÁTICA (login/register → dashboard)
+// AUTH STATE ÚNICO → redirección + datos
 // ─────────────────────────────────────────
-
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    if (
-      window.location.pathname.includes("login.html") ||
-      window.location.pathname.includes("register.html")
-    ) {
-      window.location.href = "dashboard.html";
-    }
-  }
-});
-
-
-// ─────────────────────────────────────────
-// DASHBOARD REAL
-// ─────────────────────────────────────────
-
-const userName = document.getElementById("user-name");
-const profileName = document.getElementById("profile-name");
-const gestationWeeks = document.getElementById("gestation-weeks");
-const fppDate = document.getElementById("fpp-date");
 
 onAuthStateChanged(auth, async (user) => {
 
-  if (user) {
-
-    // Obtener datos del usuario
-    const docRef = doc(db, "users", user.uid);
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) {
-      const data = docSnap.data();
-
-      // Nombre
-      const firstName = data.name.split(" ")[0];
-      if (userName) userName.textContent = `Hola, ${firstName}`;
-      if (profileName) profileName.textContent = `Hola, ${firstName}`;
-      
-      const nombreMadre = document.getElementById("nombre-madre");
-      if (nombreMadre) nombreMadre.textContent = firstName;
-
-      const navAvatar = document.getElementById("nav-avatar");
-      if (navAvatar) {
-      if (data.photoURL) {navAvatar.innerHTML = `<img src="${data.photoURL}" alt="perfil" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`; } else { navAvatar.textContent = firstName.charAt(0).toUpperCase();}}
-
-      // FUR → edad gestacional
-      const furDate = new Date(data.fur + "T00:00:00");
-      const today = new Date();
-      const difference = today - furDate;
-      const daysPregnant = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const weeks = Math.floor(daysPregnant / 7);
-
-      if (gestationWeeks) gestationWeeks.textContent = `Semana ${weeks} de embarazo`;
-
-      // TAMAÑO DEL BEBÉ SEGÚN SEMANA
-const babySizes = {
-  16: "🥑 Tu bebé tiene el tamaño de una palta",
-  17: "🍐 Tu bebé tiene el tamaño de una pera",
-  18: "🫑 Tu bebé tiene el tamaño de un pimentón",
-  22: "🥭 Tu bebé tiene el tamaño de un mango",
-  23: "🌽 Tu bebé tiene el tamaño de un choclo",
-  27: "🥬 Tu bebé tiene el tamaño de una lechuga romana",
-  28: "🍆 Tu bebé tiene el tamaño de una berenjena",
-  32: "🥦 Tu bebé tiene el tamaño de un brócoli",
-  33: "🍍 Tu bebé tiene el tamaño de una piña",
-  34: "🎃 Tu bebé tiene el tamaño de un zapallo italiano grande"
-};
-
-const babySizeEl = document.getElementById("baby-size-dashboard");
-if (babySizeEl) {
-  babySizeEl.textContent = babySizes[weeks] || `🤰 Semana ${weeks} de embarazo`;
-}
-
-      // FPP
-      const dueDate = new Date(furDate);
-      dueDate.setDate(dueDate.getDate() + 280);
-      const formattedDate = dueDate.toLocaleDateString("es-CL");
-
-      if (fppDate) fppDate.textContent = formattedDate;
-
-      // Cargar progreso de módulos
-      const completedModules = data.modulesCompleted || [];
-      updateProgress(completedModules);
-      markCompletedModules(completedModules);
-
-      // Cargar acompañantes
-      await cargarAcompanantes(user.uid);
-
-      if (data.photoURL) {
-      const profileImg = document.getElementById("profile-img");
-      if (profileImg) profileImg.src = data.photoURL;}
-
-    }
-
-  } else {
-
-    // Sin sesión → redirigir si está en dashboard
+  // Sin sesión
+  if (!user) {
     if (window.location.pathname.includes("dashboard.html")) {
       window.location.href = "login.html";
     }
+    return;
+  }
 
+  // Con sesión en login/register → redirigir
+  if (
+    window.location.pathname.includes("login.html") ||
+    window.location.pathname.includes("register.html")
+  ) {
+    window.location.href = "dashboard.html";
+    return;
+  }
+
+  // Solo cargar datos en el dashboard
+  if (!window.location.pathname.includes("dashboard.html")) return;
+
+  const docRef = doc(db, "users", user.uid);
+  const docSnap = await getDoc(docRef);
+
+  if (!docSnap.exists()) return;
+
+  const data = docSnap.data();
+
+  // ── NOMBRE ──
+  const firstName = data.name ? data.name.split(" ")[0] : "";
+
+  const userName = document.getElementById("user-name");
+  if (userName) userName.textContent = `Hola, ${firstName} 💛`;
+
+  // ── AVATAR NAV ──
+  const navAvatar = document.getElementById("nav-avatar");
+  if (navAvatar) {
+    if (data.photoURL) {
+      navAvatar.innerHTML = `<img src="${data.photoURL}" alt="perfil"
+        style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
+    } else {
+      navAvatar.textContent = firstName.charAt(0).toUpperCase();
+    }
+  }
+
+  // ── EDAD GESTACIONAL + FPP ──
+  if (data.fur) {
+    const furDate = new Date(data.fur + "T00:00:00");
+    const today = new Date();
+    const daysPregnant = Math.floor((today - furDate) / (1000 * 60 * 60 * 24));
+    const weeks = Math.floor(daysPregnant / 7);
+
+    const gestationWeeks = document.getElementById("gestation-weeks");
+    if (gestationWeeks) gestationWeeks.textContent = `Semana ${weeks} de embarazo`;
+
+    const babySizes = {
+      16: "🥑 Tu bebé tiene el tamaño de una palta",
+      17: "🍐 Tu bebé tiene el tamaño de una pera",
+      18: "🫑 Tu bebé tiene el tamaño de un pimentón",
+      22: "🥭 Tu bebé tiene el tamaño de un mango",
+      23: "🌽 Tu bebé tiene el tamaño de un choclo",
+      27: "🥬 Tu bebé tiene el tamaño de una lechuga romana",
+      28: "🍆 Tu bebé tiene el tamaño de una berenjena",
+      32: "🥦 Tu bebé tiene el tamaño de un brócoli",
+      33: "🍍 Tu bebé tiene el tamaño de una piña",
+      34: "🎃 Tu bebé tiene el tamaño de un zapallo italiano grande"
+    };
+
+    const babySizeEl = document.getElementById("baby-size-dashboard");
+    if (babySizeEl) {
+      babySizeEl.textContent = babySizes[weeks] || `🤰 Semana ${weeks} de embarazo`;
+    }
+
+    const dueDate = new Date(furDate);
+    dueDate.setDate(dueDate.getDate() + 280);
+    const fppDate = document.getElementById("fpp-date");
+    if (fppDate) fppDate.textContent = dueDate.toLocaleDateString("es-CL");
+  }
+
+  // ── MÓDULOS ──
+  const completedModules = data.modulesCompleted || [];
+  updateProgress(completedModules);
+  markCompletedModules(completedModules);
+
+  // ── ACOMPAÑANTES ──
+  await cargarAcompanantes(user.uid);
+
+  // ── FOTO PERFIL ──
+  if (data.photoURL) {
+    const profileImg = document.getElementById("profile-img");
+    if (profileImg) profileImg.src = data.photoURL;
   }
 
 });
@@ -284,10 +256,8 @@ async function completeModule(moduleName) {
     const data = docSnap.data();
     let completed = data.modulesCompleted || [];
 
-    // Evitar duplicados
     if (!completed.includes(moduleName)) {
       completed.push(moduleName);
-
       await updateDoc(docRef, { modulesCompleted: completed });
       alert("Módulo completado 💛");
       updateProgress(completed);
@@ -307,51 +277,33 @@ if (module4Btn) module4Btn.addEventListener("click", () => completeModule("modul
 // ─────────────────────────────────────────
 
 function updateProgress(completed) {
-
   const totalModules = 4;
-  const completedModules = completed.length;
-  const percent = Math.round((completedModules / totalModules) * 100);
+  const percent = Math.round((completed.length / totalModules) * 100);
 
   const progressPercent = document.getElementById("progress-percent");
   const modulesCount = document.getElementById("modules-count");
   const progressFill = document.getElementById("progress-fill");
 
-  if (progressPercent) {
-    progressPercent.textContent = `${percent}%`;
-  }
-
-  if (modulesCount) {
-    modulesCount.textContent =
-      `Módulos completados: ${completedModules} de ${totalModules}`;
-  }
-
-  if (progressFill) {
-    progressFill.style.width = `${percent}%`;
-  }
-
+  if (progressPercent) progressPercent.textContent = `${percent}%`;
+  if (modulesCount) modulesCount.textContent = `Módulos completados: ${completed.length} de ${totalModules}`;
+  if (progressFill) progressFill.style.width = `${percent}%`;
 }
+
 
 // ─────────────────────────────────────────
 // MARCAR MÓDULOS COMPLETADOS
 // ─────────────────────────────────────────
 
 function markCompletedModules(completed) {
-
   completed.forEach(module => {
-
     const button = document.getElementById(`${module}-btn`);
-
     if (button) {
-
       button.textContent = "✓ Ya visitado";
-
       button.classList.add("module-visited");
-
     }
-
   });
-
 }
+
 
 // ─────────────────────────────────────────
 // CARGAR ACOMPAÑANTES EN EL DASHBOARD
@@ -375,7 +327,6 @@ async function cargarAcompanantes(uid) {
   if (noMsg) noMsg.style.display = 'none';
   if (verTodosBtn && snapshot.size > 1) verTodosBtn.style.display = 'block';
 
-  // Mostrar máximo 2 en el dashboard
   let count = 0;
   snapshot.forEach((docSnap) => {
     if (count >= 2) return;
