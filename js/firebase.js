@@ -74,7 +74,7 @@ export {
   serverTimestamp,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  onAuthStateChanged
+  onAuthStateChanged,
   sendPasswordResetEmail 
 
 };
