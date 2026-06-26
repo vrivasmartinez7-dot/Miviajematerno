@@ -189,7 +189,9 @@ onAuthStateChanged(auth, async (user) => {
     return;
   }
 
-  if (!window.location.pathname.includes("dashboard.html")) return;
+  const path = window.location.pathname;
+  const isDashboard = path.includes("dashboard.html") || path.endsWith("/pages/") || path === "/";
+  if (!isDashboard) return;
 
   const docRef = doc(db, "users", user.uid);
   const docSnap = await getDoc(docRef);
