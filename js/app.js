@@ -10,6 +10,7 @@ import {
   onAuthStateChanged,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword
+  sendPasswordResetEmail
 } from "./firebase.js";
 
 
