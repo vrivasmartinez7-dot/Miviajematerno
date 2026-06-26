@@ -134,6 +134,39 @@ if (loginForm) {
   });
 }
 
+// ─────────────────────────────────────────
+// RECUPERAR CONTRASEÑA
+// ─────────────────────────────────────────
+
+import { sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
+
+const forgotLink = document.getElementById("forgot-password-link");
+
+if (forgotLink) {
+  forgotLink.addEventListener("click", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("login-email").value.trim();
+
+    if (!email) {
+      alert("Ingresa tu correo electrónico primero y luego haz clic en ¿Olvidaste tu contraseña?");
+      return;
+    }
+
+    try {
+      await sendPasswordResetEmail(auth, email);
+      alert("Te enviamos un correo para restablecer tu contraseña 🩷 Revisa tu bandeja de entrada.");
+    } catch (error) {
+      if (error.code === "auth/user-not-found") {
+        alert("No encontramos una cuenta con ese correo.");
+      } else {
+        alert("Ocurrió un error. Inténtalo de nuevo.");
+        console.log(error);
+      }
+    }
+  });
+}
+
 
 // ─────────────────────────────────────────
 // AUTH STATE ÚNICO → redirección + datos
