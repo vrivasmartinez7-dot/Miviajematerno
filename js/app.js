@@ -9,7 +9,7 @@ import {
   getDocs,
   onAuthStateChanged,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
   sendPasswordResetEmail
 } from "./firebase.js";
 
@@ -135,11 +135,10 @@ if (loginForm) {
   });
 }
 
+
 // ─────────────────────────────────────────
 // RECUPERAR CONTRASEÑA
 // ─────────────────────────────────────────
-
-import { sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
 
 const forgotLink = document.getElementById("forgot-password-link");
 
@@ -175,7 +174,6 @@ if (forgotLink) {
 
 onAuthStateChanged(auth, async (user) => {
 
-  // Sin sesión
   if (!user) {
     if (window.location.pathname.includes("dashboard.html")) {
       window.location.href = "login.html";
@@ -183,7 +181,6 @@ onAuthStateChanged(auth, async (user) => {
     return;
   }
 
-  // Con sesión en login/register → redirigir
   if (
     window.location.pathname.includes("login.html") ||
     window.location.pathname.includes("register.html")
@@ -192,7 +189,6 @@ onAuthStateChanged(auth, async (user) => {
     return;
   }
 
-  // Solo cargar datos en el dashboard
   if (!window.location.pathname.includes("dashboard.html")) return;
 
   const docRef = doc(db, "users", user.uid);
@@ -202,13 +198,11 @@ onAuthStateChanged(auth, async (user) => {
 
   const data = docSnap.data();
 
-  // ── NOMBRE ──
   const firstName = data.name ? data.name.split(" ")[0] : "";
 
   const userName = document.getElementById("user-name");
   if (userName) userName.textContent = `Hola, ${firstName} 💛`;
 
-  // ── AVATAR NAV ──
   const navAvatar = document.getElementById("nav-avatar");
   if (navAvatar) {
     if (data.photoURL) {
@@ -219,7 +213,6 @@ onAuthStateChanged(auth, async (user) => {
     }
   }
 
-  // ── EDAD GESTACIONAL + FPP ──
   if (data.fur) {
     const furDate = new Date(data.fur + "T00:00:00");
     const today = new Date();
@@ -253,57 +246,18 @@ onAuthStateChanged(auth, async (user) => {
     if (fppDate) fppDate.textContent = dueDate.toLocaleDateString("es-CL");
   }
 
-  // ── MÓDULOS ──
   const completedModules = data.modulesCompleted || [];
   updateProgress(completedModules);
   markCompletedModules(completedModules);
 
-  // ── ACOMPAÑANTES ──
   await cargarAcompanantes(user.uid);
 
-  // ── FOTO PERFIL ──
   if (data.photoURL) {
     const profileImg = document.getElementById("profile-img");
     if (profileImg) profileImg.src = data.photoURL;
   }
 
 });
-
-
-// ─────────────────────────────────────────
-// BOTONES MÓDULOS
-// ─────────────────────────────────────────
-
-const module1Btn = document.getElementById("module1-btn");
-const module2Btn = document.getElementById("module2-btn");
-const module3Btn = document.getElementById("module3-btn");
-const module4Btn = document.getElementById("module4-btn");
-
-async function completeModule(moduleName) {
-  const user = auth.currentUser;
-  if (!user) return;
-
-  const docRef = doc(db, "users", user.uid);
-  const docSnap = await getDoc(docRef);
-
-  if (docSnap.exists()) {
-    const data = docSnap.data();
-    let completed = data.modulesCompleted || [];
-
-    if (!completed.includes(moduleName)) {
-      completed.push(moduleName);
-      await updateDoc(docRef, { modulesCompleted: completed });
-      alert("Módulo completado 💛");
-      updateProgress(completed);
-      markCompletedModules(completed);
-    }
-  }
-}
-
-if (module1Btn) module1Btn.addEventListener("click", () => completeModule("module1"));
-if (module2Btn) module2Btn.addEventListener("click", () => completeModule("module2"));
-if (module3Btn) module3Btn.addEventListener("click", () => completeModule("module3"));
-if (module4Btn) module4Btn.addEventListener("click", () => completeModule("module4"));
 
 
 // ─────────────────────────────────────────
@@ -325,7 +279,7 @@ function updateProgress(completed) {
 
 
 // ─────────────────────────────────────────
-// MARCAR MÓDULOS COMPLETADOS
+// MARCAR MÓDULOS VISITADOS
 // ─────────────────────────────────────────
 
 function markCompletedModules(completed) {
