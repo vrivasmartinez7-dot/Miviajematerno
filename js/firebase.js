@@ -9,7 +9,7 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  onAuthStateChanged
+  onAuthStateChanged,
   sendPasswordResetEmail 
 
 } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
