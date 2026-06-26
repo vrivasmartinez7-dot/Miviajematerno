@@ -241,3 +241,23 @@ body{
   }
 
 }
+
+/* ==================================
+   OLVIDÉ MI CONTRASEÑA
+================================== */
+.forgot-text {
+  text-align: center;
+  margin-top: 14px;
+  font-size: 0.88rem;
+}
+
+.forgot-text a {
+  color: #8a7b80;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.forgot-text a:hover {
+  color: #8a4f63;
+  text-decoration: underline;
+}
