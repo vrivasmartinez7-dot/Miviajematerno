@@ -29,70 +29,48 @@
 
 <body class="dashboard-body">
 
-  <!-- NAVBAR -->
+<!-- NAVBAR -->
+<header class="topbar">
+  <div class="logo">Mi viaje materno</div>
 
-  <header class="topbar">
+  <!-- Nav desktop -->
+  <nav class="topnav" id="topnav">
+    <a class="active" href="../pages/dashboard.html">Inicio</a>
+    <a href="../pages/acompañantes.html">Acompañantes</a>
+    <a href="../pages/signos-alarma.html">Signos de alarma</a>
+    <a href="#">Preguntas frecuentes</a>
+  </nav>
 
-    <!-- LOGO -->
+  <div class="topbar-right">
+    <a href="perfil.html">
+      <div class="nav-avatar" id="nav-avatar">V</div>
+    </a>
+    <!-- Hamburguesa solo en móvil -->
+    <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
-    <div class="logo">
-
-      Mi viaje materno
-
-    </div>
-
-    <!-- MENÚ -->
-
-    <nav class="topnav">
-
-      <a class="active" href="../pages/dashboard.html">
-        Inicio
-      </a>
-
-      <a href="../pages/acompañantes.html">
-        Acompañantes
-      </a>
-
-      <a href="../pages/signos-alarma.html" >
-        Signos de alarma
-      </a>
-
-      <a href="#">
-        Preguntas frecuentes
-      </a>
-
-    </nav>
-
-<!-- PERFIL -->
-<div class="profile-area">
-  <a href="perfil.html">
-    <div class="nav-avatar" id="nav-avatar">V</div>
-  </a>
+<!-- Menú móvil desplegable -->
+<div class="mobile-menu" id="mobile-menu">
+  <a class="active" href="../pages/dashboard.html">Inicio</a>
+  <a href="../pages/acompañantes.html">Acompañantes</a>
+  <a href="../pages/signos-alarma.html">Signos de alarma</a>
+  <a href="#">Preguntas frecuentes</a>
 </div>
 
-  </header>
-
   <!-- HERO -->
-
-
   <section class="hero-section">
-
-
+    
     <!-- IZQUIERDA -->
-
-
     <div class="hero-left">
-
-
       <h1 id="user-name">
   Hola
 </h1>
-
-
       <h2 id="gestation-weeks"> Semana </h2>
 
-
-      <!-- BABY SIZE -->
+      <!-- TAMAÑO DEL BEBÉ -->
 <div class="baby-size" id="baby-size-dashboard">
   🌽 Tu bebé tiene el tamaño de un choclo
 </div>
