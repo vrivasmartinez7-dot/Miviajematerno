@@ -5,6 +5,20 @@ let currentStep = 0;
 const totalSteps = 8;
 const completed = new Set();
 
+// ─────────────────────────────────────────
+// MENÚ HAMBURGUESA
+// ─────────────────────────────────────────
+
+const hamburgerBtn = document.getElementById("hamburger-btn");
+const mobileMenu = document.getElementById("mobile-menu");
+
+if (hamburgerBtn) {
+  hamburgerBtn.addEventListener("click", () => {
+    hamburgerBtn.classList.toggle("open");
+    mobileMenu.classList.toggle("open");
+  });
+}
+
 /* ── PERFIL NAV ── */
 onAuthStateChanged(auth, async (user) => {
   if (user) {
