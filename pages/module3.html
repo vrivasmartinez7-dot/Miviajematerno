@@ -10,20 +10,28 @@
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
- <a class="nav-logo" href="dashboard.html">Mi viaje materno</a>
-  <ul class="nav-links">
-    <li><a href="dashboard.html">Inicio</a></li>
-    <li><a href="../pages/acompañantes.html">Acompañantes</a></li>
-    <li><a href="../pages/signos-alarma.html">Signos de alarma</a></li>
-    <li><a href="dashboard.html">Preguntas frecuentes</a></li>
-  </ul>
-  <div class="nav-user">
-    <div class="nav-avatar" id="nav-avatar">V</div>
-    <span id="profile-name">Hola</span>
+<!-- NAVBAR -->
+<header class="topbar">
+  <div class="logo">Mi viaje materno</div>
+  <nav class="topnav" id="topnav">
+    <a href="../pages/dashboard.html">Inicio</a>
+    <a href="../pages/acompañantes.html">Acompañantes</a>
+    <a href="../pages/signos-alarma.html">Signos de alarma</a>
+    <a href="#">Preguntas frecuentes</a>
+  </nav>
+  <div class="topbar-right">
+    <a href="perfil.html"><div class="nav-avatar" id="nav-avatar">V</div></a>
+    <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
   </div>
-</nav>
+</header>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="../pages/dashboard.html">Inicio</a>
+  <a href="../pages/acompañantes.html">Acompañantes</a>
+  <a href="../pages/signos-alarma.html">Signos de alarma</a>
+  <a href="#">Preguntas frecuentes</a>
+</div>
 
 <!-- BACK -->
 <div class="back-bar">
