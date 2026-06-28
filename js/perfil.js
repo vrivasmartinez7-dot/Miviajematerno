@@ -1,5 +1,19 @@
 import { auth, db, doc, getDoc, updateDoc, onAuthStateChanged } from "./firebase.js";
 
+// ─────────────────────────────────────────
+// MENÚ HAMBURGUESA
+// ─────────────────────────────────────────
+
+const hamburgerBtn = document.getElementById("hamburger-btn");
+const mobileMenu = document.getElementById("mobile-menu");
+
+if (hamburgerBtn) {
+  hamburgerBtn.addEventListener("click", () => {
+    hamburgerBtn.classList.toggle("open");
+    mobileMenu.classList.toggle("open");
+  });
+}
+
 /* ── CARGAR DATOS ── */
 
 onAuthStateChanged(auth, async (user) => {
