@@ -1,289 +1,214 @@
-import { auth, db, doc, getDoc, updateDoc, onAuthStateChanged } from "./firebase.js";
+/* =========================================================
+   MODULE 3 — MI VIAJE MATERNO
+========================================================= */
 
-/* ── STATE ── */
-let currentStep = 0;
-const totalSteps = 8;
-const completed = new Set();
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap');
 
-// ─────────────────────────────────────────
-// MENÚ HAMBURGUESA
-// ─────────────────────────────────────────
-
-const hamburgerBtn = document.getElementById("hamburger-btn");
-const mobileMenu = document.getElementById("mobile-menu");
-
-if (hamburgerBtn) {
-  hamburgerBtn.addEventListener("click", () => {
-    hamburgerBtn.classList.toggle("open");
-    mobileMenu.classList.toggle("open");
-  });
+:root {
+  --bg: #F4F0EF; --card: #F8F5F4;
+  --wine: #4B2233; --wine-soft: #6D4B57;
+  --rose: #D9A5B0; --rose-light: #EAD6DB;
+  --text: #665761; --text-light: #8E7D86;
+  --border: #E8D4DA;
+  --serif: 'Cormorant Garamond', serif; --sans: 'Poppins', sans-serif;
 }
 
-/* ── PERFIL NAV ── */
-onAuthStateChanged(auth, async (user) => {
-  if (user) {
-    const docRef = doc(db, "users", user.uid);
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      const firstName = docSnap.data().name.split(" ")[0];
-      const profileName = document.getElementById("profile-name");
-      if (profileName) profileName.textContent = `Hola, ${firstName}`;
-      const navAvatar = document.getElementById("nav-avatar");
-      if (navAvatar) navAvatar.textContent = firstName.charAt(0).toUpperCase();
-    }
-  }
-});
+/* BASE */
+body { margin: 0; background: var(--bg); font-family: var(--sans); color: var(--text); }
+* { box-sizing: border-box; }
 
-/* ── NAVIGATION ── */
-function navigate(dir) {
-  completed.add(currentStep);
-  const next = currentStep + dir;
-  if (next < 0 || next >= totalSteps) return;
-  showStep(next);
+.content-area {
+  width: min(1180px, 92%);
+  margin: auto;
+  padding-top: 64px;       /* compensa navbar fijo */
+  padding-bottom: 5rem;
 }
 
-function showStep(idx) {
-  document.getElementById('panel-' + currentStep).classList.remove('active');
-  document.getElementById('panel-' + idx).classList.add('active');
+/* BACK */
+.back-bar { width: min(1180px, 92%); margin: 2rem auto 0; }
+.btn-back { border: none; background: none; color: var(--text-light); font-size: 0.95rem; cursor: pointer; font-family: var(--sans); }
+.btn-back:hover { color: var(--wine); }
 
-  const tabs = document.querySelectorAll('.step-tab');
-  tabs[currentStep].classList.remove('active');
-  if (completed.has(currentStep)) tabs[currentStep].classList.add('done');
-  tabs[idx].classList.add('active');
-  tabs[idx].classList.remove('done');
+/* HERO */
+.module-hero { width: min(1180px, 92%); margin: 3rem auto 4rem; }
+.module-badge { display: inline-flex; align-items: center; padding: 0.55rem 1rem; border-radius: 999px; background: #F9F3F4; border: 1px solid var(--border); color: var(--rose); font-size: 0.9rem; }
+.module-title { font-family: var(--serif); font-size: 5rem; line-height: 0.95; color: var(--wine); margin: 1.4rem 0 0.8rem; font-weight: 500; }
+.module-subtitle { font-size: 1.5rem; color: var(--rose); margin: 0; }
+.progress-strip { margin-top: 2.5rem; }
+.progress-strip p { margin-bottom: 0.8rem; color: var(--text-light); font-size: 0.95rem; }
+.progress-bar-wrap { width: 100%; height: 8px; background: #ECE4E6; border-radius: 999px; overflow: hidden; }
+.progress-bar-fill { height: 100%; background: linear-gradient(to right, #D8A4AF, #C58997); border-radius: 999px; transition: 0.3s; }
 
-  currentStep = idx;
-  updateNavButtons();
-  updateProgress();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+/* STEP NAV */
+.steps-nav { width: min(1180px, 92%); margin: 0 auto 3rem; display: flex; gap: 1.5rem; flex-wrap: wrap; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
+.step-tab { border: none; background: none; cursor: pointer; color: var(--text-light); font-size: 0.95rem; font-family: var(--sans); padding-bottom: 0.8rem; transition: 0.2s; }
+.step-tab:hover { color: var(--wine); }
+.step-tab.active { color: var(--wine); border-bottom: 2px solid var(--rose); }
+.step-num { color: var(--rose); margin-right: 0.3rem; }
+
+/* PANELS */
+.section-panel { display: none; }
+.section-panel.active { display: block; animation: fadeUp 0.35s ease; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* CARDS */
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 32px; padding: 2.5rem; margin-bottom: 2rem; }
+.card-title { font-family: var(--serif); font-size: 2.5rem; color: var(--wine); margin: 0 0 1rem; }
+.card-body { line-height: 1.9; color: var(--text); }
+
+/* WELCOME */
+.welcome-hero { display: grid; grid-template-columns: 320px 1fr; gap: 3rem; align-items: center; }
+.avatar-body { width: 100%; display: flex; justify-content: center; }
+.avatar-svg { width: 230px; }
+.avatar-label { text-align: center; margin-top: 1rem; color: var(--text-light); }
+.welcome-text h2 { font-family: var(--serif); font-size: 4rem; line-height: 1; color: var(--wine); margin: 0; }
+.week-tag { font-size: 1.5rem; color: var(--rose); margin: 1rem 0 2rem; }
+.pill-info { display: inline-flex; align-items: center; border: 1px solid var(--border); background: white; padding: 0.9rem 1.2rem; border-radius: 18px; margin-top: 1rem; color: var(--wine-soft); }
+.week-input-row { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.8rem; }
+.week-input-row input { width: 130px; border: 1px solid var(--border); background: white; border-radius: 16px; padding: 0.9rem 1rem; font-family: var(--sans); color: var(--wine); outline: none; }
+.week-input-row input:focus { border-color: var(--rose); }
+
+/* BABY */
+.baby-weeks { display: flex; gap: 1rem; margin-bottom: 2rem; }
+.baby-week-btn { border: 1px solid var(--border); background: white; padding: 0.8rem 1.3rem; border-radius: 16px; cursor: pointer; color: var(--text); font-family: var(--sans); transition: 0.2s; }
+.baby-week-btn.active, .baby-week-btn:hover { border-color: var(--rose); color: var(--wine); }
+.baby-display { display: grid; grid-template-columns: 180px 1fr; gap: 2rem; align-items: center; }
+.baby-fruit { font-size: 6rem; text-align: center; }
+.baby-info h3 { font-family: var(--serif); font-size: 3rem; color: var(--wine); margin: 0 0 0.8rem; }
+.baby-size { color: var(--rose); margin-bottom: 1rem; }
+.baby-fact { display: inline-block; margin-top: 1rem; color: var(--wine-soft); }
+
+/* SEÑALES DE PARTO */
+.signals-grid { display: grid; gap: 1.2rem; }
+.signal-card { background: white; border: 1px solid var(--border); border-radius: 24px; padding: 1.8rem 2rem; transition: border-color 0.2s; }
+.signal-card.revealed { border-color: var(--rose-light); }
+.signal-desc { font-size: 1.05rem; line-height: 1.75; color: var(--wine); margin: 0 0 1.2rem; }
+.signal-buttons { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+.signal-btn { border: 1px solid var(--border); background: #FAF8F8; border-radius: 16px; padding: 0.75rem 1.1rem; cursor: pointer; font-family: var(--sans); font-size: 0.88rem; color: var(--text); transition: 0.2s; }
+.signal-btn:hover:not(:disabled) { border-color: var(--rose); color: var(--wine); }
+.signal-btn.selected-correct { background: #EEF7EE; border-color: #7BB580; color: #3A6040; }
+.signal-btn.selected-wrong { background: #FFF0F2; border-color: var(--rose); color: var(--wine-soft); }
+.signal-btn:disabled { cursor: default; }
+.signal-explanation { display: none; margin-top: 1.2rem; padding: 1rem 1.2rem; border-radius: 16px; background: #F9F3F4; font-size: 0.92rem; line-height: 1.7; color: var(--text); }
+.signal-card.revealed .signal-explanation { display: block; animation: fadeUp 0.3s ease; }
+.signal-badge { display: inline-block; border-radius: 999px; padding: 0.25rem 0.9rem; font-size: 0.8rem; font-weight: 500; margin-bottom: 0.5rem; margin-right: 0.4rem; }
+.preparto-badge { background: #FFF3CD; color: #856404; }
+.parto-badge { background: #F2D9DD; color: var(--wine); }
+.alarma-badge { background: #FFE5E5; color: #B91C1C; }
+
+/* LÍNEA DE TIEMPO */
+.timeline { display: flex; flex-direction: column; gap: 0.5rem; position: relative; padding-left: 0.5rem; }
+.timeline::before { content: ''; position: absolute; left: 16px; top: 24px; bottom: 24px; width: 2px; background: var(--border); }
+.timeline-item { position: relative; padding-left: 3rem; }
+.timeline-dot { position: absolute; left: 8px; top: 18px; width: 16px; height: 16px; border-radius: 50%; background: var(--rose); border: 3px solid var(--card); box-shadow: 0 0 0 2px var(--rose-light); z-index: 1; }
+.timeline-header { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.2rem; background: white; border: 1px solid var(--border); border-radius: 18px; cursor: pointer; transition: border-color 0.2s; flex-wrap: wrap; }
+.timeline-header:hover { border-color: var(--rose); }
+.timeline-item.open .timeline-header { border-color: var(--rose); border-radius: 18px 18px 0 0; border-bottom-color: transparent; }
+.timeline-phase-name { font-family: var(--serif); font-size: 1.3rem; color: var(--wine); flex: 1; }
+.timeline-duration { font-size: 0.82rem; color: var(--text-light); background: #F9F3F4; border: 1px solid var(--border); border-radius: 999px; padding: 0.25rem 0.75rem; white-space: nowrap; }
+.timeline-toggle { font-size: 1.4rem; color: var(--rose); font-weight: 300; transition: transform 0.25s; flex-shrink: 0; }
+.timeline-item.open .timeline-toggle { transform: rotate(45deg); }
+.timeline-body { display: none; background: white; border: 1px solid var(--rose); border-top: none; border-radius: 0 0 18px 18px; padding: 1.2rem 1.4rem 1.4rem; }
+.timeline-item.open .timeline-body { display: block; animation: fadeUp 0.25s ease; }
+.timeline-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.timeline-col-title { font-weight: 500; color: var(--wine); margin: 0 0 0.4rem; font-size: 0.9rem; }
+.timeline-cols p { font-size: 0.92rem; line-height: 1.75; color: var(--text); margin: 0; }
+
+/* HÁBITOS */
+.habits-grid { display: grid; gap: 1.2rem; }
+.habit-card { background: white; border: 1px solid var(--border); border-radius: 24px; overflow: hidden; transition: border-color 0.2s; }
+.habit-card:hover { border-color: var(--rose-light); }
+.habit-header { display: flex; align-items: center; gap: 1rem; padding: 1.4rem 1.8rem; cursor: pointer; }
+.habit-icon { font-size: 1.8rem; flex-shrink: 0; }
+.habit-name { font-family: var(--serif); font-size: 1.6rem; color: var(--wine); margin: 0; flex: 1; }
+.habit-toggle { font-size: 1.5rem; color: var(--rose); font-weight: 300; transition: transform 0.25s; flex-shrink: 0; }
+.habit-card.open .habit-toggle { transform: rotate(45deg); }
+.habit-body { display: none; padding: 0 1.8rem 1.8rem; line-height: 1.85; color: var(--text); }
+.habit-card.open .habit-body { display: block; animation: fadeUp 0.25s ease; }
+.habit-body p { margin: 0 0 0.5rem; }
+.habit-body ul { padding-left: 1.2rem; margin: 0.8rem 0; display: flex; flex-direction: column; gap: 0.4rem; }
+.habit-body li { font-size: 0.95rem; line-height: 1.75; }
+.habit-tip { margin-top: 1.2rem; background: #F9F3F4; border-left: 3px solid var(--rose); border-radius: 0 16px 16px 0; padding: 0.9rem 1.1rem; font-size: 0.92rem; color: var(--wine-soft); line-height: 1.7; }
+
+/* MITOS */
+.myth-grid { display: grid; gap: 1.5rem; }
+.myth-card { background: white; border: 1px solid var(--border); border-radius: 24px; padding: 2rem; }
+.myth-statement { font-size: 1.1rem; line-height: 1.8; margin: 0; }
+.myth-buttons { display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
+.myth-btn { border: 1px solid var(--border); background: #FAF8F8; border-radius: 16px; padding: 0.9rem 1.2rem; cursor: pointer; transition: 0.2s; font-family: var(--sans); }
+.myth-btn:hover { border-color: var(--rose); }
+.myth-explanation { margin-top: 1.5rem; line-height: 1.8; display: none; }
+.myth-card.revealed-true  .myth-explanation { display: block; color: #3A6040; }
+.myth-card.revealed-false .myth-explanation { display: block; color: var(--wine-soft); }
+.myth-result-icon { margin-right: 0.3rem; }
+
+/* EMOCIONES */
+.emotion-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.2rem; margin-top: 2rem; }
+.emotion-btn { border: 1px solid var(--border); background: white; border-radius: 24px; padding: 1.5rem; cursor: pointer; transition: 0.2s; display: flex; flex-direction: column; gap: 0.8rem; align-items: center; font-family: var(--sans); }
+.emotion-btn:hover, .emotion-btn.selected { border-color: var(--rose); transform: translateY(-2px); }
+.emo-icon { font-size: 2rem; }
+.emo-label { text-align: center; color: var(--text); font-size: 0.9rem; }
+.emotion-response { margin-top: 2rem; background: white; border: 1px solid var(--border); border-radius: 24px; padding: 2rem; display: none; }
+.emotion-response.show { display: block; animation: fadeUp 0.3s ease; }
+#emo-title { font-family: var(--serif); font-size: 2rem; color: var(--wine); margin: 0 0 0.6rem; }
+#emo-msg { margin: 0; line-height: 1.8; }
+.emo-tip { margin-top: 1rem; padding: 0.9rem 1.1rem; background: #F9F3F4; border-left: 3px solid var(--rose); border-radius: 0 16px 16px 0; font-size: 0.92rem; color: var(--wine-soft); line-height: 1.7; }
+
+/* QUIZ */
+.quiz-block-label { font-weight: 500; color: var(--wine); font-size: 0.95rem; background: #F9F3F4; border-left: 4px solid var(--rose); padding: 0.7rem 1rem; border-radius: 0 12px 12px 0; margin-bottom: 1.5rem; }
+.quiz-question { margin-bottom: 2.5rem; }
+.quiz-q { font-size: 1.05rem; line-height: 1.8; color: var(--wine); margin: 0 0 0.5rem; }
+.quiz-options { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.2rem; }
+.quiz-opt { border: 1px solid var(--border); background: white; border-radius: 18px; padding: 1rem 1.2rem; text-align: left; cursor: pointer; transition: 0.2s; font-family: var(--sans); font-size: 0.95rem; color: var(--text); }
+.quiz-opt:hover:not(:disabled) { border-color: var(--rose); }
+.quiz-opt.correct { background: #EEF7EE; border-color: #7BB580; color: #3A6040; }
+.quiz-opt.wrong   { background: #FFF0F2; border-color: var(--rose); color: var(--wine-soft); }
+.quiz-opt:disabled { cursor: default; }
+.quiz-feedback { display: none; margin-top: 0.8rem; line-height: 1.8; color: var(--text-light); font-size: 0.92rem; }
+.quiz-feedback.show { display: block; }
+.quiz-submit-row { margin-top: 2rem; }
+.quiz-result { display: none; text-align: center; }
+.quiz-result.show { display: block; animation: fadeUp 0.4s ease; }
+.badge-icon { font-size: 4rem; }
+.score-pill { display: inline-block; margin-top: 1rem; background: #F6ECEF; border: 1px solid var(--border); padding: 0.9rem 1.3rem; border-radius: 999px; color: var(--wine); }
+
+/* PLAN DE PARTO */
+.plan-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.5rem; }
+.plan-item { display: flex; gap: 1rem; align-items: flex-start; background: white; border: 1px solid var(--border); border-radius: 20px; padding: 1.2rem 1.4rem; }
+.plan-icon { font-size: 1.6rem; flex-shrink: 0; margin-top: 0.1rem; }
+.plan-item strong { display: block; color: var(--wine); margin-bottom: 0.3rem; }
+.plan-item p { margin: 0; font-size: 0.9rem; line-height: 1.7; color: var(--text-light); }
+.plan-note { display: flex; gap: 1rem; align-items: flex-start; background: #F9F3F4; border: 1px solid var(--border); border-radius: 20px; padding: 1.2rem 1.4rem; }
+.plan-note span { font-size: 1.4rem; flex-shrink: 0; }
+.plan-note p { margin: 0; font-size: 0.92rem; line-height: 1.7; color: var(--text-light); }
+
+/* BOTONES */
+.btn-primary { border: none; background: #E7D7DB; color: var(--wine); border-radius: 999px; padding: 1rem 1.8rem; cursor: pointer; font-family: var(--sans); font-size: 0.95rem; transition: 0.2s; }
+.btn-primary:hover { background: #DDBEC6; }
+.btn-outline { border: 1px solid var(--border); background: transparent; border-radius: 999px; padding: 1rem 1.8rem; cursor: pointer; font-family: var(--sans); color: var(--wine); font-size: 0.95rem; }
+.btn-outline:disabled { opacity: 0.4; cursor: default; }
+.nav-buttons { margin-top: 3rem; display: flex; align-items: center; justify-content: space-between; }
+.step-indicator { color: var(--text-light); }
+
+/* AJUAR */
+.habit-package-title { font-family: var(--serif); font-size: 1.25rem; color: var(--wine); margin: 1.2rem 0 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+.habit-package-title:first-child { margin-top: 0; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .module-title { font-size: 3.8rem; }
+  .welcome-hero { grid-template-columns: 1fr; }
+  .baby-display { grid-template-columns: 1fr; text-align: center; }
+  .timeline-cols { grid-template-columns: 1fr; gap: 1rem; }
+  .plan-grid { grid-template-columns: 1fr; }
 }
-
-document.querySelectorAll('.step-tab').forEach(btn => {
-  btn.addEventListener('click', () => showStep(parseInt(btn.dataset.step)));
-});
-
-function updateNavButtons() {
-  document.getElementById('btn-prev').disabled = currentStep === 0;
-  const nextBtn = document.getElementById('btn-next');
-  nextBtn.textContent = currentStep === totalSteps - 1 ? 'Finalizar ✓' : 'Siguiente →';
-  document.getElementById('step-indicator').textContent = `Sección ${currentStep + 1} de ${totalSteps}`;
+@media (max-width: 600px) {
+  .module-title { font-size: 3rem; }
+  .welcome-text h2 { font-size: 3rem; }
+  .card { padding: 1.6rem; }
+  .card-title { font-size: 2rem; }
+  .steps-nav { gap: 0.8rem; }
+  .step-tab { font-size: 0.82rem; }
+  .signal-buttons { flex-direction: column; }
+  .myth-buttons { flex-direction: column; }
 }
-
-function updateProgress() {
-  const pct = Math.round((completed.size / totalSteps) * 100);
-  document.getElementById('progress-pct').textContent = pct + '%';
-  document.getElementById('progress-bar').style.width = pct + '%';
-}
-
-/* ── BIENVENIDA — semana input ── */
-const babyPills = {
-  27: '🥬 Tu bebé tiene el tamaño de una lechuga romana',
-  28: '🍆 Tu bebé tiene el tamaño de una berenjena'
-};
-
-document.getElementById('week-input').addEventListener('input', function () {
-  const w = Math.min(28, Math.max(27, parseInt(this.value) || 27));
-  document.getElementById('welcome-subtitle').textContent = `Semana ${w} de embarazo`;
-  document.getElementById('avatar-week-label').textContent = w;
-  document.getElementById('baby-size-pill').textContent = babyPills[w];
-});
-
-/* ── BEBÉ SEMANA A SEMANA ── */
-const babyData = {
-  27: {
-    fruit: '🥬', title: 'Semana 27',
-    size: 'Tamaño: 36 cm · Peso: 875 g (como una lechuga romana)',
-    desc: 'Tiene menos espacio para moverse y sentirás como se acomoda. Puede abrir y cerrar los ojos. Su sistema inmune comienza a madurar. Patalea con mucha fuerza y ya puedes sentir sus movimientos claramente.',
-    fact: '✨ Tu bebé está recubierto por una sustancia grasosa llamada "Vernix"'
-  },
-  28: {
-    fruit: '🍆', title: 'Semana 28',
-    size: 'Tamaño: 37 cm · Peso: 1.000 g (como una berenjena)',
-    desc: 'Tu bebé pesa ya aproximadamente 1 kilo. Sus pulmones están más maduros y produce surfactante. Puede soñar en fase REM. Reconoce tu voz y reacciona a estímulos sonoros del exterior.',
-    fact: '✨ ¡Tu bebé ya pesa 1 kilo y puede reconocer tu voz!'
-  }
-};
-
-document.querySelectorAll('.baby-week-btn').forEach(btn => {
-  btn.addEventListener('click', function () {
-    document.querySelectorAll('.baby-week-btn').forEach(b => b.classList.remove('active'));
-    this.classList.add('active');
-    const d = babyData[this.dataset.baby];
-    document.getElementById('baby-fruit').textContent = d.fruit;
-    document.getElementById('baby-title').textContent = d.title;
-    document.getElementById('baby-size-text').textContent = d.size;
-    document.getElementById('baby-desc').textContent = d.desc;
-    document.getElementById('baby-fact').textContent = d.fact;
-  });
-});
-
-/* ── SEÑALES DE PARTO ── */
-document.querySelectorAll('.signal-card').forEach(card => {
-  const correct = card.dataset.answer;
-  card.querySelectorAll('.signal-btn').forEach(btn => {
-    btn.addEventListener('click', function () {
-      if (card.classList.contains('revealed')) return;
-      card.classList.add('revealed');
-      const chosen = this.dataset.val;
-      card.querySelectorAll('.signal-btn').forEach(b => {
-        b.disabled = true;
-        if (b.dataset.val === correct) b.classList.add('selected-correct');
-        else if (b === this && chosen !== correct) b.classList.add('selected-wrong');
-      });
-    });
-  });
-});
-
-/* ── LÍNEA DE TIEMPO ── */
-document.querySelectorAll('.timeline-item').forEach(item => {
-  item.querySelector('.timeline-header').addEventListener('click', function () {
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.timeline-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  });
-});
-
-/* ── ACORDEÓN HÁBITOS ── */
-document.querySelectorAll('.habit-card').forEach(card => {
-  card.querySelector('.habit-header').addEventListener('click', function () {
-    const isOpen = card.classList.contains('open');
-    const grid = card.closest('.habits-grid');
-    if (grid) grid.querySelectorAll('.habit-card').forEach(c => c.classList.remove('open'));
-    if (!isOpen) card.classList.add('open');
-  });
-});
-
-/* ── MITOS ── */
-document.querySelectorAll('.myth-card').forEach(card => {
-  const correct = card.dataset.answer;
-  card.querySelectorAll('.myth-btn').forEach(btn => {
-    btn.addEventListener('click', function () {
-      if (card.classList.contains('revealed-true') || card.classList.contains('revealed-false')) return;
-      const chosen = this.dataset.val;
-      if (chosen === correct) {
-        card.classList.add('revealed-true');
-        this.classList.add('selected-true');
-      } else {
-        card.classList.add('revealed-false');
-        this.classList.add('selected-false');
-      }
-    });
-  });
-});
-
-/* ── EMOCIÓN ── */
-const emoData = {
-  emocionada: {
-    title: '¡Tu energía y confianza son un regalo! 🌸',
-    msg: 'Estás preparándote con amor y determinación. Esa confianza es también una forma de preparar tu cuerpo para el parto.',
-    tip: '💡 Practica la visualización positiva: cierra los ojos e imagínate sosteniendo a tu bebé por primera vez.'
-  },
-  asustada: {
-    title: 'El miedo al parto es una de las emociones más comunes y válidas 🤍',
-    msg: 'No estás sola. Muchas madres sienten miedo frente al parto, y eso es completamente comprensible. Conocer el proceso ayuda a reducir la ansiedad.',
-    tip: '💡 Escribe tus miedos y cuéntaselos a tu matrona en tu próximo control. Tiene respuestas para cada uno de ellos.'
-  },
-  cansada: {
-    title: 'El tercer trimestre es físicamente exigente ✨',
-    msg: 'Tu cansancio es completamente real y válido. Tu cuerpo está haciendo un trabajo enorme: prepararse para dar vida.',
-    tip: '💡 Descansa cuando puedas y delega tareas. Tu única tarea ahora mismo es prepararte para el gran día.'
-  },
-  ambivalente: {
-    title: 'Sentir alegría y miedo al mismo tiempo es totalmente normal 🌊',
-    msg: 'Muchas madres sienten emoción e incertidumbre mezcladas frente al parto. Todos esos sentimientos son válidos y forman parte del proceso.',
-    tip: '💡 Practica la respiración consciente: inhala lento 4 tiempos, exhala 6 tiempos. Repite 5 veces.'
-  },
-  sola: {
-    title: 'Mereces acompañamiento en este momento tan importante 💜',
-    msg: 'Si sientes que no tienes suficiente apoyo, es fundamental que lo comuniques a tu matrona o al equipo de salud de tu CESFAM. Tienes derecho a un acompañante durante el parto.',
-    tip: '💡 Habla con tu matrona sobre quién puede ser tu acompañante de parto. Es un derecho que te protege el modelo de atención humanizada.'
-  },
-  paz: {
-    title: 'Esa calma que sientes es también una forma de preparación 🌸',
-    msg: 'Confiar en tu cuerpo y en el proceso es uno de los recursos más poderosos que puedes tener durante el parto. Esa paz interior es un regalo.',
-    tip: '💡 Dedica 10 minutos al día a hablarle a tu bebé y contarle que pronto se van a conocer. Ese tiempo es de los dos.'
-  }
-};
-
-document.querySelectorAll('.emotion-btn').forEach(btn => {
-  btn.addEventListener('click', function () {
-    document.querySelectorAll('.emotion-btn').forEach(b => b.classList.remove('selected'));
-    this.classList.add('selected');
-    const d = emoData[this.dataset.emo];
-    document.getElementById('emo-title').textContent = d.title;
-    document.getElementById('emo-msg').textContent = d.msg;
-    document.getElementById('emo-tip').textContent = d.tip;
-    document.getElementById('emotion-response').classList.add('show');
-  });
-});
-
-/* ── QUIZ (6 preguntas, índices 0–5) ── */
-const quizAnswers = { 0: 'b', 1: 'b', 2: 'b', 3: 'a', 4: 'c', 5: 'c' };
-const userAnswers = {};
-
-document.querySelectorAll('.quiz-opt').forEach(btn => {
-  btn.addEventListener('click', function () {
-    const q = parseInt(this.dataset.q);
-    const val = this.dataset.val;
-    if (userAnswers[q] !== undefined) return;
-    userAnswers[q] = val;
-
-    document.querySelectorAll(`.quiz-opt[data-q="${q}"]`).forEach(s => {
-      s.disabled = true;
-      if (s.dataset.val === quizAnswers[q]) s.classList.add('correct');
-      else if (s === this) s.classList.add('wrong');
-    });
-    document.getElementById('fb-' + q).classList.add('show');
-  });
-});
-
-document.getElementById('quiz-submit-btn').addEventListener('click', function () {
-  if (Object.keys(userAnswers).length < 6) {
-    alert('Por favor responde todas las preguntas antes de ver tus resultados.');
-    return;
-  }
-  let score = 0;
-  for (let q in quizAnswers) { if (userAnswers[q] === quizAnswers[q]) score++; }
-
-  document.getElementById('quiz-container').style.display = 'none';
-  const result = document.getElementById('quiz-result');
-  result.classList.add('show');
-  document.getElementById('quiz-score-text').textContent = `Obtuviste ${score} de 6`;
-  document.getElementById('quiz-msg').textContent =
-    score === 6
-      ? '¡Excelente! Ya estás preparada para reconocer el parto y recibir a tu bebé con amor. ¡El encuentro está muy cerca!'
-      : score >= 4
-      ? '¡Muy bien! Tienes una base sólida. Puedes repasar las secciones donde tuviste dudas antes de continuar.'
-      : 'Sigue aprendiendo. Te recomendamos repasar el módulo antes de continuar. ¡Cada intento es un paso adelante!';
-
-  completed.add(7);
-  updateProgress();
-
-const user = auth.currentUser;
-if (user) {
-  const docRef = doc(db, "users", user.uid);
-  getDoc(docRef).then(docSnap => {
-    if (docSnap.exists()) {
-      const moduleName = "module3"; 
-      let modulesCompleted = docSnap.data().modulesCompleted || [];
-      if (!modulesCompleted.includes(moduleName)) {
-        modulesCompleted.push(moduleName);
-        updateDoc(docRef, { modulesCompleted: modulesCompleted });
-      }
-    }
-  });
-}
-
-  document.getElementById('btn-finish').addEventListener('click', () => { window.location.href = '../pages/module4.html';
-});
-});
-
-/* ── BOTONES DE NAVEGACIÓN ── */
-document.getElementById('btn-prev').addEventListener('click', () => navigate(-1));
-document.getElementById('btn-next').addEventListener('click', () => {
-  if (currentStep === totalSteps - 1) {
-    window.location.href = "../pages/dashboard.html";
-  } else {
-    navigate(1);
-  }
-});
