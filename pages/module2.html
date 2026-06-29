@@ -511,6 +511,20 @@
 
 </div><!-- /content-area -->
 
+ <script>
+  const hamburgerBtn = document.getElementById("hamburger-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  if (hamburgerBtn) {
+    hamburgerBtn.addEventListener("click", () => {
+      hamburgerBtn.classList.toggle("open");
+      mobileMenu.classList.toggle("open");
+    });
+  }
+</script>
+<script type="module" src="../js/module2.js"></script>
+</body> 
+  
 <script type="module" src="../js/module2.js"></script>
 </body>
 </html>
