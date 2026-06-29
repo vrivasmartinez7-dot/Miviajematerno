@@ -16,11 +16,11 @@
 
   <!-- Nav desktop -->
   <nav class="topnav" id="topnav">
-    <a class="active" href="../pages/dashboard.html">Inicio</a>
-    <a href="../pages/acompañantes.html">Acompañantes</a>
-    <a href="../pages/signos-alarma.html">Signos de alarma</a>
-    <a href="#">Preguntas frecuentes</a>
-  </nav>
+  <a href="../pages/dashboard.html">Inicio</a>
+  <a href="../pages/acompañantes.html">Acompañantes</a>
+  <a class="active" href="../pages/signos-alarma.html">Signos de alarma</a>
+  <a href="#">Preguntas frecuentes</a>
+</nav>
 
   <div class="topbar-right">
     <a href="perfil.html">
@@ -35,9 +35,9 @@
 
 <!-- Menú móvil desplegable -->
 <div class="mobile-menu" id="mobile-menu">
-  <a class="active" href="../pages/dashboard.html">Inicio</a>
+  <a href="../pages/dashboard.html">Inicio</a>
   <a href="../pages/acompañantes.html">Acompañantes</a>
-  <a href="../pages/signos-alarma.html">Signos de alarma</a>
+  <a class="active" href="../pages/signos-alarma.html">Signos de alarma</a>
   <a href="#">Preguntas frecuentes</a>
 </div>
   
@@ -426,5 +426,20 @@
   <p>Esta información está basada en las guías del <strong>MINSAL Chile</strong> y <strong>Chile Crece Contigo</strong>. No reemplaza la evaluación de tu equipo de salud. Ante cualquier duda, consulta siempre con tu matrona o médico tratante.</p>
 </div>
 
+
+<script>
+  const hamburgerBtn = document.getElementById("hamburger-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  if (hamburgerBtn) {
+    hamburgerBtn.addEventListener("click", () => {
+      hamburgerBtn.classList.toggle("open");
+      mobileMenu.classList.toggle("open");
+    });
+  }
+</script>
+</body>
+</html>
+  
 </body>
 </html>
