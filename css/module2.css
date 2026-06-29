@@ -20,7 +20,7 @@ body { margin: 0; background: var(--bg); font-family: var(--sans); color: var(--
 .content-area {
   width: min(1180px, 92%);
   margin: auto;
-  padding-top: 64px;       /* compensa navbar fijo */
+  padding-top: 64px;       
   padding-bottom: 5rem;
 }
 
