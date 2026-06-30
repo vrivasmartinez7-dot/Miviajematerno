@@ -209,7 +209,6 @@ document.getElementById("btn-save-embarazo").addEventListener("click", async () 
   document.getElementById("view-embarazo").style.display = "block";
   document.getElementById("edit-embarazo").style.display = "none";
   document.getElementById("btn-edit-embarazo").style.display = "inline-block";
-});
 
   /* ── CERRAR SESIÓN ── */
 document.getElementById("btn-logout").addEventListener("click", async () => {
