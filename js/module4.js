@@ -1,179 +1,287 @@
-/* =========================================================
-   MODULE 4 — MI VIAJE MATERNO
-========================================================= */
+import { auth, db, doc, getDoc, updateDoc, onAuthStateChanged } from "./firebase.js";
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap');
+/* ── STATE ── */
+let currentStep = 0;
+const totalSteps = 8;
+const completed = new Set();
 
-:root {
-  --bg: #F4F0EF; --card: #F8F5F4;
-  --wine: #4B2233; --wine-soft: #6D4B57;
-  --rose: #D9A5B0; --rose-light: #EAD6DB;
-  --text: #665761; --text-light: #8E7D86;
-  --border: #E8D4DA;
-  --serif: 'Cormorant Garamond', serif; --sans: 'Poppins', sans-serif;
+// ─────────────────────────────────────────
+// MENÚ HAMBURGUESA
+// ─────────────────────────────────────────
+
+const hamburgerBtn = document.getElementById("hamburger-btn");
+const mobileMenu = document.getElementById("mobile-menu");
+
+if (hamburgerBtn) {
+  hamburgerBtn.addEventListener("click", () => {
+    hamburgerBtn.classList.toggle("open");
+    mobileMenu.classList.toggle("open");
+  });
 }
 
-/* BASE */
-body { margin: 0; background: var(--bg); font-family: var(--sans); color: var(--text); }
-* { box-sizing: border-box; }
+/* ── PERFIL NAV ── */
+onAuthStateChanged(auth, async (user) => {
+  if (user) {
+    const docRef = doc(db, "users", user.uid);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      const firstName = docSnap.data().name.split(" ")[0];
+      const profileName = document.getElementById("profile-name");
+      if (profileName) profileName.textContent = `Hola, ${firstName}`;
+      const navAvatar = document.getElementById("nav-avatar");
+      if (navAvatar) navAvatar.textContent = firstName.charAt(0).toUpperCase();
+    }
+  }
+});
 
-.content-area {
-  width: min(1180px, 92%);
-  margin: auto;
-  padding-top: 64px;       /* compensa navbar fijo */
-  padding-bottom: 5rem;
+/* ── NAVIGATION ── */
+function navigate(dir) {
+  completed.add(currentStep);
+  const next = currentStep + dir;
+  if (next < 0 || next >= totalSteps) return;
+  showStep(next);
 }
 
-/* BACK */
-.back-bar { width: min(1180px, 92%); margin: 2rem auto 0; }
-.btn-back { border: none; background: none; color: var(--text-light); font-size: 0.95rem; cursor: pointer; font-family: var(--sans); }
-.btn-back:hover { color: var(--wine); }
+function showStep(idx) {
+  document.getElementById('panel-' + currentStep).classList.remove('active');
+  document.getElementById('panel-' + idx).classList.add('active');
 
-/* HERO */
-.module-hero { width: min(1180px, 92%); margin: 3rem auto 4rem; }
-.module-badge { display: inline-flex; align-items: center; padding: 0.55rem 1rem; border-radius: 999px; background: #F9F3F4; border: 1px solid var(--border); color: var(--rose); font-size: 0.9rem; }
-.module-title { font-family: var(--serif); font-size: 5rem; line-height: 0.95; color: var(--wine); margin: 1.4rem 0 0.8rem; font-weight: 500; }
-.module-subtitle { font-size: 1.5rem; color: var(--rose); margin: 0; }
-.progress-strip { margin-top: 2.5rem; }
-.progress-strip p { margin-bottom: 0.8rem; color: var(--text-light); font-size: 0.95rem; }
-.progress-bar-wrap { width: 100%; height: 8px; background: #ECE4E6; border-radius: 999px; overflow: hidden; }
-.progress-bar-fill { height: 100%; background: linear-gradient(to right, #D8A4AF, #C58997); border-radius: 999px; transition: 0.3s; }
+  const tabs = document.querySelectorAll('.step-tab');
+  tabs[currentStep].classList.remove('active');
+  if (completed.has(currentStep)) tabs[currentStep].classList.add('done');
+  tabs[idx].classList.add('active');
+  tabs[idx].classList.remove('done');
 
-/* STEP NAV */
-.steps-nav { width: min(1180px, 92%); margin: 0 auto 3rem; display: flex; gap: 1.5rem; flex-wrap: wrap; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
-.step-tab { border: none; background: none; cursor: pointer; color: var(--text-light); font-size: 0.95rem; font-family: var(--sans); padding-bottom: 0.8rem; transition: 0.2s; }
-.step-tab:hover { color: var(--wine); }
-.step-tab.active { color: var(--wine); border-bottom: 2px solid var(--rose); }
-.step-num { color: var(--rose); margin-right: 0.3rem; }
-
-/* PANELS */
-.section-panel { display: none; }
-.section-panel.active { display: block; animation: fadeUp 0.35s ease; }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-/* CARDS */
-.card { background: var(--card); border: 1px solid var(--border); border-radius: 32px; padding: 2.5rem; margin-bottom: 2rem; }
-.card-title { font-family: var(--serif); font-size: 2.5rem; color: var(--wine); margin: 0 0 1rem; }
-.card-body { line-height: 1.9; color: var(--text); }
-
-/* WELCOME */
-.welcome-hero { display: grid; grid-template-columns: 320px 1fr; gap: 3rem; align-items: center; }
-.avatar-body { width: 100%; display: flex; justify-content: center; }
-.avatar-svg { width: 230px; }
-.avatar-label { text-align: center; margin-top: 1rem; color: var(--text-light); }
-.welcome-text h2 { font-family: var(--serif); font-size: 4rem; line-height: 1; color: var(--wine); margin: 0; }
-.week-tag { font-size: 1.5rem; color: var(--rose); margin: 1rem 0 2rem; }
-.pill-info { display: inline-flex; align-items: center; border: 1px solid var(--border); background: white; padding: 0.9rem 1.2rem; border-radius: 18px; margin-top: 1rem; color: var(--wine-soft); }
-.week-input-row { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.8rem; }
-.week-input-row input { width: 130px; border: 1px solid var(--border); background: white; border-radius: 16px; padding: 0.9rem 1rem; font-family: var(--sans); color: var(--wine); outline: none; }
-.week-input-row input:focus { border-color: var(--rose); }
-
-/* BABY */
-.baby-weeks { display: flex; gap: 1rem; margin-bottom: 2rem; }
-.baby-week-btn { border: 1px solid var(--border); background: white; padding: 0.8rem 1.3rem; border-radius: 16px; cursor: pointer; color: var(--text); font-family: var(--sans); transition: 0.2s; }
-.baby-week-btn.active, .baby-week-btn:hover { border-color: var(--rose); color: var(--wine); }
-.baby-display { display: grid; grid-template-columns: 180px 1fr; gap: 2rem; align-items: center; }
-.baby-fruit { font-size: 6rem; text-align: center; }
-.baby-info h3 { font-family: var(--serif); font-size: 3rem; color: var(--wine); margin: 0 0 0.8rem; }
-.baby-size { color: var(--rose); margin-bottom: 1rem; }
-.baby-fact { display: inline-block; margin-top: 1rem; color: var(--wine-soft); }
-
-/* SEÑALES */
-.signals-grid { display: grid; gap: 1.2rem; }
-.signal-card { background: white; border: 1px solid var(--border); border-radius: 24px; padding: 1.8rem 2rem; transition: border-color 0.2s; }
-.signal-card.revealed { border-color: var(--rose-light); }
-.signal-desc { font-size: 1.05rem; line-height: 1.75; color: var(--wine); margin: 0 0 1.2rem; }
-.signal-buttons { display: flex; gap: 0.8rem; flex-wrap: wrap; }
-.signal-btn { border: 1px solid var(--border); background: #FAF8F8; border-radius: 16px; padding: 0.75rem 1.1rem; cursor: pointer; font-family: var(--sans); font-size: 0.88rem; color: var(--text); transition: 0.2s; }
-.signal-btn:hover:not(:disabled) { border-color: var(--rose); color: var(--wine); }
-.signal-btn.selected-correct { background: #EEF7EE; border-color: #7BB580; color: #3A6040; }
-.signal-btn.selected-wrong { background: #FFF0F2; border-color: var(--rose); color: var(--wine-soft); }
-.signal-btn:disabled { cursor: default; }
-.signal-explanation { display: none; margin-top: 1.2rem; padding: 1rem 1.2rem; border-radius: 16px; background: #F9F3F4; font-size: 0.92rem; line-height: 1.7; color: var(--text); }
-.signal-card.revealed .signal-explanation { display: block; animation: fadeUp 0.3s ease; }
-.signal-badge { display: inline-block; border-radius: 999px; padding: 0.25rem 0.9rem; font-size: 0.8rem; font-weight: 500; margin-bottom: 0.5rem; margin-right: 0.4rem; }
-.alarma-badge { background: #FFE5E5; color: #B91C1C; }
-.normal-badge  { background: #EEF7EE; color: #3A6040; }
-
-/* HÁBITOS */
-.habits-grid { display: grid; gap: 1.2rem; }
-.habit-card { background: white; border: 1px solid var(--border); border-radius: 24px; overflow: hidden; transition: border-color 0.2s; }
-.habit-card:hover { border-color: var(--rose-light); }
-.habit-header { display: flex; align-items: center; gap: 1rem; padding: 1.4rem 1.8rem; cursor: pointer; }
-.habit-icon { font-size: 1.8rem; flex-shrink: 0; }
-.habit-name { font-family: var(--serif); font-size: 1.6rem; color: var(--wine); margin: 0; flex: 1; }
-.habit-toggle { font-size: 1.5rem; color: var(--rose); font-weight: 300; transition: transform 0.25s; flex-shrink: 0; }
-.habit-card.open .habit-toggle { transform: rotate(45deg); }
-.habit-body { display: none; padding: 0 1.8rem 1.8rem; line-height: 1.85; color: var(--text); }
-.habit-card.open .habit-body { display: block; animation: fadeUp 0.25s ease; }
-.habit-body p { margin: 0 0 0.5rem; }
-.habit-body ul { padding-left: 1.2rem; margin: 0.8rem 0; display: flex; flex-direction: column; gap: 0.4rem; }
-.habit-body li { font-size: 0.95rem; line-height: 1.75; }
-.habit-tip { margin-top: 1.2rem; background: #F9F3F4; border-left: 3px solid var(--rose); border-radius: 0 16px 16px 0; padding: 0.9rem 1.1rem; font-size: 0.92rem; color: var(--wine-soft); line-height: 1.7; }
-
-/* MITOS */
-.myth-grid { display: grid; gap: 1.5rem; }
-.myth-card { background: white; border: 1px solid var(--border); border-radius: 24px; padding: 2rem; }
-.myth-statement { font-size: 1.1rem; line-height: 1.8; margin: 0; }
-.myth-buttons { display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
-.myth-btn { border: 1px solid var(--border); background: #FAF8F8; border-radius: 16px; padding: 0.9rem 1.2rem; cursor: pointer; transition: 0.2s; font-family: var(--sans); }
-.myth-btn:hover { border-color: var(--rose); }
-.myth-explanation { margin-top: 1.5rem; line-height: 1.8; display: none; }
-.myth-card.revealed-true  .myth-explanation { display: block; color: #3A6040; }
-.myth-card.revealed-false .myth-explanation { display: block; color: var(--wine-soft); }
-.myth-result-icon { margin-right: 0.3rem; }
-
-/* EMOCIONES */
-.emotion-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.2rem; margin-top: 2rem; }
-.emotion-btn { border: 1px solid var(--border); background: white; border-radius: 24px; padding: 1.5rem; cursor: pointer; transition: 0.2s; display: flex; flex-direction: column; gap: 0.8rem; align-items: center; font-family: var(--sans); }
-.emotion-btn:hover, .emotion-btn.selected { border-color: var(--rose); transform: translateY(-2px); }
-.emo-icon { font-size: 2rem; }
-.emo-label { text-align: center; color: var(--text); font-size: 0.9rem; }
-.emotion-response { margin-top: 2rem; background: white; border: 1px solid var(--border); border-radius: 24px; padding: 2rem; display: none; }
-.emotion-response.show { display: block; animation: fadeUp 0.3s ease; }
-#emo-title { font-family: var(--serif); font-size: 2rem; color: var(--wine); margin: 0 0 0.6rem; }
-#emo-msg { margin: 0; line-height: 1.8; }
-.emo-tip { margin-top: 1rem; padding: 0.9rem 1.1rem; background: #F9F3F4; border-left: 3px solid var(--rose); border-radius: 0 16px 16px 0; font-size: 0.92rem; color: var(--wine-soft); line-height: 1.7; }
-
-/* QUIZ */
-.quiz-block-label { font-weight: 500; color: var(--wine); font-size: 0.95rem; background: #F9F3F4; border-left: 4px solid var(--rose); padding: 0.7rem 1rem; border-radius: 0 12px 12px 0; margin-bottom: 1.5rem; }
-.quiz-question { margin-bottom: 2.5rem; }
-.quiz-q { font-size: 1.05rem; line-height: 1.8; color: var(--wine); margin: 0 0 0.5rem; }
-.quiz-options { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.2rem; }
-.quiz-opt { border: 1px solid var(--border); background: white; border-radius: 18px; padding: 1rem 1.2rem; text-align: left; cursor: pointer; transition: 0.2s; font-family: var(--sans); font-size: 0.95rem; color: var(--text); }
-.quiz-opt:hover:not(:disabled) { border-color: var(--rose); }
-.quiz-opt.correct { background: #EEF7EE; border-color: #7BB580; color: #3A6040; }
-.quiz-opt.wrong   { background: #FFF0F2; border-color: var(--rose); color: var(--wine-soft); }
-.quiz-opt:disabled { cursor: default; }
-.quiz-feedback { display: none; margin-top: 0.8rem; line-height: 1.8; color: var(--text-light); font-size: 0.92rem; }
-.quiz-feedback.show { display: block; }
-.quiz-submit-row { margin-top: 2rem; }
-.quiz-result { display: none; text-align: center; }
-.quiz-result.show { display: block; animation: fadeUp 0.4s ease; }
-.badge-icon { font-size: 4rem; }
-.score-pill { display: inline-block; margin-top: 1rem; background: #F6ECEF; border: 1px solid var(--border); padding: 0.9rem 1.3rem; border-radius: 999px; color: var(--wine); }
-
-/* BOTONES */
-.btn-primary { border: none; background: #E7D7DB; color: var(--wine); border-radius: 999px; padding: 1rem 1.8rem; cursor: pointer; font-family: var(--sans); font-size: 0.95rem; transition: 0.2s; }
-.btn-primary:hover { background: #DDBEC6; }
-.btn-outline { border: 1px solid var(--border); background: transparent; border-radius: 999px; padding: 1rem 1.8rem; cursor: pointer; font-family: var(--sans); color: var(--wine); font-size: 0.95rem; }
-.btn-outline:disabled { opacity: 0.4; cursor: default; }
-.nav-buttons { margin-top: 3rem; display: flex; align-items: center; justify-content: space-between; }
-.step-indicator { color: var(--text-light); }
-
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .module-title { font-size: 3.8rem; }
-  .welcome-hero { grid-template-columns: 1fr; }
-  .baby-display { grid-template-columns: 1fr; text-align: center; }
+  currentStep = idx;
+  updateNavButtons();
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-@media (max-width: 600px) {
-  .module-title { font-size: 3rem; }
-  .welcome-text h2 { font-size: 3rem; }
-  .card { padding: 1.6rem; }
-  .card-title { font-size: 2rem; }
-  .steps-nav { gap: 0.8rem; }
-  .step-tab { font-size: 0.82rem; }
-  .signal-buttons { flex-direction: column; }
-  .myth-buttons { flex-direction: column; }
+
+document.querySelectorAll('.step-tab').forEach(btn => {
+  btn.addEventListener('click', () => showStep(parseInt(btn.dataset.step)));
+});
+
+function updateNavButtons() {
+  document.getElementById('btn-prev').disabled = currentStep === 0;
+  const nextBtn = document.getElementById('btn-next');
+  nextBtn.textContent = currentStep === totalSteps - 1 ? 'Finalizar ✓' : 'Siguiente →';
+  document.getElementById('step-indicator').textContent = `Sección ${currentStep + 1} de ${totalSteps}`;
 }
+
+function updateProgress() {
+  const pct = Math.round((completed.size / totalSteps) * 100);
+  document.getElementById('progress-pct').textContent = pct + '%';
+  document.getElementById('progress-bar').style.width = pct + '%';
+}
+
+/* ── BIENVENIDA — semana input ── */
+const babyPills = {
+  32: '🥦 Tu bebé tiene el tamaño de un brócoli',
+  33: '🍍 Tu bebé tiene el tamaño de una piña',
+  34: '🎃 Tu bebé tiene el tamaño de un zapallo italiano grande'
+};
+
+document.getElementById('week-input').addEventListener('input', function () {
+  const w = Math.min(34, Math.max(32, parseInt(this.value) || 32));
+  document.getElementById('welcome-subtitle').textContent = `Semana ${w} de embarazo`;
+  document.getElementById('avatar-week-label').textContent = w;
+  document.getElementById('baby-size-pill').textContent = babyPills[w];
+});
+
+/* ── BEBÉ SEMANA A SEMANA ── */
+const babyData = {
+  32: {
+    fruit: '🥦', title: 'Semana 32',
+    size: 'Tamaño: 42 cm · Peso: 1.700 g (como un brócoli grande)',
+    desc: 'Tu bebé practica la respiración moviendo su diafragma. Sus huesos se están endureciendo, aunque el cráneo sigue siendo flexible para facilitar el parto. Además, sus movimientos son cada vez más coordinados.',
+    fact: '✨ El iris de tu bebé tiene un color azulado, pero el color definitivo de sus ojos se sabrá unos meses después del nacimiento.'
+  },
+  33: {
+    fruit: '🍍', title: 'Semana 33',
+    size: 'Tamaño: 44 cm · Peso: 1.900 g (como una piña)',
+    desc: 'Su piel se va volviendo menos translúcida a medida que acumula grasa. Tu bebé crece y disminuye el líquido amniótico.',
+    fact: '✨ ¡Tu bebé distingue tu voz de todas las demás!'
+  },
+  34: {
+    fruit: '🎃', title: 'Semana 34',
+    size: 'Tamaño: 45 cm · Peso: 2.100 g (como un zapallo italiano grande)',
+    desc: 'Tu bebé puede que tenga bastante cabello sobre su cabeza. Sus uñas han crecido hasta los dedos y sus ojos pueden enfocar objetos cercanos. En estas semanas muchos bebés ya están en posición cefálica.',
+    fact: '✨ La grasa subcutánea aumenta, dándole a tu bebé ese aspecto más redondeado y rosado.'
+  }
+};
+
+document.querySelectorAll('.baby-week-btn').forEach(btn => {
+  btn.addEventListener('click', function () {
+    document.querySelectorAll('.baby-week-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    const d = babyData[this.dataset.baby];
+    document.getElementById('baby-fruit').textContent = d.fruit;
+    document.getElementById('baby-title').textContent = d.title;
+    document.getElementById('baby-size-text').textContent = d.size;
+    document.getElementById('baby-desc').textContent = d.desc;
+    document.getElementById('baby-fact').textContent = d.fact;
+  });
+});
+
+/* ── SEÑALES (puerperio + RN) ── */
+document.querySelectorAll('.signal-card').forEach(card => {
+  const correct = card.dataset.answer;
+  card.querySelectorAll('.signal-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      if (card.classList.contains('revealed')) return;
+      card.classList.add('revealed');
+      const chosen = this.dataset.val;
+      card.querySelectorAll('.signal-btn').forEach(b => {
+        b.disabled = true;
+        if (b.dataset.val === correct) b.classList.add('selected-correct');
+        else if (b === this && chosen !== correct) b.classList.add('selected-wrong');
+      });
+    });
+  });
+});
+
+/* ── ACORDEÓN HÁBITOS ── */
+document.querySelectorAll('.habit-card').forEach(card => {
+  card.querySelector('.habit-header').addEventListener('click', function () {
+    const isOpen = card.classList.contains('open');
+    const grid = card.closest('.habits-grid');
+    if (grid) grid.querySelectorAll('.habit-card').forEach(c => c.classList.remove('open'));
+    if (!isOpen) card.classList.add('open');
+  });
+});
+
+/* ── MITOS ── */
+document.querySelectorAll('.myth-card').forEach(card => {
+  const correct = card.dataset.answer;
+  card.querySelectorAll('.myth-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      if (card.classList.contains('revealed-true') || card.classList.contains('revealed-false')) return;
+      const chosen = this.dataset.val;
+      if (chosen === correct) {
+        card.classList.add('revealed-true');
+        this.classList.add('selected-true');
+      } else {
+        card.classList.add('revealed-false');
+        this.classList.add('selected-false');
+      }
+    });
+  });
+});
+
+/* ── EMOCIÓN ── */
+const emoData = {
+  feliz: {
+    title: '¡Qué hermoso es estar bien! 🌸',
+    msg: 'Aprovecha esta vitalidad para conectar con tu bebé. Habla con él, cuéntale de tu día o ponle música suave.',
+    tip: '💡 Habla con tu bebé, cuéntale de tu día o ponle música suave. Ya te reconoce.'
+  },
+  ansiosa: {
+    title: 'Es normal tener miedo 🤍',
+    msg: 'El embarazo trae muchas preguntas y eso también es válido. Informarte, como lo estás haciendo ahora, es una forma de cuidarte.',
+    tip: '💡 Escribe en un papel lo que te preocupa y cuéntaselo a alguien de confianza o a tu matrona.'
+  },
+  cansada: {
+    title: 'Tu cuerpo está haciendo un trabajo enorme ✨',
+    msg: 'El cansancio en esta etapa final es real y completamente válido. Tu única tarea ahora mismo es prepararte para el gran encuentro.',
+    tip: '💡 Descansa sin culpa. Pide ayuda con las tareas del hogar. Tus ratos de pausa son necesarios.'
+  },
+  ambivalente: {
+    title: 'Sentir alegría y miedo al mismo tiempo es muy frecuente 🌊',
+    msg: 'No hay emociones incorrectas. Todos esos sentimientos son válidos y forman parte de este proceso tan único.',
+    tip: '💡 Practica 5 minutos de respiración profunda: inhala 4 tiempos y exhala 6 tiempos.'
+  },
+  sola: {
+    title: 'Mereces acompañamiento 💜',
+    msg: 'Hay redes de apoyo disponibles para ti. No tienes que atravesar esto sola.',
+    tip: '💡 Habla con tu matrona: ella puede conectarte con apoyo psicosocial en tu CESFAM.'
+  },
+  curiosa: {
+    title: 'Tu vínculo con tu bebé ya está floreciendo 🌱',
+    msg: 'Sentirte curiosa y conectada es una señal hermosa de vínculo prenatal. Esa curiosidad beneficia tanto a tu bienestar como al de tu bebé.',
+    tip: '💡 Dedica 5 minutos al día a tocar tu pancita y respirar. Ese tiempo es tuyo y de tu bebé.'
+  }
+};
+
+document.querySelectorAll('.emotion-btn').forEach(btn => {
+  btn.addEventListener('click', function () {
+    document.querySelectorAll('.emotion-btn').forEach(b => b.classList.remove('selected'));
+    this.classList.add('selected');
+    const d = emoData[this.dataset.emo];
+    document.getElementById('emo-title').textContent = d.title;
+    document.getElementById('emo-msg').textContent = d.msg;
+    document.getElementById('emo-tip').textContent = d.tip;
+    document.getElementById('emotion-response').classList.add('show');
+  });
+});
+
+/* ── QUIZ (6 preguntas, índices 0–5) ── */
+const quizAnswers = { 0: 'b', 1: 'b', 2: 'b', 3: 'c', 4: 'b', 5: 'b' };
+const userAnswers = {};
+
+document.querySelectorAll('.quiz-opt').forEach(btn => {
+  btn.addEventListener('click', function () {
+    const q = parseInt(this.dataset.q);
+    const val = this.dataset.val;
+    if (userAnswers[q] !== undefined) return;
+    userAnswers[q] = val;
+
+    document.querySelectorAll(`.quiz-opt[data-q="${q}"]`).forEach(s => {
+      s.disabled = true;
+      if (s.dataset.val === quizAnswers[q]) s.classList.add('correct');
+      else if (s === this) s.classList.add('wrong');
+    });
+    document.getElementById('fb-' + q).classList.add('show');
+  });
+});
+
+document.getElementById('quiz-submit-btn').addEventListener('click', function () {
+  if (Object.keys(userAnswers).length < 6) {
+    alert('Por favor responde todas las preguntas antes de ver tus resultados.');
+    return;
+  }
+  let score = 0;
+  for (let q in quizAnswers) { if (userAnswers[q] === quizAnswers[q]) score++; }
+
+  document.getElementById('quiz-container').style.display = 'none';
+  const result = document.getElementById('quiz-result');
+  result.classList.add('show');
+  document.getElementById('quiz-score-text').textContent = `Obtuviste ${score} de 6`;
+  document.getElementById('quiz-msg').textContent =
+    score === 6
+      ? '¡Perfecto! Has completado tu viaje materno digital. Estás preparada para recibir a tu bebé con amor, información y confianza. ¡Felicitaciones!'
+      : score >= 4
+      ? '¡Muy bien! Tienes una base muy sólida. Puedes repasar las secciones donde tuviste dudas. ¡Felicitaciones por completar los 4 módulos!'
+      : 'Has completado todos los módulos. Te recomendamos repasar las secciones donde tuviste dudas. ¡Cada aprendizaje cuenta!';
+
+  completed.add(7);
+  updateProgress();
+
+  // GUARDAR EN FIREBASE QUE EL MÓDULO 4 ESTÁ COMPLETADO
+const user = auth.currentUser;
+if (user) {
+  const docRef = doc(db, "users", user.uid);
+  getDoc(docRef).then(docSnap => {
+    if (docSnap.exists()) {
+      const moduleName = "module4";
+      let modulesCompleted = docSnap.data().modulesCompleted || [];
+      if (!modulesCompleted.includes(moduleName)) {
+        modulesCompleted.push(moduleName);
+        updateDoc(docRef, { modulesCompleted: modulesCompleted });
+      }
+    }
+  });
+}
+  document.getElementById('btn-finish').addEventListener('click', () => { window.location.href = '../pages/dashboard.html'; });
+
+});
+
+/* ── BOTONES DE NAVEGACIÓN ── */
+document.getElementById('btn-prev').addEventListener('click', () => navigate(-1));
+document.getElementById('btn-next').addEventListener('click', () => {
+  if (currentStep === totalSteps - 1) {
+    window.location.href = "../pages/dashboard.html";
+  } else {
+    navigate(1);
+  }
+});
