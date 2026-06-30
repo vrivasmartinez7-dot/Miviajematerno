@@ -9,19 +9,34 @@
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="perfil-nav">
-  <a class="nav-logo" href="dashboard.html">Mi viaje materno</a>
-  <div class="nav-user">
-    <div class="nav-avatar" id="nav-avatar">V</div>
-    <span id="profile-name">Hola</span>
+<!-- NAVBAR -->
+<header class="topbar">
+  <a href="../pages/dashboard.html" class="logo">Mi viaje materno</a>
+  <nav class="topnav" id="topnav">
+    <a href="../pages/dashboard.html">Inicio</a>
+    <a href="../pages/acompañantes.html">Acompañantes</a>
+    <a href="../pages/signos-alarma.html">Signos de alarma</a>
+    <a href="../pages/dashboard.html">Preguntas frecuentes</a>
+  </nav>
+  <div class="topbar-right">
+    <a href="perfil.html"><div class="nav-avatar" id="nav-avatar">V</div></a>
+    <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
   </div>
-</nav>
+</header>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="../pages/dashboard.html">Inicio</a>
+  <a href="../pages/acompañantes.html">Acompañantes</a>
+  <a href="../pages/signos-alarma.html">Signos de alarma</a>
+  <a href="#">Preguntas frecuentes</a>
+</div>
 
 <!-- BACK -->
 <div class="back-bar">
-  <button class="btn-back" onclick="window.location.href='dashboard.html'">← Volver al inicio</button>
+   <button class="btn-back" onclick="window.location.href='dashboard.html'">← Volver al inicio</button>
 </div>
+
 
 <!-- CONTENIDO -->
 <main class="perfil-main">
