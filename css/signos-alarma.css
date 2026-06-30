@@ -82,6 +82,10 @@
   gap: 12px;
 }
 
+.topbar-right a {
+  text-decoration: none;
+}
+
 .nav-avatar {
   width: 38px; height: 38px;
   border-radius: 50%;
