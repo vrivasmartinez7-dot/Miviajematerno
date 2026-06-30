@@ -1,4 +1,4 @@
-import { auth, db, doc, getDoc, updateDoc, onAuthStateChanged } from "./firebase.js";
+import { auth, db, doc, getDoc, updateDoc, onAuthStateChanged, signOut } from "./firebase.js"; 
 
 // ─────────────────────────────────────────
 // MENÚ HAMBURGUESA
@@ -209,4 +209,9 @@ document.getElementById("btn-save-embarazo").addEventListener("click", async () 
   document.getElementById("view-embarazo").style.display = "block";
   document.getElementById("edit-embarazo").style.display = "none";
   document.getElementById("btn-edit-embarazo").style.display = "inline-block";
+
+  /* ── CERRAR SESIÓN ── */
+document.getElementById("btn-logout").addEventListener("click", async () => {
+  await signOut(auth);
+  window.location.href = "../pages/login.html";
 });
